@@ -120,11 +120,21 @@ const evaluation = await valtrix.evaluateMonitoredStream({
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
   }
 
   .tab-list {
     display: flex;
     gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    max-width: 100%;
+    padding-bottom: 2px;
+  }
+
+  .tab-list::-webkit-scrollbar {
+    display: none;
   }
 
   .console-tab {
@@ -137,6 +147,8 @@ const evaluation = await valtrix.evaluateMonitoredStream({
     border-radius: var(--radius-full);
     cursor: pointer;
     transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .console-tab.active {
@@ -152,6 +164,8 @@ const evaluation = await valtrix.evaluateMonitoredStream({
     color: var(--green);
     font-family: var(--font-mono);
     font-size: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .status-pulse {
@@ -172,6 +186,49 @@ const evaluation = await valtrix.evaluateMonitoredStream({
   @media (max-width: 900px) {
     .console-grid {
       grid-template-columns: 1fr;
+    }
+
+    .console-subbar {
+      padding: 10px 16px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .tab-list {
+      width: 100%;
+    }
+
+    .console-pane {
+      padding: 18px 16px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .mockup-header {
+      padding: 10px 14px;
+      gap: 8px;
+    }
+
+    .mockup-title {
+      font-size: 11px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .mockup-badge {
+      display: none;
+    }
+
+    .metrics-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
+    .metric-card {
+      width: 100%;
     }
   }
 
