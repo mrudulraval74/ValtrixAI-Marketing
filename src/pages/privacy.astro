@@ -10,9 +10,12 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
   <div class="container" style="padding-top: 2.5rem; padding-bottom: 5rem;">
     <Breadcrumbs items={[{ label: 'Privacy Policy' }]} />
 
-    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem; text-align: left;">
-      <h1 class="heading-lg">Privacy Policy</h1>
-      <p style="color: var(--text-muted); font-size: 0.9rem;">Effective Date: November 2026 &bull; Valtrix AI</p>
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2.5rem; text-align: left;">
+      <div class="eyebrow">
+        <span class="badge-dot"></span> Compliance &amp; Trust
+      </div>
+      <h1 class="title">Privacy Policy</h1>
+      <p style="color: var(--muted2); font-size: 14px; margin-top: 8px;">Effective Date: November 2026 &bull; Valtrix AI</p>
     </header>
 
     <div class="card legal-content">
@@ -45,7 +48,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
       <section>
         <h2 class="heading-md">4. Data Retention &amp; Rights</h2>
         <p>
-          You may request deletion or review of any submitted contact information at any time by contacting our engineering maintainers through our official GitHub repository channels.
+          You may request deletion or review of any submitted contact information at any time by contacting our team directly at <a href="mailto:contact@valtrix.ai" style="color: var(--cyan); text-decoration: underline;">contact@valtrix.ai</a>.
         </p>
       </section>
     </div>
@@ -57,8 +60,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    color: var(--text-secondary);
+    color: var(--muted);
     line-height: 1.8;
   }
 </style>
-

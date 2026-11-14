@@ -2,37 +2,47 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="footer-wrapper">
-  <div class="container footer-container">
+<footer class="footer">
+  <div class="container">
     <div class="footer-grid">
       <!-- Col 1: Brand Info -->
       <div class="footer-col brand-col">
-        <a href="/" class="footer-logo">
-          <div class="logo-mark">
-            <svg viewBox="0 0 32 32" fill="none" class="logo-svg" width="28" height="28">
-              <path d="M16 3L27 8V17C27 24 21 28.5 16 30C11 28.5 5 24 5 17V8L16 3Z" fill="#7c3aed" fill-opacity="0.3" stroke="#a855f7" stroke-width="1.5" />
+        <a href="/" class="brand" style="margin-bottom: 1.25rem;">
+          <div class="brand-mark" style="width: 38px; height: 38px;">
+            <svg viewBox="0 0 32 32" fill="none" class="brand-svg">
+              <path d="M16 3L27 8V17C27 24 21 28.5 16 30C11 28.5 5 24 5 17V8L16 3Z" fill="url(#ft-grad)" fill-opacity="0.3" stroke="url(#ft-stroke)" stroke-width="1.5" />
               <path d="M10 11L16 23L22 11H18.5L16 16.5L13.5 11H10Z" fill="#ffffff" />
+              <defs>
+                <linearGradient id="ft-grad" x1="0" y1="0" x2="32" y2="32">
+                  <stop stop-color="#61adff" />
+                  <stop offset="0.5" stop-color="#9d7dff" />
+                  <stop offset="1" stop-color="#ff6fd7" />
+                </linearGradient>
+                <linearGradient id="ft-stroke" x1="0" y1="0" x2="32" y2="32">
+                  <stop stop-color="#79f3ff" />
+                  <stop offset="1" stop-color="#9d7dff" />
+                </linearGradient>
+              </defs>
             </svg>
           </div>
-          <span class="footer-brand-text">Valtrix<span style="color: var(--primary-accent)">AI</span></span>
+          <div class="brand-text">
+            <span class="brand-title" style="font-size: 18px;">Valtrix AI</span>
+            <span class="brand-sub">Strategic Intelligence Systems</span>
+          </div>
         </a>
-        <p class="footer-bio">
-          Next-generation AI Quality Engineering Platform. Unified studios for autonomous test design, self-healing automation, ETL validation, and real-time execution governance.
+        <p class="footer-copy">
+          Valtrix AI builds intelligence systems for financial monitoring, industrial inspection, and operational decision workflows where teams need clear signals, governed review, and fast routing.
         </p>
-        <div class="repo-badge">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-          </svg>
-          <a href="https://github.com/mrudulraval74/ValtrixAI-Marketing" target="_blank" rel="noopener noreferrer">
-            mrudulraval74/ValtrixAI-Marketing
-          </a>
+        <div class="institutional-badge">
+          <span class="status-dot"></span>
+          <span>Global Institutional Engagement</span>
         </div>
       </div>
 
       <!-- Col 2: Testing Studios -->
       <div class="footer-col">
-        <h4 class="footer-heading">Testing Studios</h4>
-        <ul class="footer-links">
+        <h4 class="footer-head">Intelligence Studios</h4>
+        <ul class="footer-nav">
           <li><a href="/studios/ai-end-to-end">AI End-to-End Studio</a></li>
           <li><a href="/studios/automation">Automation Studio</a></li>
           <li><a href="/studios/etl-testing">ETL Testing Studio</a></li>
@@ -44,64 +54,67 @@ const currentYear = new Date().getFullYear();
 
       <!-- Col 3: Platform & Solutions -->
       <div class="footer-col">
-        <h4 class="footer-heading">Platform</h4>
-        <ul class="footer-links">
+        <h4 class="footer-head">Platform</h4>
+        <ul class="footer-nav">
           <li><a href="/platform">Platform Architecture</a></li>
           <li><a href="/features">Feature Matrix</a></li>
-          <li><a href="/solutions">Enterprise Solutions</a></li>
-          <li><a href="/pricing">Pricing & Tiers</a></li>
-          <li><a href="/resources">Documentation & Guides</a></li>
+          <li><a href="/solutions">Industry Solutions</a></li>
+          <li><a href="/pricing">Pricing &amp; Engagements</a></li>
+          <li><a href="/resources">Technical Resources</a></li>
         </ul>
       </div>
 
-      <!-- Col 4: Company & Legal -->
+      <!-- Col 4: Corporate & Office -->
       <div class="footer-col">
-        <h4 class="footer-heading">Company & Trust</h4>
-        <ul class="footer-links">
-          <li><a href="/about">About Valtrix</a></li>
-          <li><a href="/contact">Contact Team</a></li>
+        <h4 class="footer-head">Headquarters &amp; Contact</h4>
+        <p class="office-text">
+          <strong>Offices:</strong><br />
+          New York &bull; San Francisco<br />
+          Global institutional briefings
+        </p>
+        <p class="office-text" style="margin-top: 12px;">
+          <strong>Direct Inquiries:</strong><br />
+          <a href="mailto:contact@valtrix.ai" class="email-link">contact@valtrix.ai</a><br />
+          <a href="mailto:partners@valtrix.ai" class="email-link">partners@valtrix.ai</a>
+        </p>
+        <ul class="footer-nav" style="margin-top: 14px;">
+          <li><a href="/about">About Us</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
           <li><a href="/terms">Terms of Service</a></li>
         </ul>
-        <div class="environment-status">
-          <span class="status-indicator"></span>
-          <span>Render Production Environment</span>
-        </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <div class="copyright">
+      <div>
         &copy; {currentYear} Valtrix AI. All rights reserved.
       </div>
-      <div class="legal-notice">
-        Autonomous Quality Engineering &bull; Clean Architecture &bull; Continuous Reliability
+      <div class="footer-tagline">
+        Monitored Workflows &bull; Governed Review &bull; Traceable Outcomes
       </div>
     </div>
   </div>
 </footer>
 
 <style>
-  .footer-wrapper {
-    background: #08070d;
-    border-top: 1px solid var(--border-subtle);
-    padding-top: 4.5rem;
-    padding-bottom: 2.5rem;
-    color: var(--text-muted);
-    font-size: 0.9rem;
+  .footer {
+    background: #050b14;
+    border-top: 1px solid var(--stroke);
+    padding: clamp(60px, 7vw, 90px) 0 36px;
+    color: var(--muted);
+    font-size: 14px;
   }
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3.5rem;
+    grid-template-columns: 2fr 1fr 1fr 1.3fr;
+    gap: clamp(24px, 4vw, 48px);
+    margin-bottom: 50px;
   }
 
   @media (max-width: 1024px) {
     .footer-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
     }
   }
 
@@ -111,97 +124,124 @@ const currentYear = new Date().getFullYear();
     }
   }
 
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
+  .footer-copy {
+    line-height: 1.8;
+    color: var(--muted2);
+    max-width: 380px;
+    margin-bottom: 18px;
+    font-size: 14px;
   }
 
-  .footer-bio {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-    max-width: 340px;
-    margin-bottom: 1.25rem;
-  }
-
-  .repo-badge {
+  .institutional-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0.75rem;
-    background: #12101c;
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
-    font-size: 0.8rem;
-    color: var(--text-secondary);
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--stroke);
+    font-size: 12px;
+    color: var(--cyan);
+    font-weight: 500;
   }
 
-  .repo-badge a:hover {
-    color: var(--primary-accent);
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
   }
 
-  .footer-heading {
-    color: var(--text-primary);
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 1.25rem;
+  .footer-head {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 650;
     letter-spacing: -0.01em;
+    margin-bottom: 20px;
   }
 
-  .footer-links {
+  .footer-nav {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
+    gap: 12px;
   }
 
-  .footer-links a {
-    color: var(--text-muted);
-    transition: color 0.15s ease;
+  .footer-nav a {
+    color: var(--muted);
+    transition: color 0.2s ease;
   }
 
-  .footer-links a:hover {
-    color: var(--text-primary);
+  .footer-nav a:hover {
+    color: var(--cyan);
   }
 
-  .environment-status {
-    margin-top: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    color: var(--text-subtle);
+  .office-text {
+    line-height: 1.7;
+    color: var(--muted2);
+    font-size: 13px;
   }
 
-  .status-indicator {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  .email-link {
+    color: var(--cyan);
+  }
+
+  .email-link:hover {
+    text-decoration: underline;
   }
 
   .footer-bottom {
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 0.8rem;
-    color: var(--text-subtle);
+    font-size: 13px;
+    color: var(--muted2);
   }
 
   @media (max-width: 640px) {
     .footer-bottom {
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 12px;
       text-align: center;
     }
   }
-</style>
 
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-mark {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: radial-gradient(circle at 28% 24%, rgba(97, 173, 255, 0.28), rgba(157, 125, 255, 0.22) 55%, rgba(255, 111, 215, 0.16) 100%), #0d1629;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+
+  .brand-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .brand-sub {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    font-weight: 600;
+  }
+</style>

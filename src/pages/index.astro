@@ -3,117 +3,149 @@ import Layout from '../layouts/Layout.astro';
 import StudioMockup from '../components/StudioMockup.astro';
 import CtaSection from '../components/CtaSection.astro';
 
+const operationalScenarios = [
+  {
+    title: "Financial Monitoring",
+    tag: "Capital & Risk Signals",
+    desc: "Portfolio oversight, anomaly detection, and governed escalation for teams that need monitored signals translated into accountable action.",
+    color: "#61adff"
+  },
+  {
+    title: "Industrial Inspection",
+    tag: "Computer Vision & Line QA",
+    desc: "Line monitoring, defect triage, and automated operator review where inspection must be fast, visible, and mathematically auditable.",
+    color: "#9d7dff"
+  },
+  {
+    title: "Spatial Operations",
+    tag: "Sensor Fusion & Live Assets",
+    desc: "Live asset monitoring, telemetry review, and spatial awareness for operators who need clear queues, current states, and coordinated response paths.",
+    color: "#ff6fd7"
+  }
+];
+
 const studios = [
   {
     title: 'AI End-to-End Studio',
     tag: 'Autonomous Synthesis',
     desc: 'Unifies requirements ingestion, architecture discovery, zero-trust review, and self-healing test generation into one governed workspace.',
     href: '/studios/ai-end-to-end',
-    iconColor: '#c084fc'
+    color: '#79f3ff'
   },
   {
     title: 'Automation Studio',
     tag: 'Self-Healing Engine',
     desc: 'Eliminates test suite flakiness through autonomous DOM-change compensation, dynamic selector recovery, and parallel execution orchestration.',
     href: '/studios/automation',
-    iconColor: '#60a5fa'
+    color: '#61adff'
   },
   {
     title: 'ETL Testing Studio',
     tag: 'Data Pipeline Integrity',
     desc: 'Continuous schema reconciliation, row-level vector hashing, and high-throughput data warehouse verification across source-to-target runs.',
     href: '/studios/etl-testing',
-    iconColor: '#34d399'
+    color: '#4ef0c1'
   },
   {
     title: 'Performance Testing Studio',
     tag: 'Predictive Load Analysis',
     desc: 'Synthetic user generation, bottleneck forecasting, and latency breakdown across multi-tenant services and high-concurrency microservices.',
     href: '/studios/performance-testing',
-    iconColor: '#f59e0b'
+    color: '#f59e0b'
   },
   {
     title: 'Security Testing Studio',
     tag: 'Automated DAST & RLS',
     desc: 'Continuous zero-trust audit, tenant isolation verification, automated penetration probing, and Row-Level Security policy compliance.',
     href: '/studios/security-testing',
-    iconColor: '#f43f5e'
+    color: '#ff6fd7'
   },
   {
     title: 'Manual Testing Studio',
     tag: 'AI-Assisted Exploratory',
     desc: 'Intelligent test session recording, automated defect draft synthesis, and step-by-step reproduction capture for QA engineers.',
     href: '/studios/manual-testing',
-    iconColor: '#a78bfa'
+    color: '#9d7dff'
   }
 ];
 
-const pillars = [
+const operatingTheses = [
   {
-    title: "100% Requirements Traceability",
-    description: "Every test case, defect, and synthesized test step connects directly to business requirements and verified architecture models."
+    step: "01",
+    title: "Connect Sources",
+    desc: "Bring structured data, telemetry feeds, machine signals, documents, and live operational inputs into one unified intake layer."
   },
   {
-    title: "Zero-Trust Architecture",
-    description: "Full tenant isolation, cryptographic state validation, and strict RBAC controls embedded into every automated testing stage."
+    step: "02",
+    title: "Generate Signals",
+    desc: "Transform noisy inputs into probabilistic models, risk classifications, deterministic anomaly scores, and executive summaries."
   },
   {
-    title: "Local or Enterprise Model Hosting",
-    description: "Run private local models via Ollama or connect enterprise LLM endpoints without leaking sensitive proprietary application schemas."
+    step: "03",
+    title: "Human Review",
+    desc: "Keep validation, policy override, and high-stakes escalation inside governed, auditable team review queues."
+  },
+  {
+    step: "04",
+    title: "Traceable Outcomes",
+    desc: "Every automated test execution, routed decision, and remediated defect is recorded with complete cryptographic lineage."
   }
 ];
 ---
 
 <Layout 
-  title="Autonomous AI Quality Engineering Platform" 
-  description="Valtrix AI delivers enterprise autonomous testing studios, self-healing test automation, ETL pipeline validation, and full requirements traceability."
+  title="Strategic Intelligence Systems & Quality Engineering" 
+  description="Valtrix AI builds intelligence systems for financial monitoring, industrial inspection, and autonomous quality engineering decision workflows."
 >
   <!-- Hero Section -->
-  <section class="section section-hero">
+  <section class="section section-hero" style="padding-top: 3.5rem; padding-bottom: 4rem; text-align: center;">
     <div class="container">
-      <div class="badge">
-        <span class="badge-dot"></span> Next-Gen AI Quality Engineering
+      <div class="eyebrow" style="margin-inline: auto;">
+        <span class="badge-dot"></span> Operational Intelligence Systems
       </div>
-      <h1 class="heading-xl">
-        Autonomous Quality Engineering for <br/>
-        <span class="gradient-text">Mission-Critical Enterprise Systems</span>
+      <h1 class="title">
+        Operational intelligence for <br />
+        <span class="gradient-text">monitored workflows</span>
       </h1>
-      <p class="subheading">
-        Valtrix AI unifies requirement analysis, architecture discovery, self-healing test execution, and data validation into intelligent, specialized studios.
+      <p class="copy" style="margin-inline: auto;">
+        Valtrix AI builds software for monitored workflows where teams need clear signals, governed review, and fast routing under real operating constraints.
       </p>
 
-      <div class="btn-group">
-        <a href="/contact" class="btn btn-primary">Schedule Enterprise Walkthrough</a>
-        <a href="/platform" class="btn btn-secondary">Explore Architecture &amp; Studios</a>
+      <div class="btn-row" style="justify-content: center; margin-top: 2rem;">
+        <a href="/contact" class="btn btn-primary">Schedule Monitored Walkthrough</a>
+        <a href="/platform" class="btn btn-secondary">Explore Platform Architecture</a>
       </div>
 
-      <!-- Hero Studio Preview Mockup -->
+      <!-- Live Interactive Console Mockup -->
       <StudioMockup 
-        studioName="Unified AI Quality Studio"
-        stageBadge="LIVE RUNTIME GOVERNANCE"
-        activeTab="Architecture Review"
+        studioName="Unified Monitoring & Testing Engine"
+        stageBadge="LIVE RUNTIME CONSOLE"
+        activeTab="Risk & Exposure"
       />
     </div>
   </section>
 
-  <!-- Core Pillars Section -->
-  <section class="section">
+  <!-- Three Monitored Workflow Scenarios -->
+  <section class="section" style="padding-top: 1rem;">
     <div class="container">
-      <div class="section-header text-center">
-        <h2 class="heading-lg">Engineering-First Foundation</h2>
-        <p class="subheading">Built for reliability, enterprise scale, and deterministic quality outcomes.</p>
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <div class="eyebrow" style="margin-inline: auto;">
+          <span class="badge-dot"></span> Core Scenarios
+        </div>
+        <h2 class="heading-lg">Three Monitored-Workflow Scenarios</h2>
+        <p class="copy" style="margin-inline: auto;">
+          A single operating model for teams that monitor signals, review risk, and route decisions across finance, industrial environments, and spatial systems.
+        </p>
       </div>
 
-      <div class="grid-3" style="margin-top: 3rem;">
-        {pillars.map((pillar) => (
-          <div class="card card-feature">
-            <div class="feature-icon-wrapper">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <h3 class="heading-md">{pillar.title}</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">{pillar.description}</p>
+      <div class="grid-3">
+        {operationalScenarios.map((item) => (
+          <div class="card">
+            <div class="scenario-tag" style={`color: ${item.color};`}>{item.tag}</div>
+            <h3 class="heading-md" style="margin-top: 8px;">{item.title}</h3>
+            <p style="color: var(--muted); font-size: 15px; line-height: 1.7; margin-top: 10px;">
+              {item.desc}
+            </p>
           </div>
         ))}
       </div>
@@ -123,23 +155,27 @@ const pillars = [
   <!-- Six Studios Section -->
   <section class="section" id="studios">
     <div class="container">
-      <div class="section-header text-center">
-        <div class="badge">
-          <span class="badge-dot"></span> Specialized Testing Workspaces
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <div class="eyebrow" style="margin-inline: auto;">
+          <span class="badge-dot"></span> Specialized Studios
         </div>
-        <h2 class="heading-lg">The Valtrix AI Studio Ecosystem</h2>
-        <p class="subheading">
-          Dedicated testing studios engineered to address every facet of modern software verification.
+        <h2 class="heading-lg">Connected Quality Studios</h2>
+        <p class="copy" style="margin-inline: auto;">
+          Six specialized testing studios providing deep domain intelligence backed by one shared review, routing, and governance platform.
         </p>
       </div>
 
-      <div class="grid-3" style="margin-top: 3rem;">
+      <div class="grid-3">
         {studios.map((s) => (
           <a href={s.href} class="card studio-card" aria-label={`Learn more about ${s.title}`}>
-            <div class="studio-tag" style={`color: ${s.iconColor};`}>{s.tag}</div>
-            <h3 class="heading-md" style="margin-top: 0.5rem;">{s.title}</h3>
-            <p class="studio-desc">{s.desc}</p>
-            <div class="studio-arrow">
+            <div>
+              <div class="scenario-tag" style={`color: ${s.color};`}>{s.tag}</div>
+              <h3 class="heading-md" style="margin-top: 8px; color: var(--text);">{s.title}</h3>
+              <p style="color: var(--muted); font-size: 14px; line-height: 1.6; margin-top: 10px;">
+                {s.desc}
+              </p>
+            </div>
+            <div class="studio-link" style={`color: ${s.color};`}>
               <span>Explore Studio</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -152,13 +188,44 @@ const pillars = [
     </div>
   </section>
 
+  <!-- Shared Operating Thesis -->
+  <section class="section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <div class="eyebrow" style="margin-inline: auto;">
+          <span class="badge-dot"></span> Operating Model
+        </div>
+        <h2 class="heading-lg">From Fragmented Signals to Governed Action</h2>
+        <p class="copy" style="margin-inline: auto;">
+          How the platform ingests live telemetry, classifies risk, and routes verified human reviews.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        {operatingTheses.map((thesis) => (
+          <div class="card">
+            <div class="step-badge">{thesis.step}</div>
+            <h3 class="heading-md" style="margin-top: 10px;">{thesis.title}</h3>
+            <p style="color: var(--muted); font-size: 15px; line-height: 1.7; margin-top: 8px;">
+              {thesis.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Call to Action -->
   <CtaSection />
 </Layout>
 
 <style>
-  .text-center {
-    text-align: center;
+  .scenario-tag {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.1em;
   }
 
   .studio-card {
@@ -168,35 +235,24 @@ const pillars = [
     text-decoration: none;
   }
 
-  .studio-tag {
-    font-size: 0.75rem;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-  }
-
-  .studio-desc {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-top: 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .studio-arrow {
+  .studio-link {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    font-size: 0.85rem;
+    gap: 6px;
+    font-size: 14px;
     font-weight: 600;
-    color: var(--primary-accent);
-    margin-top: auto;
+    margin-top: 24px;
     transition: gap 0.2s ease;
   }
 
-  .studio-card:hover .studio-arrow {
-    gap: 0.7rem;
+  .studio-card:hover .studio-link {
+    gap: 10px;
+  }
+
+  .step-badge {
+    font-size: 16px;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    color: var(--cyan);
   }
 </style>
-
