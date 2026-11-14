@@ -23,6 +23,7 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
+<!-- Fixed Top Navigation Bar (Always Visible at Top of Screen) -->
 <header class="nav" id="site-nav">
   <div class="container nav-inner">
     <!-- Brand -->
@@ -88,7 +89,7 @@ const currentPath = Astro.url.pathname;
       <a href="/contact" class="btn btn-secondary nav-btn-secondary">Schedule Walkthrough</a>
       <a href="/platform" class="btn btn-primary nav-btn-primary">Explore Platform</a>
       
-      <!-- Mobile menu button -->
+      <!-- Mobile menu button (always fixed and visible) -->
       <button class="mobile-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
         <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
           <line x1="3" y1="6" x2="21" y2="6"/>
@@ -104,42 +105,97 @@ const currentPath = Astro.url.pathname;
   </div>
 </header>
 
-<!-- Mobile Drawer Backdrop (outside header for direct viewport fixed positioning) -->
+<!-- Mobile Drawer Backdrop -->
 <div class="mobile-backdrop" id="mobile-backdrop"></div>
 
-<!-- Mobile Drawer (outside header for direct viewport fixed positioning) -->
+<!-- Mobile Drawer (Clean, Accessible, Scrollable) -->
 <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
-  <div class="mobile-drawer-content">
-    <div class="mobile-group-label">Core Platform</div>
-    <a href="/platform" class="mobile-link">Platform Architecture</a>
-    <a href="/studios/ai-end-to-end" class="mobile-link">AI End-to-End Studio</a>
-    <a href="/studios/automation" class="mobile-link">Automation Studio</a>
-    <a href="/studios/etl-testing" class="mobile-link">ETL Testing Studio</a>
-    <a href="/studios/performance-testing" class="mobile-link">Performance Testing Studio</a>
-    <a href="/studios/security-testing" class="mobile-link">Security Testing Studio</a>
-    <a href="/studios/manual-testing" class="mobile-link">Manual Testing Studio</a>
+  <div class="mobile-drawer-inner">
+    <!-- Drawer Header with Title and Close Action -->
+    <div class="drawer-header-row">
+      <div class="drawer-brand">
+        <span class="drawer-badge-dot"></span>
+        <span class="drawer-title">Navigation Menu</span>
+      </div>
+      <button type="button" class="drawer-close-btn" id="drawer-close-btn" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
 
-    <div class="mobile-group-label">Enterprise &amp; Company</div>
-    <a href="/features" class="mobile-link">Features Matrix</a>
-    <a href="/solutions" class="mobile-link">Industry Solutions</a>
-    <a href="/pricing" class="mobile-link">Pricing &amp; Tiers</a>
-    <a href="/about" class="mobile-link">About Valtrix</a>
-    <a href="/resources" class="mobile-link">Technical Guides</a>
-    <a href="/contact" class="mobile-link">Contact</a>
+    <div class="mobile-drawer-content">
+      <!-- Main Overview -->
+      <div class="mobile-group-label">Architecture</div>
+      <a href="/platform" class="mobile-link">Platform Architecture</a>
 
-    <div class="mobile-drawer-cta">
-      <a href="/contact" class="btn btn-primary" style="width: 100%;">Schedule Walkthrough</a>
-      <a href="/platform" class="btn btn-secondary" style="width: 100%;">Explore Platform</a>
+      <!-- Studios Collapsible Group -->
+      <div class="studios-group">
+        <button type="button" class="studios-toggle-btn" id="studios-toggle-btn" aria-expanded="true">
+          <span>Quality Studios (6)</span>
+          <svg class="studios-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="studios-sublinks" id="studios-sublinks">
+          <a href="/studios/ai-end-to-end" class="mobile-sublink">
+            <span class="sublink-title">AI End-to-End Studio</span>
+            <span class="sublink-tag">Autonomous Synthesis</span>
+          </a>
+          <a href="/studios/automation" class="mobile-sublink">
+            <span class="sublink-title">Automation Studio</span>
+            <span class="sublink-tag">Self-Healing Engine</span>
+          </a>
+          <a href="/studios/etl-testing" class="mobile-sublink">
+            <span class="sublink-title">ETL Testing Studio</span>
+            <span class="sublink-tag">Data Warehouses</span>
+          </a>
+          <a href="/studios/performance-testing" class="mobile-sublink">
+            <span class="sublink-title">Performance Studio</span>
+            <span class="sublink-tag">Predictive Load</span>
+          </a>
+          <a href="/studios/security-testing" class="mobile-sublink">
+            <span class="sublink-title">Security Studio</span>
+            <span class="sublink-tag">Automated DAST</span>
+          </a>
+          <a href="/studios/manual-testing" class="mobile-sublink">
+            <span class="sublink-title">Manual Testing Studio</span>
+            <span class="sublink-tag">AI-Assisted Exploratory</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Enterprise & Company -->
+      <div class="mobile-group-label" style="margin-top: 1.5rem;">Enterprise &amp; Solutions</div>
+      <a href="/features" class="mobile-link">Features Matrix</a>
+      <a href="/solutions" class="mobile-link">Industry Solutions</a>
+      <a href="/pricing" class="mobile-link">Pricing &amp; Engagements</a>
+
+      <div class="mobile-group-label" style="margin-top: 1.5rem;">Company &amp; Resources</div>
+      <a href="/about" class="mobile-link">About Valtrix</a>
+      <a href="/resources" class="mobile-link">Technical Guides</a>
+      <a href="/contact" class="mobile-link">Contact Engineering</a>
+
+      <!-- Quick Action Buttons -->
+      <div class="mobile-drawer-cta">
+        <a href="/contact" class="btn btn-primary" style="width: 100%;">Schedule Walkthrough</a>
+        <a href="/platform" class="btn btn-secondary" style="width: 100%;">Explore Platform</a>
+      </div>
     </div>
   </div>
 </aside>
 
 <style>
+  /* Fixed Header: Guaranteed visible on desktop, tablet, and mobile regardless of scroll */
   .nav {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
-    background: rgba(7, 17, 29, 0.85);
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1100;
+    background: rgba(7, 17, 29, 0.88);
     border-bottom: 1px solid var(--stroke);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -347,13 +403,12 @@ const currentPath = Astro.url.pathname;
   .mobile-backdrop { display: none; }
   .mobile-drawer { display: none; }
 
-  /* Tablet and Mobile Breakpoints */
+  /* Mobile and Tablet Breakpoints */
   @media (max-width: 1140px) {
     .nav {
-      /* Drop backdrop-filter on mobile/tablet to avoid containing block bugs for fixed drawer */
+      background: #07111d;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
-      background: #07111d;
     }
 
     .desktop-nav, 
@@ -365,8 +420,8 @@ const currentPath = Astro.url.pathname;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--stroke);
@@ -378,8 +433,10 @@ const currentPath = Astro.url.pathname;
     .mobile-backdrop {
       display: block;
       position: fixed;
-      inset: 0;
       top: var(--nav-h);
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: rgba(0, 0, 0, 0.76);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
@@ -387,7 +444,7 @@ const currentPath = Astro.url.pathname;
       visibility: hidden;
       pointer-events: none;
       transition: opacity 0.25s ease, visibility 0.25s ease;
-      z-index: 999;
+      z-index: 1099;
       touch-action: none;
     }
 
@@ -402,7 +459,7 @@ const currentPath = Astro.url.pathname;
       position: fixed;
       top: var(--nav-h);
       right: 0;
-      width: min(380px, 100vw);
+      width: min(390px, 100vw);
       height: calc(100vh - var(--nav-h));
       height: calc(100dvh - var(--nav-h));
       background: #08111e;
@@ -415,27 +472,75 @@ const currentPath = Astro.url.pathname;
       -webkit-overflow-scrolling: touch;
       touch-action: pan-y;
       overscroll-behavior: contain;
-      z-index: 1000;
+      z-index: 1100;
     }
 
     .mobile-drawer.open {
       transform: translateX(0);
     }
 
-    .mobile-drawer-content {
-      padding: 1.5rem 1.5rem 6.5rem;
+    .mobile-drawer-inner {
       display: flex;
       flex-direction: column;
-      min-height: calc(100% + 1px);
+      min-height: 100%;
+    }
+
+    .drawer-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .drawer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .drawer-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+    }
+
+    .drawer-title {
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    .drawer-close-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--stroke);
+      border-radius: 8px;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-drawer-content {
+      padding: 1.25rem 1.25rem 6.5rem;
+      display: flex;
+      flex-direction: column;
     }
 
     .mobile-group-label {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: var(--cyan);
+      color: var(--muted2);
       font-weight: 700;
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       margin-bottom: 0.5rem;
     }
 
@@ -447,7 +552,7 @@ const currentPath = Astro.url.pathname;
       border-radius: 10px;
       font-size: 15px;
       color: var(--muted);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       touch-action: manipulation;
       transition: background 0.15s ease, color 0.15s ease;
     }
@@ -456,6 +561,79 @@ const currentPath = Astro.url.pathname;
     .mobile-link:hover {
       background: rgba(255, 255, 255, 0.06);
       color: var(--text);
+    }
+
+    /* Studios Collapsible Section */
+    .studios-group {
+      margin-top: 8px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .studios-toggle-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .studios-chevron {
+      transition: transform 0.2s ease;
+      color: var(--cyan);
+    }
+
+    .studios-toggle-btn[aria-expanded="true"] .studios-chevron {
+      transform: rotate(180deg);
+    }
+
+    .studios-sublinks {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .studios-sublinks.collapsed {
+      display: none;
+    }
+
+    .mobile-sublink {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      transition: background 0.15s ease;
+    }
+
+    .mobile-sublink:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-sublink:hover,
+    .mobile-sublink:active {
+      background: rgba(97, 173, 255, 0.1);
+    }
+
+    .sublink-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .sublink-tag {
+      font-size: 11px;
+      color: var(--cyan);
+      margin-top: 2px;
+      font-family: var(--font-mono);
     }
 
     .mobile-drawer-cta {
@@ -499,7 +677,10 @@ const currentPath = Astro.url.pathname;
   const toggleBtn = document.getElementById('mobile-menu-btn');
   const drawer = document.getElementById('mobile-drawer');
   const backdrop = document.getElementById('mobile-backdrop');
-  const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-drawer-cta a');
+  const drawerCloseBtn = document.getElementById('drawer-close-btn');
+  const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-sublink, .mobile-drawer-cta a');
+  const studiosToggle = document.getElementById('studios-toggle-btn');
+  const studiosList = document.getElementById('studios-sublinks');
 
   function setDrawerOpen(open: boolean) {
     if (!toggleBtn || !drawer || !backdrop) return;
@@ -531,6 +712,12 @@ const currentPath = Astro.url.pathname;
       setDrawerOpen(!isExpanded);
     });
 
+    if (drawerCloseBtn) {
+      drawerCloseBtn.addEventListener('click', () => {
+        setDrawerOpen(false);
+      });
+    }
+
     backdrop.addEventListener('click', () => {
       setDrawerOpen(false);
     });
@@ -551,6 +738,15 @@ const currentPath = Astro.url.pathname;
       if (window.innerWidth > 1140 && drawer.classList.contains('open')) {
         setDrawerOpen(false);
       }
+    });
+  }
+
+  // Studios Accordion toggle inside drawer
+  if (studiosToggle && studiosList) {
+    studiosToggle.addEventListener('click', () => {
+      const isExpanded = studiosToggle.getAttribute('aria-expanded') === 'true';
+      studiosToggle.setAttribute('aria-expanded', (!isExpanded).toString());
+      studiosList.classList.toggle('collapsed', isExpanded);
     });
   }
 </script>
