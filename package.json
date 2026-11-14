@@ -1,0 +1,39 @@
+{
+  "name": "valtrixai-marketing",
+  "version": "1.0.0",
+  "description": "Official enterprise marketing website for Valtrix AI Quality Engineering Platform",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrudulraval74/ValtrixAI-Marketing.git"
+  },
+  "keywords": [
+    "valtrix",
+    "quality-engineering",
+    "ai-testing",
+    "enterprise-qa",
+    "astro",
+    "static-site"
+  ],
+  "author": "mrudulraval74",
+  "license": "MIT",
+  "homepage": "https://github.com/mrudulraval74/ValtrixAI-Marketing#readme",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.18.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

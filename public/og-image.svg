@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <radialGradient id="bg-glow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#4c1d95" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#1e1035" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#09080e" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="50%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg-glow)"/>
+  <g transform="translate(100, 160)">
+    <rect width="72" height="72" rx="18" fill="#1e1b2e" stroke="#7c3aed" stroke-width="2"/>
+    <path d="M22 20L36 50L50 20H42L36 36L30 20H22Z" fill="#a855f7"/>
+    <text x="96" y="52" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" letter-spacing="-1">Valtrix AI</text>
+    <text x="0" y="150" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="800" letter-spacing="-1">Enterprise AI Quality Engineering Platform</text>
+    <text x="0" y="210" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="400">Autonomous Testing Studios • Model Governance • Complete Traceability</text>
+    <g transform="translate(0, 260)">
+      <rect width="260" height="52" rx="26" fill="#7c3aed"/>
+      <text x="130" y="33" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" text-anchor="middle">Explore Platform →</text>
+    </g>
+  </g>
+</svg>

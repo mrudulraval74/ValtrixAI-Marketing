@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const principles = [
+  {
+    title: "Deterministic Over Probabilistic",
+    desc: "AI helps synthesize and discover, but execution results, state verification, and regression decisions must be rigorously deterministic and verifiable."
+  },
+  {
+    title: "Zero-Trust Engineering",
+    desc: "Quality tools should never be a security loophole. We enforce strict tenant boundaries, Row-Level Security checks, and zero external data egress."
+  },
+  {
+    title: "Complete Lifecycle Traceability",
+    desc: "Every automated test step and verified defect connects directly back to accepted product requirements and architectural models."
+  },
+  {
+    title: "Open Standards & Portability",
+    desc: "No proprietary execution runtimes. Valtrix emits clean TypeScript, Playwright, and standard SQL artifacts that your team fully owns."
+  }
+];
+---
+
+<Layout
+  title="About Valtrix AI | Engineering Philosophy & Mission"
+  description="Learn about Valtrix AI's mission to transform software verification into an autonomous, deterministic, and zero-trust engineering discipline."
+>
+  <div class="container" style="padding-top: 2.5rem;">
+    <Breadcrumbs items={[{ label: 'About' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 3rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Engineering Philosophy
+      </div>
+      <h1 class="heading-xl">The Valtrix AI Mission</h1>
+      <p class="subheading">
+        Software systems have grown in complexity by orders of magnitude, yet quality engineering has remained tethered to fragile manual scripting and brittle test suites.
+      </p>
+    </header>
+
+    <div class="card" style="margin-bottom: 3rem; background: #110e1c;">
+      <h2 class="heading-md">Why We Built Valtrix AI</h2>
+      <p style="color: var(--text-secondary); line-height: 1.8; margin-top: 1rem; font-size: 1.05rem;">
+        Modern engineering organizations ship dozens of daily production deployments across distributed microservices, complex relational schemas, and asynchronous message brokers. Traditional testing frameworks fail to scale with this velocity: locators break with minor UI redesigns, ETL pipelines silently lose records, and security audits occur as delayed quarterly checkpoints.
+      </p>
+      <p style="color: var(--text-secondary); line-height: 1.8; margin-top: 1rem; font-size: 1.05rem;">
+        Valtrix AI was built to solve this fundamental bottleneck. By unifying requirement intelligence with autonomous discovery, self-healing execution, and continuous mathematical data validation, we give engineering leaders total confidence in every deployment.
+      </p>
+    </div>
+
+    <section class="section" style="padding-top: 1rem;">
+      <h2 class="heading-lg text-center" style="margin-bottom: 2.5rem;">Our Core Engineering Principles</h2>
+      <div class="grid-2">
+        {principles.map((p) => (
+          <div class="card">
+            <h3 class="heading-md">{p.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CtaSection />
+  </div>
+</Layout>
+
+<style>
+  .text-center { text-align: center; }
+</style>

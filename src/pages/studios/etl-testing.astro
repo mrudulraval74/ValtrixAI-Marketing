@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import StudioMockup from '../../components/StudioMockup.astro';
+import CtaSection from '../../components/CtaSection.astro';
+
+const dataFeatures = [
+  {
+    title: "High-Throughput Vector Reconciliation",
+    desc: "Compares billions of records between staging data lakes and analytical warehouses using streaming cryptographic hashing."
+  },
+  {
+    title: "Schema Evolution & Drift Detection",
+    desc: "Alerts on unintended column drops, nullability changes, or type widening before downstream business intelligence queries break."
+  },
+  {
+    title: "Business Rule Data Quality Audits",
+    desc: "Validates complex domain logic (ranges, foreign keys, temporal ordering, and composite constraints) automatically."
+  },
+  {
+    title: "Synthetic Masked Fixture Generation",
+    desc: "Creates statistically representative test datasets with full anonymization, safeguarding PII and production compliance."
+  }
+];
+---
+
+<Layout
+  title="ETL Testing Studio | Data Warehouse & Pipeline Validation"
+  description="Validate complex data pipelines, schema migrations, and high-volume data warehouses with Valtrix ETL Testing Studio."
+>
+  <div class="container" style="padding-top: 2.5rem;">
+    <Breadcrumbs items={[{ label: 'Studios', href: '/platform#studios' }, { label: 'ETL Testing Studio' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Data Integrity Engine
+      </div>
+      <h1 class="heading-xl">ETL Testing Studio</h1>
+      <p class="subheading">
+        Ensures continuous accuracy and schema stability across analytical data lakes, relational databases, streaming brokers, and modern cloud warehouses.
+      </p>
+    </header>
+
+    <StudioMockup
+      studioName="ETL Pipeline Validation Studio"
+      stageBadge="DATA INTEGRITY ENGINE"
+      activeTab="Pipeline Reconciler"
+      executionMetrics={[
+        { label: "Records Audited", value: "4.8M Rows", status: "pass" },
+        { label: "Schema Drift", value: "0 Detected", status: "pass" },
+        { label: "Transformation Integrity", value: "99.999%", status: "pass" }
+      ]}
+      codeSnippet={`// ETL Reconciler & Pipeline Audit
+const validation = await valtrix.reconcilePipeline({
+  source: "postgresql://operational_db",
+  target: "snowflake://analytics_warehouse",
+  rules: ["CHECK_NULL_RATIO", "VERIFY_SUM_TOTALS", "VALIDATE_FK_INTEGRITY"]
+});`}
+    />
+
+    <section class="section" style="padding-top: 2rem;">
+      <div class="grid-2">
+        {dataFeatures.map((df) => (
+          <div class="card">
+            <h3 class="heading-md">{df.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">{df.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CtaSection 
+      title="Secure Your Critical Data Pipelines"
+      subtitle="Ensure every data transformation is verified with deterministic mathematical proof."
+    />
+  </div>
+</Layout>

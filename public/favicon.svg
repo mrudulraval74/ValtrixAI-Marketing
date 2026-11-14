@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="valtrix-grad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#9333ea" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="shield-stroke" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#0b0a12" />
+  <path d="M32 10L50 18V32C50 44 42 53 32 56C22 53 14 44 14 32V18L32 10Z" fill="url(#valtrix-grad)" fill-opacity="0.2" stroke="url(#shield-stroke)" stroke-width="2" />
+  <path d="M22 24L32 44L42 24H36L32 34L28 24H22Z" fill="#ffffff" />
+  <circle cx="32" cy="20" r="3" fill="#a855f7" />
+</svg>

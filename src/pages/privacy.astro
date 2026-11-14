@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<Layout
+  title="Privacy Policy | Enterprise Data Protection"
+  description="Valtrix AI Privacy Policy. Learn about our strict data protection standards, zero telemetry in private mode, and enterprise data isolation."
+>
+  <div class="container" style="padding-top: 2.5rem; padding-bottom: 5rem;">
+    <Breadcrumbs items={[{ label: 'Privacy Policy' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem; text-align: left;">
+      <h1 class="heading-lg">Privacy Policy</h1>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Effective Date: November 2026 &bull; Valtrix AI</p>
+    </header>
+
+    <div class="card legal-content">
+      <section>
+        <h2 class="heading-md">1. Commitment to Enterprise Privacy</h2>
+        <p>
+          At Valtrix AI, we engineer our software verification products around the principle of zero-trust data isolation. We recognize that application codebases, test fixtures, API schemas, and proprietary database architectures represent our customers' most sensitive intellectual property.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="heading-md">2. Static Marketing Site Data Collection</h2>
+        <p>
+          This website (hosted as a static site on Render) does not use invasive third-party tracking pixels, biometric identifiers, or cross-site tracking cookies. When you voluntarily submit inquiries via our walkthrough request forms, the provided contact details are utilized solely for scheduling technical architecture reviews.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="heading-md">3. Zero Application Telemetry in Private Deployments</h2>
+        <p>
+          For enterprise, on-premises, and self-hosted instances of Valtrix AI testing studios:
+        </p>
+        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+          <li>No proprietary customer source code, requirements text, or test execution output is transmitted to public cloud LLMs unless explicitly configured by the customer.</li>
+          <li>Local model options (via Ollama or internal enterprise gateways) keep 100% of reasoning on private hardware.</li>
+          <li>Cryptographic audit trails and database inspection logs remain exclusively within the customer's owned infrastructure.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="heading-md">4. Data Retention &amp; Rights</h2>
+        <p>
+          You may request deletion or review of any submitted contact information at any time by contacting our engineering maintainers through our official GitHub repository channels.
+        </p>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .legal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+</style>

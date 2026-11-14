@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const featureCategories = [
+  {
+    category: "AI & Autonomous Reasoning",
+    items: [
+      { name: "Requirements Ingestion", desc: "Native parsing of PRDs, SRS docs, and Jira stories into verifiable acceptance models." },
+      { name: "Multi-Modal Discovery", desc: "Analyzes DOM layouts, API endpoints, and database schemas simultaneously." },
+      { name: "Configuration Plan Synthesis", desc: "Generates diffable, version-controlled execution plans before running tests." },
+      { name: "Selector Self-Healing", desc: "Maintains test locator stability across dynamic UI updates and redesigns." }
+    ]
+  },
+  {
+    category: "Enterprise Governance & Security",
+    items: [
+      { name: "Zero-Trust RBAC", desc: "Strict role-based permissions separating viewers, QA engineers, and approval leads." },
+      { name: "Tenant Isolation Auditing", desc: "Automated verification of database RLS policies and cross-tenant boundaries." },
+      { name: "Cryptographic Audit Logs", desc: "Immutable trail of all test plans, execution evidence, and model interactions." },
+      { name: "Private Local Model Support", desc: "Run models locally on private infrastructure via Ollama to safeguard sensitive IP." }
+    ]
+  },
+  {
+    category: "Execution & Tooling Integration",
+    items: [
+      { name: "Distributed Test Graph", desc: "Parallel run execution across isolated browser nodes and container clusters." },
+      { name: "Continuous CI/CD Hooks", desc: "Lightweight CLI and webhook runners compatible with GitHub Actions and GitLab CI." },
+      { name: "Rich Evidence Bundles", desc: "Automated video capture, step screenshots, network waterfalls, and console logs." },
+      { name: "Zero Vendor Lock-In", desc: "Export suites to open standard Playwright, TypeScript, and SQL test scripts." }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Enterprise Features & Architecture Capabilities"
+  description="Explore the complete Valtrix AI Quality Engineering feature matrix. Built for enterprise resilience, security, and continuous automated verification."
+>
+  <div class="container" style="padding-top: 2.5rem;">
+    <Breadcrumbs items={[{ label: 'Features' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 3rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Complete Capability Matrix
+      </div>
+      <h1 class="heading-xl">Enterprise Engineering Features</h1>
+      <p class="subheading">
+        Every capability is engineered to deliver deterministic test generation, reliable execution, and uncompromising enterprise security.
+      </p>
+    </header>
+
+    <div style="display: flex; flex-direction: column; gap: 3.5rem;">
+      {featureCategories.map((cat) => (
+        <section>
+          <h2 class="heading-md" style="color: var(--primary-accent); margin-bottom: 1.5rem; letter-spacing: -0.01em;">
+            {cat.category}
+          </h2>
+          <div class="grid-2">
+            {cat.items.map((item) => (
+              <div class="card">
+                <h3 class="heading-md" style="font-size: 1.15rem;">{item.name}</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-top: 0.4rem;">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <CtaSection />
+  </div>
+</Layout>

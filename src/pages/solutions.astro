@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const solutions = [
+  {
+    title: "Financial Technology & Banking",
+    challenge: "High audit scrutiny, strict PII regulations, and zero tolerance for calculation drifts in ledger pipelines.",
+    solution: "ETL Testing Studio with synthetic data masking and Security Testing Studio with mathematical RLS isolation verification."
+  },
+  {
+    title: "Healthcare & Life Sciences",
+    challenge: "Complex regulatory compliance, patient data privacy (HIPAA), and critical clinical workflow stability.",
+    solution: "AI End-to-End Studio with 100% requirements-to-execution traceability and fully on-premises local model deployment."
+  },
+  {
+    title: "Enterprise SaaS & Cloud Platforms",
+    challenge: "Rapid release cadences, multi-tenant database architectures, and flaky browser test suites blocking releases.",
+    solution: "Automation Studio with autonomous self-healing DOM selectors and parallel distributed test execution orchestration."
+  },
+  {
+    title: "Data Warehousing & BI Infrastructure",
+    challenge: "Undetected schema drifts, silent NULL value propagation, and reporting mismatches across cloud data lakes.",
+    solution: "Continuous ETL reconciliation verifying row-level transformations and schema contracts prior to business stakeholder reporting."
+  }
+];
+---
+
+<Layout
+  title="Enterprise Solutions by Industry & Architecture"
+  description="Explore how Valtrix AI delivers mission-critical quality engineering for FinTech, Healthcare, Enterprise SaaS, and Data Platforms."
+>
+  <div class="container" style="padding-top: 2.5rem;">
+    <Breadcrumbs items={[{ label: 'Solutions' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 3rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Mission-Critical Applications
+      </div>
+      <h1 class="heading-xl">Enterprise Quality Solutions</h1>
+      <p class="subheading">
+        Tailored quality engineering workflows designed for high-consequence industries requiring uncompromising security and continuous compliance.
+      </p>
+    </header>
+
+    <div class="grid-2">
+      {solutions.map((s) => (
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <h2 class="heading-md" style="color: var(--text-primary);">{s.title}</h2>
+            <div style="margin-top: 1rem;">
+              <span style="font-size: 0.75rem; text-transform: uppercase; font-family: var(--font-mono); color: #f59e0b; font-weight: 700;">Challenge</span>
+              <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-top: 0.25rem;">
+                {s.challenge}
+              </p>
+            </div>
+            <div style="margin-top: 1.25rem;">
+              <span style="font-size: 0.75rem; text-transform: uppercase; font-family: var(--font-mono); color: #10b981; font-weight: 700;">Valtrix Solution</span>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-top: 0.25rem;">
+                {s.solution}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <CtaSection 
+      title="Discuss Your Industry Quality Requirements"
+      subtitle="Speak with our engineering specialists to design an architecture verification plan for your organization."
+    />
+  </div>
+</Layout>

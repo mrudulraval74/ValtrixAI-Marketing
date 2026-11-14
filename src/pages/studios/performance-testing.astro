@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import StudioMockup from '../../components/StudioMockup.astro';
+import CtaSection from '../../components/CtaSection.astro';
+
+const performancePillars = [
+  {
+    title: "Predictive Bottleneck Modeling",
+    desc: "Simulates traffic ramps and pinpoints CPU thread starvation, database connection pool exhaustion, and memory leaks before they reach production."
+  },
+  {
+    title: "Realistic Multi-Tenant Concurrency",
+    desc: "Emulates variable user workflows with stochastic wait times and heterogeneous payload sizes rather than trivial repetitive HTTP hits."
+  },
+  {
+    title: "End-to-End Latency Waterfall",
+    desc: "Correlates client-side rendering times with API gateway latency and deep backend database query spans."
+  },
+  {
+    title: "Continuous CI/CD Gate Integration",
+    desc: "Enforces strict performance SLAs in automated pull requests, rejecting regressions in p95 and p99 response percentiles."
+  }
+];
+---
+
+<Layout
+  title="Performance Testing Studio | Predictive Scale & Concurrency"
+  description="Forecast system limits and eliminate latency bottlenecks with Valtrix Performance Testing Studio. Realistic load generation and deep tracing."
+>
+  <div class="container" style="padding-top: 2.5rem;">
+    <Breadcrumbs items={[{ label: 'Studios', href: '/platform#studios' }, { label: 'Performance Testing Studio' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Enterprise Scale
+      </div>
+      <h1 class="heading-xl">Performance Testing Studio</h1>
+      <p class="subheading">
+        Simulate real-world global traffic spikes, analyze multi-tenant microservice bottlenecks, and guarantee high-availability throughput SLAs.
+      </p>
+    </header>
+
+    <StudioMockup
+      studioName="Performance Simulation & Latency Engine"
+      stageBadge="LOAD FORECASTING"
+      activeTab="Execution Trace"
+      executionMetrics={[
+        { label: "Concurrent Virtual Users", value: "25,000", status: "info" },
+        { label: "p99 Response Time", value: "48ms", status: "pass" },
+        { label: "Error Rate", value: "0.00%", status: "pass" }
+      ]}
+      codeSnippet={`// Distributed Concurrency Simulation
+await valtrix.orchestrateLoadRun({
+  target: "https://api.enterprise.internal",
+  rampUp: "5m to 25k users",
+  thresholds: { "p99": "< 120ms", "error_rate": "< 0.01%" }
+});`}
+    />
+
+    <section class="section" style="padding-top: 2rem;">
+      <div class="grid-2">
+        {performancePillars.map((p) => (
+          <div class="card">
+            <h3 class="heading-md">{p.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CtaSection 
+      title="Prepare Your Systems for Peak Traffic"
+      subtitle="Benchmark latency, discover bottlenecks, and scale with total confidence."
+    />
+  </div>
+</Layout>

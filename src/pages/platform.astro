@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import StudioMockup from '../components/StudioMockup.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const architectureLayers = [
+  {
+    step: "01",
+    title: "Ingestion & Discovery Layer",
+    desc: "Ingests business requirements (Jira, Confluence, Markdown), analyzes target application architecture, OpenAPI specs, and database schemas with zero-trust isolation."
+  },
+  {
+    step: "02",
+    title: "AI Synthesis & Reasoning Engine",
+    desc: "Applies specialized multi-modal models to infer user journeys, calculate risk boundaries, synthesize edge cases, and create immutable configuration plans."
+  },
+  {
+    step: "03",
+    title: "Orchestration & Governance",
+    desc: "Provides human-in-the-loop review gates, approval checkpoints, RBAC enforcement, and audit trail persistence before any test script or execution occurs."
+  },
+  {
+    step: "04",
+    title: "Self-Healing Execution Fabric",
+    desc: "Executes distributed test graphs across local, containerized, or cloud target endpoints, monitoring runtime state and repairing selector drifts on the fly."
+  }
+];
+---
+
+<Layout
+  title="Platform Architecture & Multi-Studio Engine"
+  description="Explore the Valtrix AI Platform Architecture. A zero-trust, requirements-driven AI quality engineering platform engineered for deterministic verification."
+>
+  <div class="container" style="padding-top: 2.5rem;">
+    <Breadcrumbs items={[{ label: 'Platform' }]} />
+    
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 3rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Unified Quality Architecture
+      </div>
+      <h1 class="heading-xl">The Valtrix AI Platform</h1>
+      <p class="subheading">
+        Engineered from the ground up for zero-trust enterprise testing, continuous verification, and end-to-end traceability from requirement to code.
+      </p>
+    </header>
+
+    <StudioMockup
+      studioName="Valtrix Central Platform Bus"
+      stageBadge="MULTI-LAYER FABRIC"
+      activeTab="Architecture Review"
+      codeSnippet={`// Valtrix Platform Core Topology
+export interface PlatformEngineConfig {
+  governance: "ZERO_TRUST_RBAC";
+  modelGateway: "LOCAL_OLLAMA_OR_ENTERPRISE_API";
+  tenantIsolation: "STRICT_RLS";
+  auditLevel: "CONTINUOUS_CRYPTOGRAPHIC";
+}`}
+    />
+
+    <!-- Architecture Layers -->
+    <section class="section" style="padding-top: 2rem;">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <h2 class="heading-lg">Four-Tier Quality Architecture</h2>
+        <p class="subheading">Deterministic reliability built upon modular enterprise services.</p>
+      </div>
+
+      <div class="grid-2">
+        {architectureLayers.map((layer) => (
+          <div class="card">
+            <div class="layer-step">{layer.step}</div>
+            <h3 class="heading-md" style="margin-top: 0.5rem;">{layer.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">
+              {layer.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Studio Directory -->
+    <section class="section" id="studios">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <h2 class="heading-lg">Connected Quality Studios</h2>
+        <p class="subheading">Each studio provides a domain-specific workspace backed by the shared core platform engine.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3 class="heading-md"><a href="/studios/ai-end-to-end" style="color: var(--text-primary);">AI End-to-End Studio →</a></h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+            Unified requirements-driven testing workspace connecting requirements, architecture discovery, configuration plans, approvals, and defect capture.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="heading-md"><a href="/studios/automation" style="color: var(--text-primary);">Automation Studio →</a></h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+            Self-healing test execution engine with visual locator graphs and automated selector updates.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="heading-md"><a href="/studios/etl-testing" style="color: var(--text-primary);">ETL Testing Studio →</a></h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+            Continuous data transformation audit, schema drift detection, and high-volume data validation.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="heading-md"><a href="/studios/performance-testing" style="color: var(--text-primary);">Performance Studio →</a></h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+            Synthetic user stress runs, latency forecasting, and multi-tenant bottleneck identification.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="heading-md"><a href="/studios/security-testing" style="color: var(--text-primary);">Security Studio →</a></h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+            Automated DAST scanning, Row-Level Security verification, and tenant isolation probes.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="heading-md"><a href="/studios/manual-testing" style="color: var(--text-primary);">Manual Testing Studio →</a></h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+            AI-assisted exploratory flows, smart session recording, and automated test-case documentation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <CtaSection />
+  </div>
+</Layout>
+
+<style>
+  .text-center {
+    text-align: center;
+  }
+
+  .layer-step {
+    font-size: 1.25rem;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    color: var(--primary-accent);
+  }
+</style>

@@ -1,0 +1,90 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  primaryCtaText?: string;
+  primaryCtaHref?: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+}
+
+const {
+  title = "Ready to Transform Your Quality Engineering Lifecycle?",
+  subtitle = "Experience autonomous discovery, self-healing test automation, and complete requirements traceability across your enterprise platforms.",
+  primaryCtaText = "Request Technical Walkthrough",
+  primaryCtaHref = "/contact",
+  secondaryCtaText = "Explore Platform Architecture",
+  secondaryCtaHref = "/platform"
+} = Astro.props;
+---
+
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="badge">
+        <span class="badge-dot"></span> Enterprise Reliability
+      </div>
+      <h2 class="heading-lg cta-heading">{title}</h2>
+      <p class="subheading cta-subheading">{subtitle}</p>
+      
+      <div class="btn-group">
+        <a href={primaryCtaHref} class="btn btn-primary">{primaryCtaText}</a>
+        <a href={secondaryCtaHref} class="btn btn-secondary">{secondaryCtaText}</a>
+      </div>
+
+      <div class="cta-footnote">
+        <span>Zero-Trust Architecture</span> &bull; <span>Local AI or Enterprise Model Support</span> &bull; <span>Full Audit History</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+  }
+
+  .cta-card {
+    position: relative;
+    background: radial-gradient(circle at 50% 0%, #1f1738 0%, #110e1e 60%, #090810 100%);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-xl);
+    padding: 4.5rem 2rem;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 50px rgba(124, 58, 237, 0.2);
+  }
+
+  .cta-glow {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-heading {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-subheading {
+    max-width: 680px;
+  }
+
+  .cta-footnote {
+    margin-top: 2.5rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+</style>

@@ -1,0 +1,203 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const tiers = [
+  {
+    name: "Developer & Team Pilot",
+    price: "Custom Pilot",
+    cadence: "Evaluated per engineering scope",
+    desc: "Designed for engineering teams piloting autonomous testing on core services.",
+    highlight: false,
+    features: [
+      "Access to AI End-to-End & Automation Studios",
+      "Up to 5 concurrent test worker nodes",
+      "Local model gateway support (Ollama)",
+      "Standard GitHub & GitLab CI/CD integration",
+      "Community & engineering ticket support"
+    ]
+  },
+  {
+    name: "Enterprise Production",
+    price: "Enterprise Scope",
+    cadence: "Tailored to platform workloads",
+    desc: "Complete multi-studio access with dedicated governance, RLS audits, and SLAs.",
+    highlight: true,
+    features: [
+      "All 6 Specialized Testing Studios included",
+      "Unlimited distributed execution concurrency",
+      "PostgreSQL Row-Level Security (RLS) Auditing",
+      "ETL high-throughput pipeline reconciliation",
+      "Single Sign-On (SSO) & zero-trust RBAC controls",
+      "Dedicated enterprise technical account lead"
+    ]
+  },
+  {
+    name: "On-Premises / Air-Gapped",
+    price: "Custom Deployment",
+    cadence: "Annual compliance license",
+    desc: "Fully isolated deployment on sovereign infrastructure with zero external telemetry.",
+    highlight: false,
+    features: [
+      "100% self-hosted on private Kubernetes / Docker",
+      "Air-gapped model execution with no external egress",
+      "Custom security hardening & cryptographic audit logs",
+      "Tailored hardware & GPU acceleration tuning",
+      "Direct engineering architecture support"
+    ]
+  }
+];
+---
+
+<Layout
+  title="Pricing & Deployment Tiers"
+  description="Transparent quality engineering tiers. Explore Valtrix AI Team Pilot, Enterprise Production, and Sovereign On-Premises deployment models."
+>
+  <div class="container" style="padding-top: 2.5rem;">
+    <Breadcrumbs items={[{ label: 'Pricing' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Deployment Models
+      </div>
+      <h1 class="heading-xl">Enterprise Quality Tiers</h1>
+      <p class="subheading">
+        Flexible licensing engineered for scalable deployment—from focused team evaluations to air-gapped sovereign installations.
+      </p>
+
+      <!-- Review Notice Banner -->
+      <div class="review-notice" style="max-width: 780px; margin-left: auto; margin-right: auto; text-align: left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <div>
+          <strong>Enterprise Review Notice:</strong> Commercial pricing, pilot durations, and hardware sizing are customized during architectural review. Specific rates are tailored to test workload volume, concurrency requirements, and deployment environment.
+        </div>
+      </div>
+    </header>
+
+    <div class="grid-3" style="margin-top: 3rem;">
+      {tiers.map((tier) => (
+        <div class={`card tier-card ${tier.highlight ? 'tier-highlight' : ''}`}>
+          {tier.highlight && (
+            <div class="tier-badge">Recommended for Enterprises</div>
+          )}
+          <h2 class="heading-md" style="font-size: 1.35rem;">{tier.name}</h2>
+          <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-top: 0.5rem; min-height: 40px;">
+            {tier.desc}
+          </p>
+
+          <div class="tier-price-box">
+            <div class="tier-price">{tier.price}</div>
+            <div class="tier-cadence">{tier.cadence}</div>
+          </div>
+
+          <div class="tier-features">
+            <div class="tier-features-title">What's Included:</div>
+            <ul class="feature-list">
+              {tier.features.map((f) => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" style="flex-shrink: 0;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <a href="/contact" class={`btn ${tier.highlight ? 'btn-primary' : 'btn-secondary'}`} style="width: 100%;">
+              Inquire About Tier
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <CtaSection
+      title="Request a Custom Deployment Assessment"
+      subtitle="Our engineering specialists will evaluate your concurrency requirements and provide a detailed deployment architecture plan."
+    />
+  </div>
+</Layout>
+
+<style>
+  .tier-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    position: relative;
+  }
+
+  .tier-highlight {
+    border-color: rgba(168, 85, 247, 0.5);
+    background: radial-gradient(circle at 50% 0%, #1e1635 0%, #131020 100%);
+    box-shadow: 0 0 40px -10px rgba(124, 58, 237, 0.4);
+  }
+
+  .tier-badge {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #7c3aed;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0.25rem 0.85rem;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  }
+
+  .tier-price-box {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .tier-price {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .tier-cadence {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+
+  .tier-features-title {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+</style>

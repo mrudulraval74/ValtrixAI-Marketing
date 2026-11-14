@@ -1,0 +1,328 @@
+---
+interface Props {
+  studioName: string;
+  stageBadge?: string;
+  activeTab?: string;
+  executionMetrics?: { label: string; value: string; status?: 'pass' | 'warn' | 'info' }[];
+  codeSnippet?: string;
+}
+
+const {
+  studioName = "AI End-to-End Studio",
+  stageBadge = "SYNTHESIS & DISCOVERY",
+  activeTab = "Architecture Review",
+  executionMetrics = [
+    { label: "Traceability Coverage", value: "100%", status: "pass" },
+    { label: "Autonomous Steps", value: "48 Synced", status: "info" },
+    { label: "Execution Drift", value: "0.00%", status: "pass" }
+  ],
+  codeSnippet = `// Autonomous Requirement Trace & Test Synthesis
+const suite = await valtrix.synthesizeStudioPlan({
+  requirements: "REQ-AUTH-HARDEN-001",
+  targetSystem: "Enterprise Client-Server Cluster",
+  governance: "STRICT_RLS_ZERO_TRUST"
+});`
+} = Astro.props;
+---
+
+<div class="mockup-window" role="region" aria-label={`${studioName} Interactive Preview`}>
+  <div class="mockup-header">
+    <div class="window-controls" aria-hidden="true">
+      <span class="window-dot dot-red"></span>
+      <span class="window-dot dot-yellow"></span>
+      <span class="window-dot dot-green"></span>
+    </div>
+    <div class="mockup-title">
+      <span>Valtrix Studio Engine</span> &bull; <span>{studioName}</span>
+    </div>
+    <div class="mockup-badge">
+      {stageBadge}
+    </div>
+  </div>
+
+  <div class="mockup-body">
+    <!-- Studio Navigation Bar -->
+    <div class="studio-subbar">
+      <div class="tab-list">
+        <span class={`studio-tab ${activeTab === 'Architecture Review' ? 'active' : ''}`}>{activeTab}</span>
+        <span class="studio-tab">Requirements Graph</span>
+        <span class="studio-tab">Synthesis Matrix</span>
+        <span class="studio-tab">Execution Trace</span>
+      </div>
+      <div class="engine-state">
+        <span class="pulse-dot"></span> Model Active (Ollama / VLM Local)
+      </div>
+    </div>
+
+    <!-- Workspace Columns -->
+    <div class="workspace-grid">
+      <!-- Left: Synthesis Spec & Code -->
+      <div class="workspace-pane">
+        <div class="pane-title">SYNTHESIZED ENGINE SPECIFICATION</div>
+        <pre class="code-preview"><code><span class="code-comment">{codeSnippet}</span></code></pre>
+
+        <div class="metrics-row">
+          {executionMetrics.map((m) => (
+            <div class="metric-pill">
+              <span class="metric-label">{m.label}</span>
+              <span class={`metric-val val-${m.status || 'info'}`}>{m.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Real-time Pipeline Visualizer -->
+      <div class="workspace-pane pane-visual">
+        <div class="pane-title">REQUIREMENTS TO DISCOVERY FLOW</div>
+        <div class="pipeline-tree">
+          <div class="tree-node node-active">
+            <div class="node-header">
+              <span class="node-icon">01</span>
+              <span class="node-name">System Discovery</span>
+            </div>
+            <div class="node-meta">Endpoints, Models & Schemas mapped</div>
+          </div>
+          <div class="tree-connector"></div>
+          <div class="tree-node node-active">
+            <div class="node-header">
+              <span class="node-icon">02</span>
+              <span class="node-name">Architecture Analysis</span>
+            </div>
+            <div class="node-meta">Zero-trust permissions & contract validated</div>
+          </div>
+          <div class="tree-connector"></div>
+          <div class="tree-node node-highlight">
+            <div class="node-header">
+              <span class="node-icon">03</span>
+              <span class="node-name">Self-Healing Execution</span>
+            </div>
+            <div class="node-meta">Automated dynamic selector compensation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mockup-window {
+    background: #0d0a17;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 50px -10px rgba(124, 58, 237, 0.25);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .mockup-header {
+    background: #151124;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .window-controls {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .window-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+  }
+
+  .dot-red { background: #ef4444; }
+  .dot-yellow { background: #f59e0b; }
+  .dot-green { background: #10b981; }
+
+  .mockup-title {
+    font-size: 0.82rem;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+  }
+
+  .mockup-badge {
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: #c084fc;
+    background: rgba(168, 85, 247, 0.15);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+  }
+
+  .studio-subbar {
+    background: #110e1c;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.5rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+  }
+
+  .tab-list {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .studio-tab {
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .studio-tab.active {
+    background: rgba(124, 58, 237, 0.2);
+    color: #ffffff;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+  }
+
+  .engine-state {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #10b981;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+  }
+
+  .workspace-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1px;
+    background: var(--border-subtle);
+  }
+
+  @media (max-width: 860px) {
+    .workspace-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .workspace-pane {
+    background: #0d0a17;
+    padding: 1.5rem;
+  }
+
+  .pane-title {
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .code-preview {
+    background: #08060e;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    color: #e2e8f0;
+    margin-bottom: 1.25rem;
+  }
+
+  .metrics-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .metric-pill {
+    background: #151124;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .metric-label {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .metric-val {
+    font-size: 0.9rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  .val-pass { color: #10b981; }
+  .val-info { color: #60a5fa; }
+  .val-warn { color: #f59e0b; }
+
+  .pipeline-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tree-node {
+    background: #141022;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+  }
+
+  .tree-node.node-highlight {
+    background: rgba(124, 58, 237, 0.12);
+    border-color: rgba(168, 85, 247, 0.4);
+  }
+
+  .node-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .node-icon {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #c084fc;
+    background: #1d1733;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  .node-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .node-meta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+  }
+
+  .tree-connector {
+    width: 2px;
+    height: 12px;
+    background: var(--border-strong);
+    margin-left: 1.5rem;
+  }
+</style>

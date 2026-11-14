@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const resources = [
+  {
+    type: "Architecture Guide",
+    title: "Client-Server Zero-Trust Quality Verification",
+    desc: "A comprehensive guide to configuring target machine connectivity, discovery agents, and cryptographic execution evidence.",
+    href: "/platform"
+  },
+  {
+    type: "Best Practice",
+    title: "Self-Healing Test Automation Strategies",
+    desc: "How multi-modal locator graphs prevent pipeline failures when class names, DOM trees, and UI design tokens change.",
+    href: "/studios/automation"
+  },
+  {
+    type: "Data Engineering",
+    title: "Continuous ETL & Data Lake Reconciliation",
+    desc: "Techniques for validating schema drift, row-level vector hashing, and data transformation integrity at scale.",
+    href: "/studios/etl-testing"
+  },
+  {
+    type: "Security Manual",
+    title: "PostgreSQL Row-Level Security (RLS) Verification",
+    desc: "Automating zero-trust multi-tenant isolation testing directly against relational database policies.",
+    href: "/studios/security-testing"
+  }
+];
+---
+
+<Layout
+  title="Resources, Architecture Guides & Technical Documentation"
+  description="Explore Valtrix AI technical resources, quality engineering guides, architecture blueprints, and best practices."
+>
+  <div class="container" style="padding-top: 2.5rem;">
+    <Breadcrumbs items={[{ label: 'Resources' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 3rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Knowledge Base
+      </div>
+      <h1 class="heading-xl">Technical Resources &amp; Guides</h1>
+      <p class="subheading">
+        Deep-dive engineering resources, architecture specifications, and best practices for autonomous quality engineering teams.
+      </p>
+    </header>
+
+    <div class="grid-2">
+      {resources.map((r) => (
+        <a href={r.href} class="card" style="text-decoration: none; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--primary-accent); font-weight: 700; text-transform: uppercase;">
+              {r.type}
+            </span>
+            <h2 class="heading-md" style="font-size: 1.25rem; margin-top: 0.5rem; color: var(--text-primary);">
+              {r.title}
+            </h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-top: 0.5rem;">
+              {r.desc}
+            </p>
+          </div>
+          <div style="margin-top: 1.5rem; font-size: 0.85rem; font-weight: 600; color: var(--primary-accent);">
+            Read Guide →
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <CtaSection />
+  </div>
+</Layout>

@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import StudioMockup from '../../components/StudioMockup.astro';
+import CtaSection from '../../components/CtaSection.astro';
+
+const capabilities = [
+  {
+    title: "AI Session Recording",
+    desc: "Captures exploratory testing sessions automatically, generating structured step-by-step reproduction instructions and network logs."
+  },
+  {
+    title: "Instant Defect Drafting",
+    desc: "Converts user interactions, console errors, and screenshots into comprehensive bug tickets mapped to requirements."
+  },
+  {
+    title: "Heuristic Test Case Synthesis",
+    desc: "Analyzes manual tester actions and suggests automated test case scripts that can be transferred directly to Automation Studio."
+  },
+  {
+    title: "Collaborative Review",
+    desc: "Allows QA engineers and developers to review session video, inspect network payloads, and approve findings synchronously."
+  }
+];
+---
+
+<Layout
+  title="Manual Testing Studio | AI-Assisted Exploratory QA"
+  description="Accelerate exploratory testing with Valtrix Manual Testing Studio. Smart session capture, instant defect drafting, and seamless conversion to automated suites."
+>
+  <div class="container" style="padding-top: 2.5rem;">
+    <Breadcrumbs items={[{ label: 'Studios', href: '/platform#studios' }, { label: 'Manual Testing Studio' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Human-in-the-Loop QA
+      </div>
+      <h1 class="heading-xl">Manual Testing Studio</h1>
+      <p class="subheading">
+        Supercharges exploratory and manual testing workflows with AI assistance, automated reproduction documentation, and friction-free automation promotion.
+      </p>
+    </header>
+
+    <StudioMockup
+      studioName="Manual Testing & Session Explorer"
+      stageBadge="EXPLORATORY CAPTURE"
+      activeTab="Session Recording"
+      codeSnippet={`// Manual Session Synthesizer
+const session = await valtrix.captureManualSession({
+  testerId: "qa-lead-01",
+  targetApp: "Client-Server Management Portal",
+  autoPromoteToAutomation: true
+});`}
+    />
+
+    <section class="section" style="padding-top: 2rem;">
+      <div class="grid-2">
+        {capabilities.map((c) => (
+          <div class="card">
+            <h3 class="heading-md">{c.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CtaSection 
+      title="Streamline Your Exploratory Testing"
+      subtitle="Discover how AI can eliminate hours of manual bug reporting and test writing."
+    />
+  </div>
+</Layout>

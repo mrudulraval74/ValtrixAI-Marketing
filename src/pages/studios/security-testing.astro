@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import StudioMockup from '../../components/StudioMockup.astro';
+import CtaSection from '../../components/CtaSection.astro';
+
+const securityVectors = [
+  {
+    title: "Continuous Zero-Trust & RBAC Audit",
+    desc: "Validates role access boundaries across hundreds of endpoints, detecting privilege escalation pathways and unauthorized horizontal tenant traversal."
+  },
+  {
+    title: "PostgreSQL Row-Level Security (RLS) Discovery",
+    desc: "Audits database table policies to prove mathematical tenant isolation, catching missing policies and insecure SQL bypasses."
+  },
+  {
+    title: "Dynamic API Vulnerability Scanning (DAST)",
+    desc: "Executes automated threat payloads against running test environments to catch injection vectors, IDOR flaws, and broken object-level authorization."
+  },
+  {
+    title: "Software Supply Chain & Secret Scanning",
+    desc: "Ensures no exposed credentials, unpinned packages, or high-risk dependency vulnerabilities reach release candidates."
+  }
+];
+---
+
+<Layout
+  title="Security Testing Studio | Automated DAST & Tenant Isolation"
+  description="Automate zero-trust application security verification, PostgreSQL RLS compliance, and dynamic API vulnerability scanning with Valtrix Security Testing Studio."
+>
+  <div class="container" style="padding-top: 2.5rem;">
+    <Breadcrumbs items={[{ label: 'Studios', href: '/platform#studios' }, { label: 'Security Testing Studio' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Zero-Trust Security
+      </div>
+      <h1 class="heading-xl">Security Testing Studio</h1>
+      <p class="subheading">
+        Proactively identify vulnerabilities, enforce Row-Level Security isolation, and certify authorization boundaries continuously in your test environments.
+      </p>
+    </header>
+
+    <StudioMockup
+      studioName="Security & Authorization Audit Engine"
+      stageBadge="ZERO-TRUST COMPLIANCE"
+      activeTab="Security Matrix"
+      executionMetrics={[
+        { label: "Tenant Isolation", value: "100% Certified", status: "pass" },
+        { label: "Endpoints Scanned", value: "318 Routes", status: "pass" },
+        { label: "Auth Bypass Attempts", value: "0 Succeeded", status: "pass" }
+      ]}
+      codeSnippet={`// Zero-Trust Authorization Matrix Scan
+const audit = await valtrix.auditZeroTrustSecurity({
+  environment: "STAGING_SANDBOX",
+  roles: ["SUPER_ADMIN", "QA_LEAD", "ANALYST", "EXTERNAL_VIEWER"],
+  verifyRLSIsolation: true
+});`}
+    />
+
+    <section class="section" style="padding-top: 2rem;">
+      <div class="grid-2">
+        {securityVectors.map((v) => (
+          <div class="card">
+            <h3 class="heading-md">{v.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CtaSection 
+      title="Harden Your Enterprise Security Posture"
+      subtitle="Verify authorization, RLS, and API security continuously before every production deployment."
+    />
+  </div>
+</Layout>

@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import StudioMockup from '../../components/StudioMockup.astro';
+import CtaSection from '../../components/CtaSection.astro';
+
+const studioStages = [
+  { name: "Requirements", desc: "Select existing requirements, import PRD/SRS documents, and map acceptance criteria." },
+  { name: "Environment", desc: "Inspect server topology, registered machine agents, target reachability, and capability matrix." },
+  { name: "Discovery", desc: "Run deep system discovery to parse endpoints, DOM models, schemas, and API contracts." },
+  { name: "Architecture Review", desc: "Inspect synthesized architectural elements and approve architecture revisions." },
+  { name: "Configuration Plans", desc: "Generate, edit, diff, and approve configuration plans prior to test design." },
+  { name: "Test Design", desc: "Synthesize test cases, verify coverage against requirements, and submit for QA lead approval." },
+  { name: "Execution", desc: "Trigger distributed runs with real-time evidence streaming, screenshots, and logs." },
+  { name: "Client Verification", desc: "Validate client application behavior against server states, identifying mismatches." },
+  { name: "Results & Defects", desc: "Correlate failed steps directly to requirements and generate actionable defect tickets." }
+];
+---
+
+<Layout
+  title="AI End-to-End Studio | Autonomous Lifecycle Verification"
+  description="Valtrix AI End-to-End Studio bridges requirements, discovery, configuration planning, approvals, and autonomous test execution into a unified QA workspace."
+>
+  <div class="container" style="padding-top: 2.5rem;">
+    <Breadcrumbs items={[{ label: 'Studios', href: '/platform#studios' }, { label: 'AI End-to-End Studio' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Flagship Studio
+      </div>
+      <h1 class="heading-xl">AI End-to-End Studio</h1>
+      <p class="subheading">
+        A unified, requirements-driven testing workspace connecting the entire lifecycle: Requirements &rarr; Environment &rarr; Discovery &rarr; Architecture Review &rarr; Plans &rarr; Test Design &rarr; Execution &rarr; Verification &rarr; Defects.
+      </p>
+    </header>
+
+    <StudioMockup
+      studioName="AI End-to-End Testing Studio"
+      stageBadge="REQUIREMENTS-DRIVEN"
+      activeTab="Architecture Review"
+    />
+
+    <!-- Studio Stages Grid -->
+    <section class="section" style="padding-top: 2rem;">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <h2 class="heading-lg">End-to-End Testing Stages</h2>
+        <p class="subheading">Eliminates fragmented testing tools with one governed, sequential workflow.</p>
+      </div>
+
+      <div class="grid-3">
+        {studioStages.map((stage, idx) => (
+          <div class="card">
+            <div class="stage-num">0{idx + 1}</div>
+            <h3 class="heading-md" style="margin-top: 0.5rem;">{stage.name}</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-top: 0.5rem;">
+              {stage.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CtaSection 
+      title="Experience the AI End-to-End Studio"
+      subtitle="Request a live walkthrough to see how requirements turn into verified test executions."
+    />
+  </div>
+</Layout>
+
+<style>
+  .text-center { text-align: center; }
+  .stage-num {
+    font-size: 1.1rem;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    color: var(--primary-accent);
+  }
+</style>

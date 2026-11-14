@@ -1,0 +1,374 @@
+---
+const pathname = Astro.url.pathname;
+
+const navLinks = [
+  { name: 'Platform', href: '/platform' },
+  { 
+    name: 'Studios', 
+    href: '/platform#studios',
+    children: [
+      { name: 'AI End-to-End Studio', href: '/studios/ai-end-to-end', desc: 'Autonomous discovery to synthesis' },
+      { name: 'Automation Studio', href: '/studios/automation', desc: 'Self-healing test execution engine' },
+      { name: 'ETL Testing Studio', href: '/studios/etl-testing', desc: 'Data warehouse & pipeline validation' },
+      { name: 'Performance Studio', href: '/studios/performance-testing', desc: 'Predictive bottleneck analysis' },
+      { name: 'Security Studio', href: '/studios/security-testing', desc: 'Automated DAST & threat modeling' },
+      { name: 'Manual Testing Studio', href: '/studios/manual-testing', desc: 'AI-assisted exploratory flows' }
+    ]
+  },
+  { name: 'Features', href: '/features' },
+  { name: 'Solutions', href: '/solutions' },
+  { name: 'Pricing', href: '/pricing' },
+  { name: 'About', href: '/about' },
+  { name: 'Resources', href: '/resources' },
+];
+---
+
+<header class="navbar-wrapper">
+  <div class="container navbar-container">
+    <a href="/" class="brand-logo" aria-label="Valtrix AI Home">
+      <div class="logo-mark">
+        <svg viewBox="0 0 32 32" fill="none" class="logo-svg">
+          <path d="M16 3L27 8V17C27 24 21 28.5 16 30C11 28.5 5 24 5 17V8L16 3Z" fill="url(#nav-grad)" fill-opacity="0.25" stroke="#a855f7" stroke-width="1.5" />
+          <path d="M10 11L16 23L22 11H18.5L16 16.5L13.5 11H10Z" fill="#ffffff" />
+          <defs>
+            <linearGradient id="nav-grad" x1="0" y1="0" x2="32" y2="32">
+              <stop stop-color="#9333ea" />
+              <stop offset="1" stop-color="#3b82f6" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="brand-name">
+        <span>Valtrix</span><span class="brand-ai">AI</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        {navLinks.map((item) => (
+          <li class={`nav-item ${item.children ? 'has-dropdown' : ''}`}>
+            <a 
+              href={item.href} 
+              class={`nav-link ${pathname === item.href ? 'active' : ''}`}
+            >
+              {item.name}
+              {item.children && (
+                <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              )}
+            </a>
+            {item.children && (
+              <div class="dropdown-menu">
+                <div class="dropdown-grid">
+                  {item.children.map((sub) => (
+                    <a href={sub.href} class="dropdown-item">
+                      <div class="dropdown-item-title">{sub.name}</div>
+                      <div class="dropdown-item-desc">{sub.desc}</div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <a href="/contact" class="btn btn-outline btn-sm">Contact Sales</a>
+      <a href="/platform" class="btn btn-primary btn-sm">Explore Platform</a>
+      
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-content">
+      <nav class="mobile-nav" aria-label="Mobile Navigation">
+        <div class="mobile-section-label">Platform & Studios</div>
+        <a href="/platform" class="mobile-nav-link">Platform Overview</a>
+        <a href="/studios/ai-end-to-end" class="mobile-nav-link">AI End-to-End Studio</a>
+        <a href="/studios/automation" class="mobile-nav-link">Automation Studio</a>
+        <a href="/studios/etl-testing" class="mobile-nav-link">ETL Testing Studio</a>
+        <a href="/studios/performance-testing" class="mobile-nav-link">Performance Testing Studio</a>
+        <a href="/studios/security-testing" class="mobile-nav-link">Security Testing Studio</a>
+        <a href="/studios/manual-testing" class="mobile-nav-link">Manual Testing Studio</a>
+
+        <div class="mobile-section-label">Company & Product</div>
+        <a href="/features" class="mobile-nav-link">Features</a>
+        <a href="/solutions" class="mobile-nav-link">Solutions</a>
+        <a href="/pricing" class="mobile-nav-link">Pricing</a>
+        <a href="/about" class="mobile-nav-link">About Valtrix</a>
+        <a href="/resources" class="mobile-nav-link">Resources</a>
+        <a href="/contact" class="mobile-nav-link">Contact</a>
+
+        <div class="mobile-actions">
+          <a href="/contact" class="btn btn-primary" style="width: 100%;">Schedule Demo</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+  .navbar-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-height);
+    background: rgba(12, 10, 20, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .navbar-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .logo-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: #151124;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+  }
+
+  .logo-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .brand-ai {
+    color: var(--primary-accent);
+    margin-left: 2px;
+  }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .dropdown-chevron {
+    transition: transform 0.2s ease;
+  }
+
+  .has-dropdown:hover .dropdown-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown Menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    width: 480px;
+    padding: 1rem;
+    background: #110e1c;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+  }
+
+  .has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .dropdown-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .dropdown-item {
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    transition: background 0.15s ease;
+  }
+
+  .dropdown-item:hover {
+    background: rgba(124, 58, 237, 0.12);
+  }
+
+  .dropdown-item-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .dropdown-item-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .btn-sm {
+    padding: 0.45rem 0.95rem;
+    font-size: 0.85rem;
+  }
+
+  .mobile-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0.35rem;
+  }
+
+  .icon-close {
+    display: none;
+  }
+
+  .mobile-drawer {
+    display: none;
+  }
+
+  @media (max-width: 980px) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .mobile-toggle {
+      display: block;
+    }
+
+    .mobile-drawer {
+      display: block;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(7, 6, 10, 0.98);
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-y: auto;
+      z-index: 99;
+    }
+
+    .mobile-drawer.open {
+      transform: translateX(0);
+    }
+
+    .mobile-drawer-content {
+      padding: 2rem 1.5rem;
+    }
+
+    .mobile-section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary-accent);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .mobile-nav-link {
+      display: block;
+      padding: 0.75rem 0;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .mobile-actions {
+      margin-top: 2rem;
+    }
+  }
+</style>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-btn');
+  const drawer = document.getElementById('mobile-drawer');
+
+  if (toggleBtn && drawer) {
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+      drawer.classList.toggle('open');
+      
+      const menuIcon = toggleBtn.querySelector('.icon-menu') as HTMLElement;
+      const closeIcon = toggleBtn.querySelector('.icon-close') as HTMLElement;
+      if (menuIcon && closeIcon) {
+        menuIcon.style.display = isExpanded ? 'block' : 'none';
+        closeIcon.style.display = isExpanded ? 'none' : 'block';
+      }
+    });
+  }
+</script>

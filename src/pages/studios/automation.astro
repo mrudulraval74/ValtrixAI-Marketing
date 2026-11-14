@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import StudioMockup from '../../components/StudioMockup.astro';
+import CtaSection from '../../components/CtaSection.astro';
+
+const features = [
+  {
+    title: "Autonomous DOM Self-Healing",
+    desc: "Uses contextual multi-modal locator graphs to identify UI elements even when class names, IDs, or component hierarchies shift."
+  },
+  {
+    title: "Parallel Execution Orchestration",
+    desc: "Distributes thousands of browser, mobile, and API tests across isolated workers with dynamic load rebalancing."
+  },
+  {
+    title: "Cross-Platform Framework Compatibility",
+    desc: "Executes seamlessly alongside Playwright, Cypress, Selenium, and custom internal test drivers without vendor lock-in."
+  },
+  {
+    title: "Visual Regression & Layout Invariance",
+    desc: "Detects unintended layout shifts and color palette drift while filtering out false positives from dynamic content."
+  }
+];
+---
+
+<Layout
+  title="Automation Studio | Self-Healing Test Orchestration"
+  description="Valtrix Automation Studio delivers resilient test automation with autonomous DOM self-healing, multi-platform orchestration, and zero flakiness."
+>
+  <div class="container" style="padding-top: 2.5rem;">
+    <Breadcrumbs items={[{ label: 'Studios', href: '/platform#studios' }, { label: 'Automation Studio' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Zero-Flakiness Testing
+      </div>
+      <h1 class="heading-xl">Automation Studio</h1>
+      <p class="subheading">
+        Engineered to eliminate test maintenance overhead. Autonomous self-healing selectors adapt to code releases in real-time, keeping pipelines green.
+      </p>
+    </header>
+
+    <StudioMockup
+      studioName="Automation Studio Engine"
+      stageBadge="SELF-HEALING RUNTIME"
+      activeTab="Execution Trace"
+      executionMetrics={[
+        { label: "Tests Executed", value: "1,240", status: "pass" },
+        { label: "Self-Healed Selectors", value: "18 Resolved", status: "warn" },
+        { label: "Execution Time", value: "1m 42s", status: "info" }
+      ]}
+      codeSnippet={`// Self-Healing Selector Engine
+await page.locator(valtrix.adaptiveSelector({
+  semanticRole: "button",
+  intent: "SUBMIT_PAYMENT",
+  fallbacks: ["#pay-btn", "[data-testid=checkout]", ".btn-submit"]
+})).click();`}
+    />
+
+    <section class="section" style="padding-top: 2rem;">
+      <div class="grid-2">
+        {features.map((f) => (
+          <div class="card">
+            <h3 class="heading-md">{f.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CtaSection 
+      title="Eliminate Test Flakiness Today"
+      subtitle="See how self-healing test execution keeps your deployment pipelines moving fast."
+    />
+  </div>
+</Layout>

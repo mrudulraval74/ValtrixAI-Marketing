@@ -1,0 +1,241 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const directContacts = [
+  { label: "Engineering Repository", value: "github.com/mrudulraval74/ValtrixAI-Marketing", href: "https://github.com/mrudulraval74/ValtrixAI-Marketing" },
+  { label: "Technical Lead", value: "mrudulraval74", href: "https://github.com/mrudulraval74" },
+  { label: "Platform Host", value: "Render Static Site (main branch)", href: "https://valtrix-ai-marketing.onrender.com" }
+];
+---
+
+<Layout
+  title="Contact Sales & Engineering Architecture Team"
+  description="Connect with the Valtrix AI engineering team to schedule a technical architecture walkthrough or inquire about enterprise deployment."
+>
+  <div class="container" style="padding-top: 2.5rem; padding-bottom: 5rem;">
+    <Breadcrumbs items={[{ label: 'Contact' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> Engineering Walkthrough
+      </div>
+      <h1 class="heading-xl">Contact Engineering &amp; Solutions</h1>
+      <p class="subheading">
+        Schedule an architectural review or discuss custom on-premises / air-gapped deployments for your organization.
+      </p>
+    </header>
+
+    <div class="contact-grid">
+      <!-- Contact Form -->
+      <div class="card" style="padding: 2.5rem;">
+        <h2 class="heading-md" style="margin-bottom: 1.5rem;">Request Technical Demonstration</h2>
+        
+        <form id="contact-form" class="form-layout" novalidate>
+          <div class="form-group">
+            <label for="fullName">Full Name <span style="color: #f43f5e;">*</span></label>
+            <input type="text" id="fullName" name="fullName" placeholder="Sarah Jenkins" required class="input-field" />
+            <span class="field-error" id="name-error">Please enter your name</span>
+          </div>
+
+          <div class="form-group">
+            <label for="workEmail">Work Email <span style="color: #f43f5e;">*</span></label>
+            <input type="email" id="workEmail" name="workEmail" placeholder="sarah@company.com" required class="input-field" />
+            <span class="field-error" id="email-error">Please enter a valid work email</span>
+          </div>
+
+          <div class="form-group">
+            <label for="company">Company / Organization</label>
+            <input type="text" id="company" name="company" placeholder="Acme Technologies" class="input-field" />
+          </div>
+
+          <div class="form-group">
+            <label for="studioInterest">Studio of Primary Interest</label>
+            <select id="studioInterest" name="studioInterest" class="input-field">
+              <option value="all">Complete Platform (All 6 Studios)</option>
+              <option value="ai-end-to-end">AI End-to-End Studio</option>
+              <option value="automation">Automation Studio (Self-Healing)</option>
+              <option value="etl">ETL Testing Studio</option>
+              <option value="performance">Performance Testing Studio</option>
+              <option value="security">Security &amp; RLS Studio</option>
+              <option value="manual">Manual Testing Studio</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Architecture or Concurrency Requirements</label>
+            <textarea id="notes" name="notes" rows="4" placeholder="Describe your target application stack, concurrency scale, or compliance needs..." class="input-field"></textarea>
+          </div>
+
+          <div class="notice-info">
+            <strong>Static Site Note:</strong> This static marketing website demonstrates client-side form validation. Submissions can be routed to your designated CRM endpoint, webhook, or direct mailto handler.
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+            Generate Walkthrough Request
+          </button>
+        </form>
+
+        <!-- Dynamic Success / Client Preview Banner -->
+        <div id="form-success-banner" class="success-banner" style="display: none;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <div>
+            <strong style="color: #10b981;">Walkthrough Request Prepared!</strong>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+              Your inquiry details have been formatted. For direct contact during this production deployment phase, reach the repository team directly via GitHub: <a href="https://github.com/mrudulraval74/ValtrixAI-Marketing" target="_blank" style="color: var(--primary-accent); text-decoration: underline;">mrudulraval74/ValtrixAI-Marketing</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Direct Details & Channel Info -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div class="card">
+          <h3 class="heading-md" style="font-size: 1.2rem;">Direct Engineering Channels</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+            Reach the core engineering maintainers directly through tracked project repositories or official deployment channels.
+          </p>
+
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+            {directContacts.map((c) => (
+              <li style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem;">
+                <div style="font-size: 0.75rem; text-transform: uppercase; font-family: var(--font-mono); color: var(--text-muted);">
+                  {c.label}
+                </div>
+                <a href={c.href} target="_blank" rel="noopener noreferrer" style="color: var(--primary-accent); font-weight: 500; font-size: 0.95rem; word-break: break-all;">
+                  {c.value}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="card" style="background: rgba(124, 58, 237, 0.08); border-color: rgba(168, 85, 247, 0.3);">
+          <h3 class="heading-md" style="font-size: 1.1rem; color: #c084fc;">Deployment Security</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-top: 0.5rem;">
+            No private customer data or application schemas are submitted or stored across public marketing endpoints. All enterprise proofs-of-concept run in isolated, dedicated client sandboxes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 2.5rem;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .input-field {
+    background: #08060e;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.25);
+  }
+
+  .field-error {
+    font-size: 0.75rem;
+    color: #f43f5e;
+    display: none;
+  }
+
+  .field-error.visible {
+    display: block;
+  }
+
+  .notice-info {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background: #110e1c;
+    border: 1px solid var(--border-subtle);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    line-height: 1.5;
+  }
+
+  .success-banner {
+    margin-top: 1.5rem;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const banner = document.getElementById('form-success-banner');
+  const nameInput = document.getElementById('fullName') as HTMLInputElement;
+  const emailInput = document.getElementById('workEmail') as HTMLInputElement;
+  const nameError = document.getElementById('name-error');
+  const emailError = document.getElementById('email-error');
+
+  if (form && banner) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let valid = true;
+
+      if (!nameInput.value.trim()) {
+        nameError?.classList.add('visible');
+        valid = false;
+      } else {
+        nameError?.classList.remove('visible');
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+        emailError?.classList.add('visible');
+        valid = false;
+      } else {
+        emailError?.classList.remove('visible');
+      }
+
+      if (valid) {
+        banner.style.display = 'flex';
+        form.style.display = 'none';
+      }
+    });
+  }
+</script>
