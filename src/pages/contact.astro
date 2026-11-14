@@ -5,140 +5,166 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 const offices = [
   {
     city: "New York",
-    role: "Global Institutional Engagements",
-    desc: "Executive briefings, financial monitoring reviews, and enterprise governance partnerships."
+    role: "Global Headquarters & Enterprise Strategy",
+    desc: "Executive briefings, financial services engineering & regulatory governance."
   },
   {
     city: "San Francisco",
-    role: "Engineering & AI Systems",
-    desc: "Core systems architecture, model synthesis research, and industrial inspection deployments."
+    role: "Core Technology & AI Research",
+    desc: "Autonomous engine development, model optimization & platform runtime."
+  },
+  {
+    city: "London",
+    role: "EMEA Operations",
+    desc: "European banking partnerships, regulatory compliance & enterprise support."
   }
 ];
 
 const channels = [
-  { label: "Institutional Inquiries", value: "contact@valtrix.ai", href: "mailto:contact@valtrix.ai" },
-  { label: "Strategic Partnerships", value: "partners@valtrix.ai", href: "mailto:partners@valtrix.ai" },
-  { label: "Enterprise Solutions", value: "solutions@valtrix.ai", href: "mailto:solutions@valtrix.ai" }
+  { label: "Enterprise Sales", value: "sales@veriqon.com", href: "mailto:sales@veriqon.com" },
+  { label: "Institutional Advisory", value: "enterprise@veriqon.com", href: "mailto:enterprise@veriqon.com" },
+  { label: "Security & Trust Officer", value: "security@veriqon.com", href: "mailto:security@veriqon.com" }
 ];
 ---
 
 <Layout
-  title="Contact & Workflow Evaluation"
-  description="Connect with the Valtrix AI team to evaluate monitored workflows, schedule an operational briefing, or discuss deployment planning."
+  title="Contact Us — VERIQON TECHNOLOGIES"
+  description="Connect with VERIQON TECHNOLOGIES enterprise sales, solutions architects, and technical advisory teams."
 >
-  <div class="container" style="padding-top: 2.5rem; padding-bottom: 5rem;">
-    <Breadcrumbs items={[{ label: 'Contact' }]} />
+  <section class="contact-hero">
+    <div class="container text-center">
+      <Breadcrumbs items={[{ label: 'Contact Us' }]} />
 
-    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2.5rem; text-align: center;">
-      <div class="eyebrow">
-        <span class="badge-dot"></span> Workflow Evaluation
+      <div class="badge badge-dark">
+        <span class="badge-dot"></span> DIRECT ENTERPRISE CHANNELS
       </div>
-      <h1 class="title">Tell us which workflow you are evaluating</h1>
-      <p class="copy" style="margin-inline: auto;">
-        Share whether you are exploring financial monitoring, industrial inspection, spatial operations, or our shared platform studios, and we will route your request directly to the appropriate team.
+      <h1 class="heading-xl hero-title">
+        Connect with Our Engineering Specialists
+      </h1>
+      <p class="subheading subheading-dark hero-lead">
+        Reach our solutions architects, enterprise sales leads, or security officers directly for confidential architecture evaluations.
       </p>
-    </header>
+    </div>
+  </section>
 
-    <div class="contact-grid">
-      <!-- Contact & Walkthrough Form -->
-      <div class="card">
-        <h2 class="heading-md" style="margin-bottom: 1.5rem;">Request Monitored Workflow Briefing</h2>
-        
-        <form id="contact-form" class="form-layout" novalidate>
-          <div class="form-group">
-            <label for="fullName">Full Name <span style="color: var(--pink);">*</span></label>
-            <input type="text" id="fullName" name="fullName" placeholder="Sarah Jenkins" required class="input-field" />
-            <span class="field-error" id="name-error">Please enter your name</span>
-          </div>
+  <!-- Contact Form & Directory -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Main Inquiries Form -->
+        <div class="card form-card">
+          <h2 class="heading-md">Send an Enterprise Inquiry</h2>
+          <p style="color: var(--text-secondary); font-size: 14px; margin-top: 6px; margin-bottom: 24px;">
+            Fill out the details below to route your request to the appropriate technical lead.
+          </p>
 
-          <div class="form-group">
-            <label for="workEmail">Work Email <span style="color: var(--pink);">*</span></label>
-            <input type="email" id="workEmail" name="workEmail" placeholder="sarah@institution.com" required class="input-field" />
-            <span class="field-error" id="email-error">Please enter a valid work email</span>
-          </div>
+          <form id="contact-form" class="form-layout" novalidate>
+            <div class="form-group">
+              <label for="fullName">Full Name *</label>
+              <input type="text" id="fullName" name="fullName" required placeholder="e.g. Elena Vance" class="input-field" />
+              <span class="field-error" id="name-error">Please provide your full name.</span>
+            </div>
 
-          <div class="form-group">
-            <label for="organization">Organization / Institution</label>
-            <input type="text" id="organization" name="organization" placeholder="Capital Asset Partners" class="input-field" />
-          </div>
+            <div class="form-group">
+              <label for="workEmail">Work Email *</label>
+              <input type="email" id="workEmail" name="workEmail" required placeholder="name@company.com" class="input-field" />
+              <span class="field-error" id="email-error">Please enter a valid corporate email address.</span>
+            </div>
 
-          <div class="form-group">
-            <label for="workflowType">Workflow Scenario Under Evaluation</label>
-            <select id="workflowType" name="workflowType" class="input-field">
-              <option value="platform">Complete Multi-Studio Platform Layer</option>
-              <option value="financial">Financial Monitoring &amp; Risk Oversight</option>
-              <option value="industrial">Industrial Vision &amp; Quality Inspection</option>
-              <option value="automation">Autonomous Self-Healing Test Orchestration</option>
-              <option value="etl">ETL &amp; Data Pipeline Reconciliation</option>
-              <option value="security">Zero-Trust Security &amp; RLS Isolation</option>
-            </select>
-          </div>
+            <div class="form-group">
+              <label for="organization">Company / Organization *</label>
+              <input type="text" id="organization" name="organization" required placeholder="Enterprise Corp." class="input-field" />
+            </div>
 
-          <div class="form-group">
-            <label for="notes">Operating Constraints &amp; Evaluation Goals</label>
-            <textarea id="notes" name="notes" rows="4" placeholder="Describe your data feeds, concurrency targets, regulatory boundaries, or deployment timeline..." class="input-field"></textarea>
-          </div>
+            <div class="form-group">
+              <label for="interest">Area of Interest</label>
+              <select id="interest" name="interest" class="input-field select-field">
+                <option value="platform">VERIQON ONE Platform Overview</option>
+                <option value="ai-studios">Specialist Testing Studios Evaluation</option>
+                <option value="vpc-deployment">Dedicated VPC / Air-Gapped Deployment</option>
+                <option value="etl-data">ETL &amp; Data Warehouse Validation</option>
+                <option value="performance">Performance &amp; High-Concurrency Simulation</option>
+                <option value="security">Security &amp; Continuous DAST</option>
+                <option value="partnership">Institutional Partnership</option>
+              </select>
+            </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
-            Submit Evaluation Request
-          </button>
-        </form>
+            <div class="form-group">
+              <label for="message">Message &amp; Architectural Context</label>
+              <textarea id="message" name="message" rows="4" placeholder="Briefly describe your current testing architecture and goals..." class="input-field textarea-field"></textarea>
+            </div>
 
-        <!-- Form Success State -->
-        <div id="form-success-banner" class="success-banner" style="display: none;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-          <div>
-            <strong style="color: var(--green); font-size: 16px;">Workflow Request Formatted</strong>
-            <p style="color: var(--muted); font-size: 14px; margin-top: 4px; line-height: 1.6;">
-              Your evaluation parameters have been compiled. For immediate institutional scheduling, direct inquiries can be transmitted directly to <a href="mailto:contact@valtrix.ai" style="color: var(--cyan); text-decoration: underline;">contact@valtrix.ai</a>.
-            </p>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+              Submit Enterprise Inquiry
+            </button>
+          </form>
+
+          <div id="form-success-banner" class="success-banner" style="display: none;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" style="flex-shrink: 0; margin-top: 2px;">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <div>
+              <strong style="color: #15803d; font-size: 15px; display: block;">Inquiry Successfully Dispatched</strong>
+              <p style="color: var(--text-secondary); font-size: 13.5px; margin-top: 4px; line-height: 1.6;">
+                Thank you for contacting VERIQON TECHNOLOGIES. A designated solutions architect will review your technical requirements and respond within one business day.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Institutional Channels & Offices -->
-      <div style="display: flex; flex-direction: column; gap: 20px;">
-        <div class="card">
-          <h3 class="heading-md" style="margin-bottom: 16px;">Institutional Channels</h3>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
-            {channels.map((c) => (
-              <li style="border-bottom: 1px solid var(--stroke); padding-bottom: 12px;">
-                <div style="font-size: 11px; text-transform: uppercase; font-family: var(--font-mono); color: var(--muted2); letter-spacing: 0.1em;">
-                  {c.label}
-                </div>
-                <a href={c.href} style="color: var(--cyan); font-weight: 550; font-size: 15px;">
-                  {c.value}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <!-- Institutional Channels & Offices -->
+        <div class="contact-sidebar">
+          <div class="card">
+            <h3 class="heading-sm" style="color: var(--royal-blue); margin-bottom: 14px;">Direct Contact Channels</h3>
+            <ul class="channel-list">
+              {channels.map((c) => (
+                <li class="channel-item">
+                  <span class="channel-lbl">{c.label}</span>
+                  <a href={c.href} class="channel-link">{c.value}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div class="card">
-          <h3 class="heading-md" style="margin-bottom: 16px;">Office Locations</h3>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            {offices.map((o) => (
-              <div>
-                <div style="display: flex; align-items: center; justify-content: space-between;">
-                  <strong style="color: var(--text); font-size: 15px;">{o.city}</strong>
-                  <span style="font-size: 11px; color: var(--cyan); font-family: var(--font-mono);">{o.role}</span>
+          <div class="card" style="margin-top: 20px;">
+            <h3 class="heading-sm" style="color: var(--royal-blue); margin-bottom: 14px;">Global Technology Briefings</h3>
+            <div class="office-list">
+              {offices.map((o) => (
+                <div class="office-item">
+                  <div class="office-head">
+                    <strong class="office-city">{o.city}</strong>
+                    <span class="office-role">{o.role}</span>
+                  </div>
+                  <p class="office-desc">{o.desc}</p>
                 </div>
-                <p style="color: var(--muted2); font-size: 13px; line-height: 1.6; margin-top: 4px;">
-                  {o.desc}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </Layout>
 
 <style>
+  .contact-hero {
+    background: linear-gradient(180deg, #061B36 0%, #0A2547 100%);
+    color: #FFFFFF;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-title {
+    color: #FFFFFF;
+    margin-top: 1rem;
+  }
+
+  .hero-lead {
+    margin-top: 1.25rem;
+    margin-inline: auto;
+  }
+
   .contact-grid {
     display: grid;
     grid-template-columns: 1.35fr 0.85fr;
@@ -155,7 +181,7 @@ const channels = [
   .form-layout {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
   }
 
   .form-group {
@@ -165,30 +191,30 @@ const channels = [
   }
 
   .form-group label {
-    font-size: 14px;
-    font-weight: 550;
-    color: var(--muted);
+    font-size: 13.5px;
+    font-weight: 650;
+    color: var(--text-primary);
   }
 
   .input-field {
-    background: rgba(255, 255, 255, 0.035);
-    border: 1px solid var(--stroke);
+    background: #FFFFFF;
+    border: 1px solid var(--border-medium);
     border-radius: var(--radius-sm);
-    padding: 14px 18px;
-    color: var(--text);
-    font-size: 16px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 13px 16px;
+    color: var(--text-primary);
+    font-size: 15px;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
   }
 
   .input-field:focus {
     outline: none;
-    border-color: var(--cyan);
-    box-shadow: 0 0 0 2px rgba(121, 243, 255, 0.2);
+    border-color: var(--royal-blue);
+    box-shadow: 0 0 0 3px rgba(8, 119, 232, 0.18);
   }
 
   .field-error {
     font-size: 12px;
-    color: var(--pink);
+    color: #dc2626;
     display: none;
   }
 
@@ -198,13 +224,91 @@ const channels = [
 
   .success-banner {
     margin-top: 20px;
-    background: rgba(78, 240, 193, 0.08);
-    border: 1px solid rgba(78, 240, 193, 0.25);
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
     border-radius: var(--radius-sm);
     padding: 20px;
     display: flex;
     align-items: flex-start;
     gap: 14px;
+  }
+
+  /* Sidebar */
+  .channel-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .channel-item {
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 12px;
+  }
+
+  .channel-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .channel-lbl {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .channel-link {
+    color: var(--royal-blue);
+    font-weight: 600;
+    font-size: 14.5px;
+  }
+
+  .channel-link:hover {
+    text-decoration: underline;
+  }
+
+  .office-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .office-item {
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 14px;
+  }
+
+  .office-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .office-head {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .office-city {
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+
+  .office-role {
+    font-size: 11.5px;
+    color: var(--royal-blue);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .office-desc {
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 4px;
   }
 </style>
 

@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import StudioMockup from '../../components/StudioMockup.astro';
+import CtaSection from '../../components/CtaSection.astro';
+
+const studioStages = [
+  { name: "Requirements Ingestion", desc: "Select requirements, import PRD/SRS documents from Jira or Confluence, and map acceptance criteria into verified models." },
+  { name: "Environment Topology", desc: "Inspect target servers, registered machine agents, network reachability, and capability boundaries with zero-trust isolation." },
+  { name: "System Discovery", desc: "Run deep autonomous discovery to parse API endpoints, DOM structure, data schemas, and contract interfaces." },
+  { name: "Architecture Review", desc: "Inspect synthesized architectural graphs and approve system model revisions before test authoring." },
+  { name: "Configuration Plans", desc: "Generate, edit, diff, and approve configuration plans and fixture parameters prior to test design." },
+  { name: "Test Design Synthesis", desc: "Synthesize full-stack test cases, verify boundary coverage against requirements, and submit for QA lead review." },
+  { name: "Execution Fabric", desc: "Trigger distributed runs with real-time telemetry streaming, visual evidence, logs, and state captures." },
+  { name: "State Verification", desc: "Validate client application behavior against server states, identifying regressions and race conditions." },
+  { name: "Defect Triage & Trace", desc: "Correlate failed steps directly to originating requirements and generate actionable, reproducible defect tickets." }
+];
+---
+
+<Layout
+  title="AI Studio — VERIQON ONE Autonomous Lifecycle Verification"
+  description="Explore the AI Studio in VERIQON ONE, developed by VERIQON TECHNOLOGIES: bridges requirements, discovery, configuration planning, and autonomous test execution."
+>
+  <div class="container" style="padding-top: 2rem;">
+    <Breadcrumbs items={[{ label: 'Specialist Studios', href: '/ai-studios' }, { label: 'AI Studio' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> VERIQON ONE SPECIALIST STUDIO
+      </div>
+      <h1 class="heading-xl">AI Studio</h1>
+      <p class="subheading">
+        A unified, requirements-driven testing workspace connecting the entire lifecycle: Requirements &rarr; Environment &rarr; Discovery &rarr; Architecture Review &rarr; Plans &rarr; Test Design &rarr; Execution &rarr; Verification &rarr; Defect Triage.
+      </p>
+    </header>
+
+    <StudioMockup
+      studioName="AI Studio"
+      stageBadge="REQUIREMENTS-DRIVEN ENGINE"
+      activeTab="Requirement Graph"
+    />
+
+    <!-- Studio Stages Grid -->
+    <section class="section" style="padding-top: 2rem;">
+      <div class="text-center section-header">
+        <h2 class="heading-lg">End-to-End Testing Lifecycle</h2>
+        <p class="subheading">Eliminates fragmented testing tools with one governed, sequential quality engineering workflow.</p>
+      </div>
+
+      <div class="grid-3">
+        {studioStages.map((stage, idx) => (
+          <div class="card">
+            <div class="stage-num">{idx < 9 ? `0${idx + 1}` : idx + 1}</div>
+            <h3 class="heading-md" style="margin-top: 0.5rem;">{stage.name}</h3>
+            <p style="color: var(--text-secondary); font-size: 13.5px; line-height: 1.65; margin-top: 0.5rem;">
+              {stage.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CtaSection
+      title="Deploy AI-Driven Quality Engineering in Your Sprint"
+      subtitle="Experience how the VERIQON ONE AI Studio reduces manual test design overhead while guaranteeing complete coverage."
+      primaryCtaText="Request a Demo"
+      primaryCtaHref="/request-demo"
+      secondaryCtaText="Explore Automation Studio"
+      secondaryCtaHref="/studios/automation"
+    />
+  </div>
+</Layout>
+
+<style>
+  .stage-num {
+    font-size: 1.3rem;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    color: var(--royal-blue);
+  }
+</style>

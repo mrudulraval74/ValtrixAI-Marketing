@@ -5,200 +5,316 @@ import CtaSection from '../components/CtaSection.astro';
 
 const tiers = [
   {
-    name: "Developer & Team Pilot",
+    name: "Starter",
+    badge: "TEAM EVALUATION",
     price: "Custom Pilot",
-    cadence: "Evaluated per engineering scope",
-    desc: "Designed for engineering teams piloting autonomous testing on core services.",
+    cadence: "Tailored for small engineering teams",
+    desc: "Designed for engineering squads adopting intelligent automation on core web and API services.",
     highlight: false,
+    ctaText: "Inquire About Starter",
     features: [
-      "Access to AI End-to-End & Automation Studios",
-      "Up to 5 concurrent test worker nodes",
-      "Local model gateway support (Ollama)",
-      "Standard GitHub & GitLab CI/CD integration",
-      "Community & engineering ticket support"
+      "AI Studio & Automation Studio access",
+      "Up to 10 parallel test execution workers",
+      "Self-healing DOM selector engine",
+      "Standard GitHub & GitLab CI/CD connectors",
+      "REST API contract verification",
+      "Standard business-hours support"
     ]
   },
   {
-    name: "Enterprise Production",
+    name: "Professional",
+    badge: "MOST POPULAR",
     price: "Enterprise Scope",
-    cadence: "Tailored to platform workloads",
-    desc: "Complete multi-studio access with dedicated governance, RLS audits, and SLAs.",
+    cadence: "Tailored to team concurrency needs",
+    desc: "Comprehensive multi-studio access for growing engineering organizations with high-velocity release cycles.",
     highlight: true,
+    ctaText: "Inquire About Professional",
     features: [
-      "All 6 Specialized Testing Studios included",
-      "Unlimited distributed execution concurrency",
-      "PostgreSQL Row-Level Security (RLS) Auditing",
-      "ETL high-throughput pipeline reconciliation",
-      "Single Sign-On (SSO) & zero-trust RBAC controls",
-      "Dedicated enterprise technical account lead"
+      "All 7 Specialist Testing Studios included",
+      "Up to 50 parallel test execution workers",
+      "ETL data warehouse verification (up to 10M rows/run)",
+      "Continuous DAST & OWASP security audits",
+      "Predictive performance load simulation",
+      "SAML 2.0 / Okta SSO & granular RBAC",
+      "Priority 24/5 technical support"
     ]
   },
   {
-    name: "On-Premises / Air-Gapped",
-    price: "Custom Deployment",
-    cadence: "Annual compliance license",
-    desc: "Fully isolated deployment on sovereign infrastructure with zero external telemetry.",
+    name: "Enterprise",
+    badge: "MAXIMUM SOVEREIGNTY",
+    price: "Custom Architecture",
+    cadence: "Annual compliance & deployment license",
+    desc: "Dedicated single-tenant VPC or air-gapped on-premise installation for regulated global enterprises.",
     highlight: false,
+    ctaText: "Contact Enterprise Sales",
     features: [
-      "100% self-hosted on private Kubernetes / Docker",
-      "Air-gapped model execution with no external egress",
-      "Custom security hardening & cryptographic audit logs",
-      "Tailored hardware & GPU acceleration tuning",
-      "Direct engineering architecture support"
+      "Unlimited parallel test execution concurrency",
+      "Dedicated single-tenant VPC or Air-Gapped Kubernetes",
+      "High-throughput vector hashing across multi-billion row DWs",
+      "Custom cryptographic audit ledger & compliance exports",
+      "Strict Row-Level Security multi-tenant auditing",
+      "Dedicated Enterprise Solutions Architect & 24/7/365 SLA"
     ]
   }
+];
+
+const featureComparison = [
+  { feature: "AI Studio (Requirements to Test)", starter: "Included", pro: "Included", enterprise: "Included (Custom Models)" },
+  { feature: "Automation Studio (Self-Healing)", starter: "Included", pro: "Included", enterprise: "Included" },
+  { feature: "API Testing Studio", starter: "Basic", pro: "Advanced Fuzzing", enterprise: "Full Microservice Mesh" },
+  { feature: "ETL / Data Testing Studio", starter: "—", pro: "Up to 10M rows/run", enterprise: "Unlimited High-Throughput" },
+  { feature: "Performance Testing Studio", starter: "—", pro: "Up to 50k VUs", enterprise: "Millions of Distributed VUs" },
+  { feature: "Security Studio (Continuous DAST)", starter: "—", pro: "OWASP Top 10", enterprise: "Full DAST + RLS Auditing" },
+  { feature: "Manual Testing Studio & Replay", starter: "5 Users", pro: "25 Users", enterprise: "Unlimited Users" },
+  { feature: "Deployment Model", starter: "Multi-Tenant Cloud", pro: "Multi-Tenant Cloud", enterprise: "Dedicated VPC / Air-Gapped" },
+  { feature: "Support SLA", starter: "Standard", pro: "Priority 24/5", enterprise: "Dedicated 24/7/365 (99.99%)" }
 ];
 ---
 
 <Layout
-  title="Pricing & Deployment Tiers"
-  description="Transparent quality engineering tiers. Explore Valtrix AI Team Pilot, Enterprise Production, and Sovereign On-Premises deployment models."
+  title="Pricing & Deployment Plans — VERIQON ONE"
+  description="Explore VERIQON ONE enterprise pricing plans: Starter, Professional, and Enterprise deployment models developed by VERIQON TECHNOLOGIES."
 >
-  <div class="container" style="padding-top: 2.5rem;">
-    <Breadcrumbs items={[{ label: 'Pricing' }]} />
+  <section class="pricing-hero">
+    <div class="container text-center">
+      <Breadcrumbs items={[{ label: 'Pricing' }]} />
 
-    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
-      <div class="badge">
-        <span class="badge-dot"></span> Deployment Models
+      <div class="badge badge-dark">
+        <span class="badge-dot"></span> SCALABLE ENTERPRISE LICENSING
       </div>
-      <h1 class="heading-xl">Enterprise Quality Tiers</h1>
-      <p class="subheading">
-        Flexible licensing engineered for scalable deployment—from focused team evaluations to air-gapped sovereign installations.
+      <h1 class="heading-xl hero-title">
+        Transparent Quality Engineering Plans
+      </h1>
+      <p class="subheading subheading-dark hero-lead">
+        Designed for teams of every scale—from focused engineering squads to mission-critical, regulated global enterprises.
       </p>
 
       <!-- Review Notice Banner -->
-      <div class="review-notice" style="max-width: 780px; margin-left: auto; margin-right: auto; text-align: left;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;">
+      <div class="review-notice" style="max-width: 780px; margin-inline: auto; margin-top: 2rem; text-align: left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0877E8" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="12" y1="8" x2="12" y2="12"></line>
           <line x1="12" y1="16" x2="12.01" y2="16"></line>
         </svg>
         <div>
-          <strong>Enterprise Review Notice:</strong> Commercial pricing, pilot durations, and hardware sizing are customized during architectural review. Specific rates are tailored to test workload volume, concurrency requirements, and deployment environment.
+          <strong>Enterprise Licensing Note:</strong> Commercial pricing and hardware sizing are customized during architectural review to reflect specific test concurrency, dataset volume, and deployment topology (Cloud vs. Dedicated VPC).
         </div>
       </div>
-    </header>
-
-    <div class="grid-3" style="margin-top: 3rem;">
-      {tiers.map((tier) => (
-        <div class={`card tier-card ${tier.highlight ? 'tier-highlight' : ''}`}>
-          {tier.highlight && (
-            <div class="tier-badge">Recommended for Enterprises</div>
-          )}
-          <h2 class="heading-md" style="font-size: 1.35rem;">{tier.name}</h2>
-          <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-top: 0.5rem; min-height: 40px;">
-            {tier.desc}
-          </p>
-
-          <div class="tier-price-box">
-            <div class="tier-price">{tier.price}</div>
-            <div class="tier-cadence">{tier.cadence}</div>
-          </div>
-
-          <div class="tier-features">
-            <div class="tier-features-title">What's Included:</div>
-            <ul class="feature-list">
-              {tier.features.map((f) => (
-                <li>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" style="flex-shrink: 0;">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div style="margin-top: 2rem;">
-            <a href="/contact" class={`btn ${tier.highlight ? 'btn-primary' : 'btn-secondary'}`} style="width: 100%;">
-              Inquire About Tier
-            </a>
-          </div>
-        </div>
-      ))}
     </div>
+  </section>
 
-    <CtaSection
-      title="Request a Custom Deployment Assessment"
-      subtitle="Our engineering specialists will evaluate your concurrency requirements and provide a detailed deployment architecture plan."
-    />
-  </div>
+  <!-- Pricing Cards Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-3">
+        {tiers.map((tier) => (
+          <div class={`card tier-card ${tier.highlight ? 'tier-highlight' : ''}`}>
+            <div>
+              <div class="tier-badge">{tier.badge}</div>
+              <h2 class="heading-md" style="font-size: 1.45rem; margin-top: 10px;">{tier.name}</h2>
+              <p style="color: var(--text-secondary); font-size: 13.5px; line-height: 1.55; margin-top: 6px; min-height: 42px;">
+                {tier.desc}
+              </p>
+
+              <div class="tier-price-box">
+                <div class="tier-price">{tier.price}</div>
+                <div class="tier-cadence">{tier.cadence}</div>
+              </div>
+
+              <div class="tier-features-title">What&apos;s Included:</div>
+              <ul class="feature-checklist">
+                {tier.features.map((f) => (
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0877E8" stroke-width="2.5" style="flex-shrink: 0;">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div style="margin-top: 2rem;">
+              <a href="/request-demo" class={`btn ${tier.highlight ? 'btn-primary' : 'btn-secondary'}`} style="width: 100%;">
+                {tier.ctaText}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Plan Feature Comparison Table -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center section-header">
+        <h2 class="heading-lg">Detailed Plan Feature Comparison</h2>
+        <p class="subheading">Side-by-side evaluation of capabilities across all three deployment tiers.</p>
+      </div>
+
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th style="width: 40%;">Capability / Studio</th>
+              <th style="width: 20%;">Starter</th>
+              <th style="width: 20%;" class="col-highlight">Professional</th>
+              <th style="width: 20%;">Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            {featureComparison.map((row) => (
+              <tr>
+                <td class="feature-name">{row.feature}</td>
+                <td>{row.starter}</td>
+                <td class="col-highlight"><strong>{row.pro}</strong></td>
+                <td>{row.enterprise}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CtaSection
+    title="Need a Custom Architecture Assessment?"
+    subtitle="Our enterprise technical solutions team will review your testing throughput requirements and calculate your optimal runner configuration."
+    primaryCtaText="Request a Demo"
+    primaryCtaHref="/request-demo"
+    secondaryCtaText="Contact Sales Team"
+    secondaryCtaHref="/contact"
+  />
 </Layout>
 
 <style>
+  .pricing-hero {
+    background: linear-gradient(180deg, #061B36 0%, #0A2547 100%);
+    color: #FFFFFF;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-title {
+    color: #FFFFFF;
+    margin-top: 1rem;
+  }
+
+  .hero-lead {
+    margin-top: 1.25rem;
+    margin-inline: auto;
+  }
+
   .tier-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
     position: relative;
+    border-top: 4px solid var(--border-medium);
   }
 
   .tier-highlight {
-    border-color: rgba(168, 85, 247, 0.5);
-    background: radial-gradient(circle at 50% 0%, #1e1635 0%, #131020 100%);
-    box-shadow: 0 0 40px -10px rgba(124, 58, 237, 0.4);
+    border-top: 4px solid var(--royal-blue);
+    box-shadow: 0 12px 36px rgba(8, 119, 232, 0.16);
+    background: #FFFFFF;
   }
 
   .tier-badge {
-    position: absolute;
-    top: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #7c3aed;
-    color: #ffffff;
-    font-size: 0.7rem;
+    font-size: 11px;
     font-family: var(--font-mono);
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 0.25rem 0.85rem;
-    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    font-weight: 750;
+    color: var(--royal-blue);
+    letter-spacing: 0.1em;
   }
 
   .tier-price-box {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border-subtle);
+    margin-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-light);
   }
 
   .tier-price {
-    font-size: 1.75rem;
+    font-size: 26px;
     font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--text-primary);
   }
 
   .tier-cadence {
-    font-size: 0.8rem;
+    font-size: 12.5px;
     color: var(--text-muted);
-    margin-top: 0.25rem;
+    margin-top: 2px;
   }
 
   .tier-features-title {
-    font-size: 0.75rem;
+    font-size: 12px;
     font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-secondary);
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-top: 1.25rem;
     margin-bottom: 0.75rem;
-    font-weight: 700;
   }
 
-  .feature-list {
+  .feature-checklist {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
+    gap: 10px;
   }
 
-  .feature-list li {
+  .feature-checklist li {
     display: flex;
     align-items: flex-start;
-    gap: 0.6rem;
-    font-size: 0.85rem;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--text-primary);
+  }
+
+  /* Comparison Table */
+  .comparison-table-wrapper {
+    background: #FFFFFF;
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .comparison-table th {
+    background: #F1F7FD;
+    padding: 16px 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-medium);
+  }
+
+  .comparison-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-light);
     color: var(--text-secondary);
-    line-height: 1.5;
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .feature-name {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .col-highlight {
+    background: rgba(8, 119, 232, 0.04);
+    color: var(--royal-blue);
   }
 </style>
-

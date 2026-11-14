@@ -4,63 +4,62 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 ---
 
 <Layout
-  title="Privacy Policy | Enterprise Data Protection"
-  description="Valtrix AI Privacy Policy. Learn about our strict data protection standards, zero telemetry in private mode, and enterprise data isolation."
+  title="Privacy Policy | Enterprise Data Protection | VERIQON TECHNOLOGIES"
+  description="VERIQON TECHNOLOGIES Privacy Policy. Learn about our strict enterprise data protection standards, zero telemetry in private mode, and dedicated tenant data isolation for VERIQON ONE."
 >
   <div class="container" style="padding-top: 2.5rem; padding-bottom: 5rem;">
     <Breadcrumbs items={[{ label: 'Privacy Policy' }]} />
 
     <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2.5rem; text-align: left;">
-      <div class="eyebrow">
+      <div class="badge">
         <span class="badge-dot"></span> Compliance &amp; Trust
       </div>
-      <h1 class="title">Privacy Policy</h1>
-      <p style="color: var(--muted2); font-size: 14px; margin-top: 8px;">Effective Date: November 2026 &bull; Valtrix AI</p>
+      <h1 class="heading-xl" style="margin-top: 0.75rem;">Privacy Policy</h1>
+      <p style="color: var(--text-muted); font-size: 14px; margin-top: 8px;">
+        Effective Date: November 2026 &bull; VERIQON TECHNOLOGIES
+      </p>
     </header>
 
-    <div class="card legal-content">
+    <div class="card legal-content" style="max-width: 900px; padding: 2.5rem; display: flex; flex-direction: column; gap: 2rem; line-height: 1.8;">
       <section>
         <h2 class="heading-md">1. Commitment to Enterprise Privacy</h2>
         <p>
-          At Valtrix AI, we engineer our software verification products around the principle of zero-trust data isolation. We recognize that application codebases, test fixtures, API schemas, and proprietary database architectures represent our customers' most sensitive intellectual property.
+          At <strong>VERIQON TECHNOLOGIES</strong>, we engineer our software verification products around the foundational principle of zero-trust data isolation. We recognize that application codebases, test fixtures, API schemas, and proprietary database architectures represent our enterprise customers' most sensitive intellectual property.
         </p>
       </section>
 
       <section>
-        <h2 class="heading-md">2. Static Marketing Site Data Collection</h2>
+        <h2 class="heading-md">2. Marketing Site Data Collection</h2>
         <p>
-          This website (hosted as a static site on Render) does not use invasive third-party tracking pixels, biometric identifiers, or cross-site tracking cookies. When you voluntarily submit inquiries via our walkthrough request forms, the provided contact details are utilized solely for scheduling technical architecture reviews.
+          This website does not deploy invasive third-party tracking pixels, biometric identifiers, or cross-site tracking cookies. When you voluntarily submit inquiries via our demonstration or walkthrough request forms, the contact details provided are utilized solely for scheduling technical architecture reviews and enterprise evaluations.
         </p>
       </section>
 
       <section>
         <h2 class="heading-md">3. Zero Application Telemetry in Private Deployments</h2>
         <p>
-          For enterprise, on-premises, and self-hosted instances of Valtrix AI testing studios:
+          For enterprise, on-premises, and self-hosted VPC instances of <strong>VERIQON ONE</strong>:
         </p>
-        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
-          <li>No proprietary customer source code, requirements text, or test execution output is transmitted to public cloud LLMs unless explicitly configured by the customer.</li>
-          <li>Local model options (via Ollama or internal enterprise gateways) keep 100% of reasoning on private hardware.</li>
+        <ul style="margin-left: 1.5rem; margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-secondary);">
+          <li>No proprietary customer source code, requirements documentation, or test execution artifacts are transmitted to public LLM providers unless explicitly configured by the customer.</li>
+          <li>Local model execution options (via internal enterprise gateways or self-hosted reasoning nodes) ensure that 100% of synthesis and execution logic remains on customer-controlled hardware.</li>
           <li>Cryptographic audit trails and database inspection logs remain exclusively within the customer's owned infrastructure.</li>
         </ul>
       </section>
 
       <section>
-        <h2 class="heading-md">4. Data Retention &amp; Rights</h2>
+        <h2 class="heading-md">4. Data Retention &amp; Customer Rights</h2>
         <p>
-          You may request deletion or review of any submitted contact information at any time by contacting our team directly at <a href="mailto:contact@valtrix.ai" style="color: var(--cyan); text-decoration: underline;">contact@valtrix.ai</a>.
+          You may request deletion, verification, or review of any submitted contact information at any time by contacting our data protection officer directly at <a href="mailto:privacy@veriqon.com" style="color: var(--royal-blue); text-decoration: underline;">privacy@veriqon.com</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="heading-md">5. Security Governance</h2>
+        <p>
+          VERIQON TECHNOLOGIES enforces strict access controls, multi-factor authentication, end-to-end encryption for data in transit and at rest, and regular third-party security audits across all managed infrastructure.
         </p>
       </section>
     </div>
   </div>
 </Layout>
-
-<style>
-  .legal-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    color: var(--muted);
-    line-height: 1.8;
-  }
-</style>

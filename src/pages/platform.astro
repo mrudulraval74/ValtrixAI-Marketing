@@ -4,141 +4,228 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import StudioMockup from '../components/StudioMockup.astro';
 import CtaSection from '../components/CtaSection.astro';
 
-const architectureLayers = [
+const platformPillars = [
   {
     step: "01",
-    title: "Ingestion & Discovery Layer",
-    desc: "Ingests business requirements (Jira, Confluence, Markdown), analyzes target application architecture, OpenAPI specs, and database schemas with zero-trust isolation."
+    title: "Requirements Ingestion & Discovery",
+    desc: "Ingests business requirements from Jira, Confluence, OpenAPI specifications, and event schemas with zero-trust perimeter isolation.",
+    capabilities: ["Jira & Confluence Sync", "OpenAPI & AsyncAPI Parsing", "Architecture Graph Mapping"]
   },
   {
     step: "02",
-    title: "AI Synthesis & Reasoning Engine",
-    desc: "Applies specialized multi-modal models to infer user journeys, calculate risk boundaries, synthesize edge cases, and create immutable configuration plans."
+    title: "AI Synthesis & Reasoning Topology",
+    desc: "Applies specialized multi-modal models to infer user journeys, calculate risk boundaries, synthesize edge cases, and create immutable configuration plans.",
+    capabilities: ["Autonomous Test Suite Generation", "Dynamic Fixture Synthesis", "Boundary & Edge Prediction"]
   },
   {
     step: "03",
-    title: "Orchestration & Governance",
-    desc: "Provides human-in-the-loop review gates, approval checkpoints, RBAC enforcement, and audit trail persistence before any test script or execution occurs."
+    title: "Self-Healing Execution Fabric",
+    desc: "Executes distributed test graphs across local, containerized, or private VPC target endpoints, repairing selector drifts and DOM fluctuations dynamically.",
+    capabilities: ["Dynamic DOM Self-Healing", "Cross-Browser Virtual Grid", "Parallel Sharded Runners"]
   },
   {
     step: "04",
-    title: "Self-Healing Execution Fabric",
-    desc: "Executes distributed test graphs across local, containerized, or cloud target endpoints, monitoring runtime state and repairing selector drifts on the fly."
+    title: "Continuous Governance & Traceability",
+    desc: "Provides human-in-the-loop review gates, approval checkpoints, RBAC enforcement, and audit trail persistence before any test script or execution occurs.",
+    capabilities: ["Zero-Trust RBAC", "Cryptographic Audit Ledger", "Bi-directional Defect Traceability"]
+  }
+];
+
+const coreCapabilities = [
+  {
+    title: "Requirements Management",
+    desc: "Treat requirements as living verification models. Auto-generate test conditions whenever acceptance criteria drift.",
+    badge: "CORE ENGINE"
+  },
+  {
+    title: "Unified Test Management",
+    desc: "Single pane of glass across manual exploratory scripts, automated runs, load simulations, and security scans.",
+    badge: "MANAGEMENT"
+  },
+  {
+    title: "Intelligent Execution Engine",
+    desc: "High-throughput parallel test execution engine with smart test selection to run only impacted tests on PR builds.",
+    badge: "EXECUTION"
+  },
+  {
+    title: "Continuous Defect Triaging",
+    desc: "Automatic stack trace decoding, DOM state snapshotting, and regression classification mapped directly to source commits.",
+    badge: "ANALYTICS"
+  },
+  {
+    title: "Enterprise Ecosystem Connectors",
+    desc: "Native plugins for GitHub Actions, GitLab CI, Jenkins, Jira, Datadog, Slack, and enterprise SSO providers.",
+    badge: "INTEGRATION"
+  },
+  {
+    title: "Governance & Security",
+    desc: "SOC 2-ready controls, fine-grained access policies, and encrypted data retention with customer-managed keys.",
+    badge: "SECURITY"
   }
 ];
 ---
 
 <Layout
-  title="Platform Architecture & Multi-Studio Engine"
-  description="Explore the Valtrix AI Platform Architecture. A zero-trust, requirements-driven AI quality engineering platform engineered for deterministic verification."
+  title="VERIQON ONE Platform Architecture — Enterprise Quality Engineering"
+  description="Explore the VERIQON ONE Platform Architecture: a unified enterprise quality engineering platform developed by VERIQON TECHNOLOGIES connecting requirements to execution."
 >
-  <div class="container" style="padding-top: 2.5rem;">
-    <Breadcrumbs items={[{ label: 'Platform' }]} />
-    
-    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 3rem;">
-      <div class="badge">
-        <span class="badge-dot"></span> Unified Quality Architecture
+  <!-- Page Header -->
+  <section class="platform-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Platform Architecture' }]} />
+      
+      <div class="badge badge-dark">
+        <span class="badge-dot"></span> UNIFIED ENTERPRISE QUALITY ARCHITECTURE
       </div>
-      <h1 class="heading-xl">The Valtrix AI Platform</h1>
-      <p class="subheading">
-        Engineered from the ground up for zero-trust enterprise testing, continuous verification, and end-to-end traceability from requirement to code.
+      <h1 class="heading-xl hero-title">
+        The VERIQON ONE <br />
+        <span class="gradient-text-light">Quality Engineering Platform</span>
+      </h1>
+      <p class="subheading subheading-dark hero-lead">
+        Developed by <strong>VERIQON TECHNOLOGIES</strong>, VERIQON ONE unifies requirements ingestion, self-healing automation, ETL validation, performance, and security into a single deterministic operating fabric.
       </p>
-    </header>
+    </div>
+  </section>
 
-    <StudioMockup
-      studioName="Valtrix Central Platform Bus"
-      stageBadge="MULTI-LAYER FABRIC"
-      activeTab="Architecture Review"
-      codeSnippet={`// Valtrix Platform Core Topology
-export interface PlatformEngineConfig {
-  governance: "ZERO_TRUST_RBAC";
-  modelGateway: "LOCAL_OLLAMA_OR_ENTERPRISE_API";
-  tenantIsolation: "STRICT_RLS";
-  auditLevel: "CONTINUOUS_CRYPTOGRAPHIC";
+  <!-- Live Platform Topology Console -->
+  <section class="section" style="padding-top: 0; margin-top: -30px;">
+    <div class="container">
+      <StudioMockup
+        studioName="Platform Topology Engine"
+        stageBadge="UNIFIED QUALITY FABRIC"
+        activeTab="Requirement Graph"
+        codeSnippet={`// VERIQON ONE Core Architecture Engine Config
+export interface VeriqonPlatformTopology {
+  governance: "ZERO_TRUST_ENTERPRISE_RBAC";
+  modelGateway: "PRIVATE_VPC_LOCAL_OR_DEDICATED_API";
+  tenantIsolation: "STRICT_ROW_LEVEL_SECURITY";
+  auditLedger: "CONTINUOUS_CRYPTOGRAPHIC_PERSISTENCE";
 }`}
-    />
+      />
+    </div>
+  </section>
 
-    <!-- Architecture Layers -->
-    <section class="section" style="padding-top: 2rem;">
-      <div class="text-center" style="margin-bottom: 3rem;">
+  <!-- Four-Tier Architectural Fabric -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center section-header">
+        <div class="eyebrow">
+          <span class="badge-dot"></span> Platform Fabric
+        </div>
         <h2 class="heading-lg">Four-Tier Quality Architecture</h2>
-        <p class="subheading">Deterministic reliability built upon modular enterprise services.</p>
+        <p class="subheading">
+          Built upon modular, high-throughput enterprise services designed for predictability, security, and scalability.
+        </p>
       </div>
 
       <div class="grid-2">
-        {architectureLayers.map((layer) => (
+        {platformPillars.map((p) => (
           <div class="card">
-            <div class="layer-step">{layer.step}</div>
-            <h3 class="heading-md" style="margin-top: 0.5rem;">{layer.title}</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">
-              {layer.desc}
+            <div class="tier-num">{p.step}</div>
+            <h3 class="heading-md" style="margin-top: 10px;">{p.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 14.5px; line-height: 1.7; margin-top: 8px;">
+              {p.desc}
+            </p>
+            <div class="capability-tags">
+              {p.capabilities.map((c) => (
+                <span class="cap-tag">{c}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Capabilities Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center section-header">
+        <div class="eyebrow">
+          <span class="badge-dot"></span> Core Modules
+        </div>
+        <h2 class="heading-lg">Complete Enterprise Quality Lifecycle</h2>
+        <p class="subheading">
+          Every component required to manage, execute, and govern enterprise test workloads at global scale.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        {coreCapabilities.map((cap) => (
+          <div class="card">
+            <div class="badge-module">{cap.badge}</div>
+            <h3 class="heading-md" style="margin-top: 12px;">{cap.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.65; margin-top: 8px;">
+              {cap.desc}
             </p>
           </div>
         ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Studio Directory -->
-    <section class="section" id="studios">
-      <div class="text-center" style="margin-bottom: 3rem;">
-        <h2 class="heading-lg">Connected Quality Studios</h2>
-        <p class="subheading">Each studio provides a domain-specific workspace backed by the shared core platform engine.</p>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3 class="heading-md"><a href="/studios/ai-end-to-end" style="color: var(--text-primary);">AI End-to-End Studio →</a></h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-            Unified requirements-driven testing workspace connecting requirements, architecture discovery, configuration plans, approvals, and defect capture.
-          </p>
-        </div>
-        <div class="card">
-          <h3 class="heading-md"><a href="/studios/automation" style="color: var(--text-primary);">Automation Studio →</a></h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-            Self-healing test execution engine with visual locator graphs and automated selector updates.
-          </p>
-        </div>
-        <div class="card">
-          <h3 class="heading-md"><a href="/studios/etl-testing" style="color: var(--text-primary);">ETL Testing Studio →</a></h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-            Continuous data transformation audit, schema drift detection, and high-volume data validation.
-          </p>
-        </div>
-        <div class="card">
-          <h3 class="heading-md"><a href="/studios/performance-testing" style="color: var(--text-primary);">Performance Studio →</a></h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-            Synthetic user stress runs, latency forecasting, and multi-tenant bottleneck identification.
-          </p>
-        </div>
-        <div class="card">
-          <h3 class="heading-md"><a href="/studios/security-testing" style="color: var(--text-primary);">Security Studio →</a></h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-            Automated DAST scanning, Row-Level Security verification, and tenant isolation probes.
-          </p>
-        </div>
-        <div class="card">
-          <h3 class="heading-md"><a href="/studios/manual-testing" style="color: var(--text-primary);">Manual Testing Studio →</a></h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-            AI-assisted exploratory flows, smart session recording, and automated test-case documentation.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <CtaSection />
-  </div>
+  <!-- CTA Section -->
+  <CtaSection
+    title="Experience the VERIQON ONE Platform Architecture"
+    subtitle="Connect with a VERIQON TECHNOLOGIES enterprise architect to review deployment models, VPC isolation, and integration topologies."
+    primaryCtaText="Request a Demo"
+    primaryCtaHref="/request-demo"
+    secondaryCtaText="View Specialist Studios"
+    secondaryCtaHref="/ai-studios"
+  />
 </Layout>
 
 <style>
-  .text-center {
-    text-align: center;
+  .platform-hero {
+    background: linear-gradient(180deg, #061B36 0%, #0A2547 100%);
+    color: #FFFFFF;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
   }
 
-  .layer-step {
-    font-size: 1.25rem;
+  .hero-title {
+    color: #FFFFFF;
+    margin-top: 1rem;
+  }
+
+  .hero-lead {
+    margin-top: 1.25rem;
+  }
+
+  .tier-num {
+    font-size: 18px;
+    font-weight: 850;
     font-family: var(--font-mono);
-    font-weight: 800;
-    color: var(--primary-accent);
+    color: var(--royal-blue);
+  }
+
+  .capability-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .cap-tag {
+    font-size: 11.5px;
+    font-weight: 650;
+    color: var(--royal-blue);
+    background: rgba(8, 119, 232, 0.08);
+    border: 1px solid rgba(8, 119, 232, 0.18);
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+
+  .badge-module {
+    font-size: 10.5px;
+    font-family: var(--font-mono);
+    font-weight: 750;
+    color: var(--cyan);
+    background: #061B36;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
   }
 </style>
-

@@ -17,12 +17,12 @@ const {
   description,
   canonicalUrl = Astro.url.href,
   ogType = 'website',
-  ogImage = 'https://valtrix-ai-marketing.onrender.com/og-image.svg',
+  ogImage = '/og-image.svg',
   noindex = false
 } = Astro.props;
 
 const siteUrl = 'https://valtrix-ai-marketing.onrender.com';
-const fullTitle = `${title} | Valtrix AI`;
+const fullTitle = `${title} | VERIQON TECHNOLOGIES`;
 
 // Structured Data JSON-LD Schema
 const schemaData = {
@@ -31,29 +31,28 @@ const schemaData = {
     {
       "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
-      "name": "Valtrix AI",
+      "name": "VERIQON TECHNOLOGIES",
+      "alternateName": "Veriqon Technologies Inc.",
       "url": siteUrl,
-      "logo": `${siteUrl}/favicon.svg`,
-      "description": "Enterprise AI Quality Engineering Platform delivering autonomous testing studios, model governance, and full-stack traceability."
+      "logo": `${siteUrl}/brand/veriqon-technologies/veriqon-emblem.svg`,
+      "slogan": "Engineering Trust Through Intelligence",
+      "description": "Enterprise technology organisation delivering intelligent quality engineering, testing automation, and enterprise software systems."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${siteUrl}/#software`,
+      "name": "VERIQON ONE",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Cloud / Web / On-Premise",
+      "publisher": { "@id": `${siteUrl}/#organization` },
+      "description": "Comprehensive Enterprise Quality Engineering Platform unifying requirements, test management, automation, ETL data validation, performance, and security testing."
     },
     {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       "url": siteUrl,
-      "name": "Valtrix AI",
+      "name": "VERIQON TECHNOLOGIES",
       "publisher": { "@id": `${siteUrl}/#organization` }
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "Valtrix AI Quality Engineering Platform",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "description": "Enterprise evaluation and tiered quality engineering packages available upon review."
-      }
     }
   ]
 };
@@ -80,7 +79,7 @@ const schemaData = {
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:site_name" content="Valtrix AI" />
+    <meta property="og:site_name" content="VERIQON TECHNOLOGIES" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -90,10 +89,10 @@ const schemaData = {
     <meta property="twitter:image" content={ogImage} />
 
     <!-- Color Scheme & Theme Color -->
-    <meta name="theme-color" content="#0c0a14" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#061B36" />
+    <meta name="color-scheme" content="light" />
 
-    <!-- JSON-LD Structured Data -->
+    <!-- Preload Fonts & Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
   </head>
   <body>
@@ -104,4 +103,3 @@ const schemaData = {
     <Footer />
   </body>
 </html>
-

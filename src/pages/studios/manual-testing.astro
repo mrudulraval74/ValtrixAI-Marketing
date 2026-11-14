@@ -4,70 +4,86 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import StudioMockup from '../../components/StudioMockup.astro';
 import CtaSection from '../../components/CtaSection.astro';
 
-const capabilities = [
+const manualFeatures = [
   {
-    title: "AI Session Recording",
-    desc: "Captures exploratory testing sessions automatically, generating structured step-by-step reproduction instructions and network logs."
+    title: "AI-Assisted Session Capture",
+    desc: "Records exploratory test sessions with DOM element references, user click streams, network timing, and console error events."
   },
   {
-    title: "Instant Defect Drafting",
-    desc: "Converts user interactions, console errors, and screenshots into comprehensive bug tickets mapped to requirements."
+    title: "Instant Defect Ticket Synthesis",
+    desc: "Transforms recorded exploratory bugs into structured, reproduction-ready Jira and GitHub issues with clean step-by-step instructions."
   },
   {
-    title: "Heuristic Test Case Synthesis",
-    desc: "Analyzes manual tester actions and suggests automated test case scripts that can be transferred directly to Automation Studio."
+    title: "Session Replay & State Diffing",
+    desc: "Allows engineers to visually replay defective sessions alongside state snapshots to isolate root causes in minutes."
   },
   {
-    title: "Collaborative Review",
-    desc: "Allows QA engineers and developers to review session video, inspect network payloads, and approve findings synchronously."
+    title: "Automated Regression Conversion",
+    desc: "Converts manual test paths into permanent, automated self-healing test scripts with a single click."
   }
 ];
 ---
 
 <Layout
-  title="Manual Testing Studio | AI-Assisted Exploratory QA"
-  description="Accelerate exploratory testing with Valtrix Manual Testing Studio. Smart session capture, instant defect drafting, and seamless conversion to automated suites."
+  title="Manual Testing Studio — VERIQON ONE AI-Assisted Exploratory QA"
+  description="Explore Manual Testing Studio in VERIQON ONE, developed by VERIQON TECHNOLOGIES: transforms exploratory sessions into structured, reproducible defect assets."
 >
-  <div class="container" style="padding-top: 2.5rem;">
-    <Breadcrumbs items={[{ label: 'Studios', href: '/platform#studios' }, { label: 'Manual Testing Studio' }]} />
+  <div class="container" style="padding-top: 2rem;">
+    <Breadcrumbs items={[{ label: 'Specialist Studios', href: '/ai-studios' }, { label: 'Manual Testing Studio' }]} />
 
     <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
       <div class="badge">
-        <span class="badge-dot"></span> Human-in-the-Loop QA
+        <span class="badge-dot"></span> VERIQON ONE SPECIALIST STUDIO
       </div>
       <h1 class="heading-xl">Manual Testing Studio</h1>
       <p class="subheading">
-        Supercharges exploratory and manual testing workflows with AI assistance, automated reproduction documentation, and friction-free automation promotion.
+        AI-assisted exploratory flows, automatic step-by-step defect reproduction synthesis, and seamless conversion into permanent automated regression suites.
       </p>
     </header>
 
     <StudioMockup
-      studioName="Manual Testing & Session Explorer"
-      stageBadge="EXPLORATORY CAPTURE"
-      activeTab="Session Recording"
-      codeSnippet={`// Manual Session Synthesizer
-const session = await valtrix.captureManualSession({
-  testerId: "qa-lead-01",
-  targetApp: "Client-Server Management Portal",
-  autoPromoteToAutomation: true
+      studioName="Manual Testing Studio"
+      stageBadge="EXPLORATORY &amp; REPLAY"
+      activeTab="Exploratory Session"
+      executionMetrics={[
+        { label: "Steps Recorded", value: "34 Actions", status: "info" },
+        { label: "Reproduction Accuracy", value: "100%", status: "pass" },
+        { label: "Defect Draft Synthesized", value: "Ready", status: "pass" }
+      ]}
+      codeSnippet={`// VERIQON ONE Session Replay & Defect Exporter
+const defectTicket = await veriqon.exportExploratoryDefect({
+  sessionId: "SESSION_EXP_2026_114",
+  targetTracker: "JIRA_ENTERPRISE_CLOUD",
+  includeNetworkLogs: true,
+  generateAutomatedRegressionTest: true
 });`}
     />
 
     <section class="section" style="padding-top: 2rem;">
+      <div class="text-center section-header">
+        <h2 class="heading-lg">Supercharged Exploratory Testing</h2>
+        <p class="subheading">Empower manual QA professionals with intelligent reproduction tools and instant automation handoff.</p>
+      </div>
+
       <div class="grid-2">
-        {capabilities.map((c) => (
+        {manualFeatures.map((f) => (
           <div class="card">
-            <h3 class="heading-md">{c.title}</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">{c.desc}</p>
+            <h3 class="heading-md" style="color: var(--royal-blue);">{f.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.7; margin-top: 8px;">
+              {f.desc}
+            </p>
           </div>
         ))}
       </div>
     </section>
 
-    <CtaSection 
-      title="Streamline Your Exploratory Testing"
-      subtitle="Discover how AI can eliminate hours of manual bug reporting and test writing."
+    <CtaSection
+      title="Bridge the Gap Between Exploratory QA and Automated CI/CD"
+      subtitle="See how VERIQON ONE empowers QA engineers to build automated regression suites from everyday exploratory testing."
+      primaryCtaText="Request a Demo"
+      primaryCtaHref="/request-demo"
+      secondaryCtaText="View All 7 Studios"
+      secondaryCtaHref="/ai-studios"
     />
   </div>
 </Layout>
-

@@ -2,73 +2,87 @@
 const navItems = [
   { name: 'Platform', href: '/platform' },
   {
-    name: 'Studios',
-    href: '/platform#studios',
+    name: 'AI Studios',
+    href: '/ai-studios',
     children: [
-      { name: 'AI End-to-End Studio', href: '/studios/ai-end-to-end', desc: 'Autonomous discovery to synthesis' },
-      { name: 'Automation Studio', href: '/studios/automation', desc: 'Self-healing test execution engine' },
-      { name: 'ETL Testing Studio', href: '/studios/etl-testing', desc: 'Data warehouse & pipeline validation' },
-      { name: 'Performance Studio', href: '/studios/performance-testing', desc: 'Predictive bottleneck analysis' },
-      { name: 'Security Studio', href: '/studios/security-testing', desc: 'Automated DAST & threat modeling' },
-      { name: 'Manual Testing Studio', href: '/studios/manual-testing', desc: 'AI-assisted exploratory flows' }
+      { name: 'AI Studio', href: '/studios/ai-studio', desc: 'Autonomous discovery, test synthesis & intelligence' },
+      { name: 'Automation Studio', href: '/studios/automation', desc: 'Self-healing test execution & dynamic locator engine' },
+      { name: 'API Testing Studio', href: '/studios/api-testing', desc: 'Contract verification, payload fuzzing & schema audit' },
+      { name: 'ETL / Data Testing', href: '/studios/etl-testing', desc: 'Data warehouse integrity, vector hashing & reconciliation' },
+      { name: 'Performance Studio', href: '/studios/performance-testing', desc: 'Predictive bottleneck analysis & load simulation' },
+      { name: 'Security Studio', href: '/studios/security-testing', desc: 'Automated DAST, tenant isolation & vulnerability audit' },
+      { name: 'Manual Testing Studio', href: '/studios/manual-testing', desc: 'AI-assisted exploratory flows & session replay' }
     ]
   },
-  { name: 'Features', href: '/features' },
   { name: 'Solutions', href: '/solutions' },
+  { name: 'Industries', href: '/industries' },
+  { name: 'Enterprise', href: '/enterprise' },
   { name: 'Pricing', href: '/pricing' },
-  { name: 'About', href: '/about' },
-  { name: 'Resources', href: '/resources' }
+  { name: 'Resources', href: '/resources' },
+  { name: 'Company', href: '/about' }
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<!-- Fixed Top Navigation Bar (Always Visible at Top of Screen) -->
+<!-- Fixed Corporate Navigation Bar -->
 <header class="nav" id="site-nav">
   <div class="container nav-inner">
-    <!-- Brand -->
-    <a href="/" class="brand" aria-label="Valtrix AI Home">
+    <!-- Parent Company Brand: VERIQON TECHNOLOGIES -->
+    <a href="/" class="brand" aria-label="VERIQON TECHNOLOGIES Home">
       <div class="brand-mark">
-        <svg viewBox="0 0 32 32" fill="none" class="brand-svg">
-          <path d="M16 3L27 8V17C27 24 21 28.5 16 30C11 28.5 5 24 5 17V8L16 3Z" fill="url(#brand-grad)" fill-opacity="0.3" stroke="url(#brand-stroke)" stroke-width="1.5" />
-          <path d="M10 11L16 23L22 11H18.5L16 16.5L13.5 11H10Z" fill="#ffffff" />
+        <svg viewBox="0 0 48 48" fill="none" class="brand-svg">
           <defs>
-            <linearGradient id="brand-grad" x1="0" y1="0" x2="32" y2="32">
-              <stop stop-color="#61adff" />
-              <stop offset="0.5" stop-color="#9d7dff" />
-              <stop offset="1" stop-color="#ff6fd7" />
+            <linearGradient id="nb-v" x1="6" y1="8" x2="26" y2="38" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#08C5E8" />
+              <stop offset="0.6" stop-color="#0877E8" />
+              <stop offset="1" stop-color="#0652A8" />
             </linearGradient>
-            <linearGradient id="brand-stroke" x1="0" y1="0" x2="32" y2="32">
-              <stop stop-color="#79f3ff" />
-              <stop offset="1" stop-color="#9d7dff" />
+            <linearGradient id="nb-silver" x1="18" y1="8" x2="42" y2="34" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FFFFFF" />
+              <stop offset="0.4" stop-color="#E2E8F0" />
+              <stop offset="0.8" stop-color="#94A3B8" />
+              <stop offset="1" stop-color="#64748B" />
+            </linearGradient>
+            <linearGradient id="nb-cyan" x1="26" y1="26" x2="44" y2="40" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#08C5E8" />
+              <stop offset="1" stop-color="#0877E8" />
             </linearGradient>
           </defs>
+          <path d="M6 10L16 38L24 22L17 10H6Z" fill="url(#nb-v)" />
+          <path d="M16 38L21 16L24 22L16 38Z" fill="#08C5E8" fill-opacity="0.9" />
+          <path d="M21 10H37L42 19L36 30H26L30 22H34L37 18L33 14H24L21 10Z" fill="url(#nb-silver)" />
+          <path d="M27 25L39 38H45L33 25H27Z" fill="url(#nb-cyan)" />
         </svg>
       </div>
       <div class="brand-text">
-        <span class="brand-title">Valtrix AI</span>
-        <span class="brand-sub">Intelligence Systems</span>
+        <span class="brand-title">VERIQON</span>
+        <span class="brand-sub">TECHNOLOGIES</span>
       </div>
     </a>
 
     <!-- Desktop Nav Links -->
-    <nav class="desktop-nav" aria-label="Primary">
+    <nav class="desktop-nav" aria-label="Primary Navigation">
       <ul class="nav-links">
         {navItems.map((item) => (
           <li class={`nav-item ${item.children ? 'has-dropdown' : ''}`}>
             <a 
               href={item.href} 
-              class={`nav-link ${currentPath === item.href ? 'active' : ''}`}
+              class={`nav-link ${currentPath === item.href || (item.children && currentPath.startsWith('/studios')) ? 'active' : ''}`}
             >
               {item.name}
               {item.children && (
                 <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 12 12" fill="none">
-                  <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               )}
             </a>
             {item.children && (
               <div class="dropdown-menu">
+                <div class="dropdown-header-tag">
+                  <span class="tag-dot"></span>
+                  <span>VERIQON ONE Specialist Studios</span>
+                </div>
                 <div class="dropdown-grid">
                   {item.children.map((sub) => (
                     <a href={sub.href} class="dropdown-item">
@@ -76,6 +90,11 @@ const currentPath = Astro.url.pathname;
                       <div class="dropdown-item-desc">{sub.desc}</div>
                     </a>
                   ))}
+                </div>
+                <div class="dropdown-footer">
+                  <a href="/ai-studios" class="dropdown-view-all">
+                    Explore all 7 Studios Overview &rarr;
+                  </a>
                 </div>
               </div>
             )}
@@ -86,10 +105,10 @@ const currentPath = Astro.url.pathname;
 
     <!-- Nav Actions -->
     <div class="nav-actions">
-      <a href="/contact" class="btn btn-secondary nav-btn-secondary">Schedule Walkthrough</a>
-      <a href="/platform" class="btn btn-primary nav-btn-primary">Explore Platform</a>
+      <a href="/contact" class="nav-sign-in">Contact Sales</a>
+      <a href="/request-demo" class="btn btn-primary nav-btn-cta">Request a Demo</a>
       
-      <!-- Mobile menu button (always fixed and visible) -->
+      <!-- Mobile menu button -->
       <button class="mobile-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
         <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
           <line x1="3" y1="6" x2="21" y2="6"/>
@@ -108,14 +127,13 @@ const currentPath = Astro.url.pathname;
 <!-- Mobile Drawer Backdrop -->
 <div class="mobile-backdrop" id="mobile-backdrop"></div>
 
-<!-- Mobile Drawer (Clean, Accessible, Scrollable) -->
+<!-- Mobile Drawer -->
 <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
   <div class="mobile-drawer-inner">
-    <!-- Drawer Header with Title and Close Action -->
     <div class="drawer-header-row">
       <div class="drawer-brand">
         <span class="drawer-badge-dot"></span>
-        <span class="drawer-title">Navigation Menu</span>
+        <span class="drawer-title">VERIQON TECHNOLOGIES</span>
       </div>
       <button type="button" class="drawer-close-btn" id="drawer-close-btn" aria-label="Close menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
@@ -126,30 +144,34 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <div class="mobile-drawer-content">
-      <!-- Main Overview -->
-      <div class="mobile-group-label">Architecture</div>
+      <div class="mobile-group-label">Platform &amp; Products</div>
       <a href="/platform" class="mobile-link">Platform Architecture</a>
+      <a href="/ai-studios" class="mobile-link">AI Studios Overview</a>
 
       <!-- Studios Collapsible Group -->
       <div class="studios-group">
         <button type="button" class="studios-toggle-btn" id="studios-toggle-btn" aria-expanded="true">
-          <span>Quality Studios (6)</span>
+          <span>VERIQON ONE Studios (7)</span>
           <svg class="studios-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
         <div class="studios-sublinks" id="studios-sublinks">
-          <a href="/studios/ai-end-to-end" class="mobile-sublink">
-            <span class="sublink-title">AI End-to-End Studio</span>
-            <span class="sublink-tag">Autonomous Synthesis</span>
+          <a href="/studios/ai-studio" class="mobile-sublink">
+            <span class="sublink-title">AI Studio</span>
+            <span class="sublink-tag">Discovery &amp; Intelligence</span>
           </a>
           <a href="/studios/automation" class="mobile-sublink">
             <span class="sublink-title">Automation Studio</span>
             <span class="sublink-tag">Self-Healing Engine</span>
           </a>
+          <a href="/studios/api-testing" class="mobile-sublink">
+            <span class="sublink-title">API Testing Studio</span>
+            <span class="sublink-tag">Contract &amp; Fuzzing</span>
+          </a>
           <a href="/studios/etl-testing" class="mobile-sublink">
-            <span class="sublink-title">ETL Testing Studio</span>
-            <span class="sublink-tag">Data Warehouses</span>
+            <span class="sublink-title">ETL / Data Testing Studio</span>
+            <span class="sublink-tag">Data Warehouse QA</span>
           </a>
           <a href="/studios/performance-testing" class="mobile-sublink">
             <span class="sublink-title">Performance Studio</span>
@@ -166,28 +188,27 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
 
-      <!-- Enterprise & Company -->
       <div class="mobile-group-label" style="margin-top: 1.5rem;">Enterprise &amp; Solutions</div>
-      <a href="/features" class="mobile-link">Features Matrix</a>
-      <a href="/solutions" class="mobile-link">Industry Solutions</a>
-      <a href="/pricing" class="mobile-link">Pricing &amp; Engagements</a>
+      <a href="/solutions" class="mobile-link">Enterprise Solutions</a>
+      <a href="/industries" class="mobile-link">Industry Verticals</a>
+      <a href="/enterprise" class="mobile-link">Enterprise Trust &amp; Architecture</a>
+      <a href="/pricing" class="mobile-link">Pricing &amp; Deployment Plans</a>
 
-      <div class="mobile-group-label" style="margin-top: 1.5rem;">Company &amp; Resources</div>
-      <a href="/about" class="mobile-link">About Valtrix</a>
-      <a href="/resources" class="mobile-link">Technical Guides</a>
-      <a href="/contact" class="mobile-link">Contact Engineering</a>
+      <div class="mobile-group-label" style="margin-top: 1.5rem;">Corporate &amp; Resources</div>
+      <a href="/about" class="mobile-link">About VERIQON TECHNOLOGIES</a>
+      <a href="/resources" class="mobile-link">Technical Documentation &amp; Insights</a>
+      <a href="/contact" class="mobile-link">Contact Enterprise Sales</a>
 
-      <!-- Quick Action Buttons -->
       <div class="mobile-drawer-cta">
-        <a href="/contact" class="btn btn-primary" style="width: 100%;">Schedule Walkthrough</a>
-        <a href="/platform" class="btn btn-secondary" style="width: 100%;">Explore Platform</a>
+        <a href="/request-demo" class="btn btn-primary" style="width: 100%;">Request a Demo</a>
+        <a href="/platform" class="btn btn-secondary" style="width: 100%;">Explore VERIQON ONE</a>
       </div>
     </div>
   </div>
 </aside>
 
 <style>
-  /* Fixed Header: Guaranteed visible on desktop, tablet, and mobile regardless of scroll */
+  /* Fixed Corporate Navigation Bar */
   .nav {
     position: fixed;
     top: 0;
@@ -195,10 +216,9 @@ const currentPath = Astro.url.pathname;
     right: 0;
     width: 100%;
     z-index: 1100;
-    background: rgba(7, 17, 29, 0.88);
-    border-bottom: 1px solid var(--stroke);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: #061B36;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 20px rgba(6, 27, 54, 0.25);
   }
 
   .nav-inner {
@@ -206,32 +226,29 @@ const currentPath = Astro.url.pathname;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 24px;
   }
 
   /* Brand */
   .brand {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     min-width: 0;
     flex-shrink: 0;
   }
 
   .brand-mark {
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
-    position: relative;
-    overflow: hidden;
-    flex: 0 0 auto;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    background: radial-gradient(circle at 28% 24%, rgba(97, 173, 255, 0.28), rgba(157, 125, 255, 0.22) 55%, rgba(255, 111, 215, 0.16) 100%), #0d1629;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(8, 197, 232, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 6px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
   }
 
   .brand-svg {
@@ -242,25 +259,25 @@ const currentPath = Astro.url.pathname;
   .brand-text {
     display: flex;
     flex-direction: column;
-    line-height: 1.15;
+    line-height: 1.1;
   }
 
   .brand-title {
-    font-size: 19px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: var(--text);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
   }
 
   .brand-sub {
-    font-size: 11px;
-    letter-spacing: 0.12em;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--cyan);
-    font-weight: 600;
+    font-weight: 700;
   }
 
-  /* Desktop Navigation */
+  /* Desktop Nav Links */
   .desktop-nav {
     display: flex;
     align-items: center;
@@ -280,34 +297,36 @@ const currentPath = Astro.url.pathname;
   .nav-link {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 10px 14px;
-    border-radius: 999px;
-    color: var(--muted);
+    gap: 5px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #C7D0DA;
     font-size: 14px;
-    font-weight: 550;
-    transition: all 0.2s ease;
+    font-weight: 600;
+    transition: all 0.18s ease;
   }
 
   .nav-link:hover, .nav-link.active {
-    color: var(--text);
-    background: rgba(255, 255, 255, 0.06);
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .dropdown-chevron {
     transition: transform 0.2s ease;
+    color: #C7D0DA;
   }
 
   .has-dropdown:hover .dropdown-chevron {
     transform: rotate(180deg);
+    color: var(--cyan);
   }
 
-  /* Desktop Dropdown Menu */
+  /* Dropdown Menu */
   .dropdown-menu {
     position: absolute;
-    top: calc(100% + 10px);
+    top: calc(100% + 8px);
     left: -20px;
-    width: 500px;
+    width: 540px;
     padding: 16px;
     opacity: 0;
     visibility: hidden;
@@ -315,20 +334,19 @@ const currentPath = Astro.url.pathname;
     transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: none;
     border-radius: var(--radius-md);
-    background: #091322;
-    background: linear-gradient(180deg, #0e1c31 0%, #07111f 100%);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.88), 0 0 40px rgba(97, 173, 255, 0.16);
+    background: #0A2547;
+    border: 1px solid rgba(8, 197, 232, 0.25);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
     z-index: 200;
   }
 
   .dropdown-menu::before {
     content: '';
     position: absolute;
-    top: -12px;
+    top: -10px;
     left: 0;
     right: 0;
-    height: 12px;
+    height: 10px;
   }
 
   .has-dropdown:hover .dropdown-menu {
@@ -338,63 +356,109 @@ const currentPath = Astro.url.pathname;
     pointer-events: auto;
   }
 
+  .dropdown-header-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--cyan);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .tag-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+  }
+
   .dropdown-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 6px;
   }
 
   .dropdown-item {
-    padding: 12px 14px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.035);
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid transparent;
     transition: all 0.18s ease;
   }
 
   .dropdown-item:hover {
-    background: rgba(97, 173, 255, 0.14);
-    border-color: rgba(121, 243, 255, 0.3);
+    background: rgba(8, 119, 232, 0.18);
+    border-color: rgba(8, 197, 232, 0.35);
     transform: translateY(-1px);
   }
 
   .dropdown-item-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
+    font-size: 13.5px;
+    font-weight: 650;
+    color: #FFFFFF;
   }
 
   .dropdown-item-desc {
-    font-size: 12px;
-    color: var(--muted);
+    font-size: 11.5px;
+    color: #C7D0DA;
     margin-top: 3px;
-    line-height: 1.4;
+    line-height: 1.35;
   }
 
+  .dropdown-footer {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: right;
+  }
+
+  .dropdown-view-all {
+    font-size: 12.5px;
+    font-weight: 650;
+    color: var(--cyan);
+  }
+
+  .dropdown-view-all:hover {
+    text-decoration: underline;
+  }
+
+  /* Right-side Nav Actions */
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     flex-shrink: 0;
   }
 
-  .nav-btn-secondary {
-    padding: 10px 18px;
-    font-size: 13px;
-    border-radius: 14px;
+  .nav-sign-in {
+    font-size: 14px;
+    font-weight: 600;
+    color: #C7D0DA;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: color 0.18s ease;
   }
 
-  .nav-btn-primary {
-    padding: 10px 20px;
-    font-size: 13px;
-    border-radius: 14px;
+  .nav-sign-in:hover {
+    color: #FFFFFF;
+  }
+
+  .nav-btn-cta {
+    padding: 9px 18px;
+    font-size: 13.5px;
+    border-radius: 10px;
   }
 
   .mobile-toggle {
     display: none;
     background: transparent;
     border: none;
-    color: var(--text);
+    color: #FFFFFF;
     cursor: pointer;
     padding: 8px;
   }
@@ -403,16 +467,10 @@ const currentPath = Astro.url.pathname;
   .mobile-backdrop { display: none; }
   .mobile-drawer { display: none; }
 
-  /* Mobile and Tablet Breakpoints */
-  @media (max-width: 1140px) {
-    .nav {
-      background: #07111d;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-    }
-
-    .desktop-nav, 
-    .nav-btn-secondary {
+  /* Tablet & Mobile Breakpoints */
+  @media (max-width: 1180px) {
+    .desktop-nav,
+    .nav-sign-in {
       display: none;
     }
 
@@ -420,14 +478,13 @@ const currentPath = Astro.url.pathname;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--stroke);
-      color: var(--text);
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
       cursor: pointer;
-      touch-action: manipulation;
     }
 
     .mobile-backdrop {
@@ -437,7 +494,7 @@ const currentPath = Astro.url.pathname;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.76);
+      background: rgba(6, 27, 54, 0.85);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
       opacity: 0;
@@ -462,9 +519,9 @@ const currentPath = Astro.url.pathname;
       width: min(390px, 100vw);
       height: calc(100vh - var(--nav-h));
       height: calc(100dvh - var(--nav-h));
-      background: #08111e;
-      border-left: 1px solid var(--stroke-strong);
-      box-shadow: -14px 0 44px rgba(0, 0, 0, 0.8);
+      background: #0A2547;
+      border-left: 1px solid rgba(8, 197, 232, 0.25);
+      box-shadow: -14px 0 44px rgba(0, 0, 0, 0.7);
       transform: translateX(100%);
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
       overflow-y: auto;
@@ -490,8 +547,8 @@ const currentPath = Astro.url.pathname;
       align-items: center;
       justify-content: space-between;
       padding: 16px 20px;
-      border-bottom: 1px solid var(--stroke);
-      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(6, 27, 54, 0.5);
     }
 
     .drawer-brand {
@@ -510,17 +567,17 @@ const currentPath = Astro.url.pathname;
 
     .drawer-title {
       font-size: 13px;
-      font-weight: 650;
-      letter-spacing: 0.06em;
+      font-weight: 750;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--cyan);
+      color: #FFFFFF;
     }
 
     .drawer-close-btn {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 8px;
-      color: var(--muted);
+      color: #C7D0DA;
       cursor: pointer;
       padding: 6px;
       display: flex;
@@ -538,9 +595,9 @@ const currentPath = Astro.url.pathname;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: var(--muted2);
-      font-weight: 700;
-      margin-top: 1rem;
+      color: var(--cyan);
+      font-weight: 750;
+      margin-top: 1.25rem;
       margin-bottom: 0.5rem;
     }
 
@@ -549,26 +606,26 @@ const currentPath = Astro.url.pathname;
       align-items: center;
       min-height: 44px;
       padding: 10px 12px;
-      border-radius: 10px;
+      border-radius: 8px;
       font-size: 15px;
-      color: var(--muted);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: #E8EEF5;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       touch-action: manipulation;
       transition: background 0.15s ease, color 0.15s ease;
     }
 
     .mobile-link:active,
     .mobile-link:hover {
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
     }
 
-    /* Studios Collapsible Section */
+    /* Studios Collapsible */
     .studios-group {
       margin-top: 8px;
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid var(--stroke);
-      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
       overflow: hidden;
     }
 
@@ -580,9 +637,9 @@ const currentPath = Astro.url.pathname;
       padding: 12px 14px;
       background: transparent;
       border: none;
-      color: var(--text);
+      color: #FFFFFF;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 650;
       cursor: pointer;
       touch-action: manipulation;
     }
@@ -599,7 +656,7 @@ const currentPath = Astro.url.pathname;
     .studios-sublinks {
       display: flex;
       flex-direction: column;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .studios-sublinks.collapsed {
@@ -611,7 +668,6 @@ const currentPath = Astro.url.pathname;
       flex-direction: column;
       padding: 10px 14px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      transition: background 0.15s ease;
     }
 
     .mobile-sublink:last-child {
@@ -620,13 +676,13 @@ const currentPath = Astro.url.pathname;
 
     .mobile-sublink:hover,
     .mobile-sublink:active {
-      background: rgba(97, 173, 255, 0.1);
+      background: rgba(8, 119, 232, 0.15);
     }
 
     .sublink-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
+      font-size: 13.5px;
+      font-weight: 650;
+      color: #FFFFFF;
     }
 
     .sublink-tag {
@@ -639,7 +695,7 @@ const currentPath = Astro.url.pathname;
     .mobile-drawer-cta {
       margin-top: 2rem;
       padding-top: 1.5rem;
-      border-top: 1px solid var(--stroke);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -647,8 +703,9 @@ const currentPath = Astro.url.pathname;
   }
 
   @media (max-width: 640px) {
-    .nav-btn-primary {
-      display: none;
+    .nav-btn-cta {
+      padding: 8px 14px;
+      font-size: 12.5px;
     }
 
     .brand-sub {
@@ -656,13 +713,12 @@ const currentPath = Astro.url.pathname;
     }
 
     .brand-title {
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .brand-mark {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 34px;
+      height: 34px;
       padding: 4px;
     }
 
@@ -735,7 +791,7 @@ const currentPath = Astro.url.pathname;
     });
 
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 1140 && drawer.classList.contains('open')) {
+      if (window.innerWidth > 1180 && drawer.classList.contains('open')) {
         setDrawerOpen(false);
       }
     });

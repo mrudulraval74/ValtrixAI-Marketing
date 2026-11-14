@@ -6,38 +6,41 @@ interface Props {
   primaryCtaHref?: string;
   secondaryCtaText?: string;
   secondaryCtaHref?: string;
+  dark?: boolean;
 }
 
 const {
-  title = "Want to see the platform in context?",
-  subtitle = "Request a walkthrough of the monitored workflow or quality engineering studio most relevant to your team.",
-  primaryCtaText = "Request Monitored Walkthrough",
-  primaryCtaHref = "/contact",
+  title = "Ready to Engineer Uncompromising Software Quality?",
+  subtitle = "Discover how VERIQON ONE transforms testing from fragmented, manual verification into an intelligent, continuous quality engineering engine.",
+  primaryCtaText = "Request a Demo",
+  primaryCtaHref = "/request-demo",
   secondaryCtaText = "Explore Platform Architecture",
-  secondaryCtaHref = "/platform"
+  secondaryCtaHref = "/platform",
+  dark = false
 } = Astro.props;
 ---
 
-<section class="section cta-section">
+<section class={`section cta-section ${dark ? 'cta-dark-bg' : ''}`}>
   <div class="container">
-    <div class="card cta-card">
-      <div class="eyebrow" style="margin-inline: auto;">
-        <span class="badge-dot"></span> Governed Intelligence
+    <div class="cta-card">
+      <div class="cta-eyebrow">
+        <span class="cta-dot"></span>
+        <span>VERIQON ONE &bull; ENTERPRISE QUALITY ASSURANCE</span>
       </div>
-      <h2 class="title" style="font-size: clamp(30px, 4vw, 48px);">{title}</h2>
-      <p class="copy" style="margin-inline: auto;">{subtitle}</p>
+      <h2 class="cta-title">{title}</h2>
+      <p class="cta-copy">{subtitle}</p>
       
-      <div class="btn-row" style="justify-content: center;">
+      <div class="btn-row" style="justify-content: center; margin-top: 2rem;">
         <a href={primaryCtaHref} class="btn btn-primary">{primaryCtaText}</a>
         <a href={secondaryCtaHref} class="btn btn-secondary">{secondaryCtaText}</a>
       </div>
 
       <div class="cta-tags">
-        <span>Zero-Trust Architecture</span>
+        <span>Deterministic Verification</span>
         &bull;
-        <span>Local &amp; Private Model Execution</span>
+        <span>Self-Healing Automation</span>
         &bull;
-        <span>Immutable Audit Records</span>
+        <span>Zero-Trust Enterprise Architecture</span>
       </div>
     </div>
   </div>
@@ -51,18 +54,103 @@ const {
 
   .cta-card {
     text-align: center;
-    background: radial-gradient(circle at 50% 0%, rgba(97, 173, 255, 0.12), rgba(157, 125, 255, 0.08) 50%, rgba(7, 17, 29, 0.8) 100%);
-    border: 1px solid var(--stroke-strong);
-    padding: clamp(48px, 6vw, 84px) clamp(24px, 4vw, 48px);
+    background: linear-gradient(180deg, #F1F7FD 0%, #FFFFFF 100%);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: clamp(48px, 6vw, 80px) clamp(24px, 4vw, 48px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--royal-blue), var(--cyan));
+  }
+
+  .cta-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    background: rgba(8, 119, 232, 0.08);
+    border: 1px solid rgba(8, 119, 232, 0.2);
+    color: var(--royal-blue);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .cta-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--royal-blue);
+  }
+
+  .cta-title {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    max-width: 820px;
+    margin-inline: auto;
+  }
+
+  .cta-copy {
+    margin-top: 16px;
+    font-size: clamp(15px, 1.3vw, 18px);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 720px;
+    margin-inline: auto;
   }
 
   .cta-tags {
     margin-top: 36px;
-    font-size: 13px;
-    color: var(--muted2);
+    font-size: 12.5px;
+    color: var(--text-muted);
+    font-weight: 600;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
+  }
+
+  .cta-dark-bg {
+    background: var(--brand-navy);
+  }
+
+  .cta-dark-bg .cta-card {
+    background: linear-gradient(180deg, #0A2547 0%, #061B36 100%);
+    border-color: rgba(8, 197, 232, 0.25);
+  }
+
+  .cta-dark-bg .cta-title {
+    color: #FFFFFF;
+  }
+
+  .cta-dark-bg .cta-copy {
+    color: #C7D0DA;
+  }
+
+  .cta-dark-bg .btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .cta-dark-bg .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: #FFFFFF;
   }
 </style>

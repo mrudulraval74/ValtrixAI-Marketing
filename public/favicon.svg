@@ -1,18 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
   <defs>
-    <linearGradient id="valtrix-grad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#9333ea" />
-      <stop offset="50%" stop-color="#7c3aed" />
-      <stop offset="100%" stop-color="#3b82f6" />
+    <linearGradient id="fav-bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#061B36" />
+      <stop offset="1" stop-color="#0A2547" />
     </linearGradient>
-    <linearGradient id="shield-stroke" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#c084fc" />
-      <stop offset="100%" stop-color="#6366f1" />
+    <linearGradient id="v-grad-f" x1="6" y1="8" x2="26" y2="38" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08C5E8" />
+      <stop offset="0.6" stop-color="#0877E8" />
+      <stop offset="1" stop-color="#0652A8" />
+    </linearGradient>
+    <linearGradient id="q-silver-f" x1="18" y1="8" x2="42" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="0.4" stop-color="#E2E8F0" />
+      <stop offset="0.8" stop-color="#94A3B8" />
+      <stop offset="1" stop-color="#64748B" />
+    </linearGradient>
+    <linearGradient id="q-cyan-leg-f" x1="26" y1="26" x2="44" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08C5E8" />
+      <stop offset="1" stop-color="#0877E8" />
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="16" fill="#0b0a12" />
-  <path d="M32 10L50 18V32C50 44 42 53 32 56C22 53 14 44 14 32V18L32 10Z" fill="url(#valtrix-grad)" fill-opacity="0.2" stroke="url(#shield-stroke)" stroke-width="2" />
-  <path d="M22 24L32 44L42 24H36L32 34L28 24H22Z" fill="#ffffff" />
-  <circle cx="32" cy="20" r="3" fill="#a855f7" />
-</svg>
 
+  <rect width="48" height="48" rx="12" fill="url(#fav-bg)" stroke="#0877E8" stroke-width="1.5" />
+
+  <!-- V -->
+  <path d="M8 12L17 36L24 22L18 12H8Z" fill="url(#v-grad-f)" />
+  <!-- Q -->
+  <path d="M21 12H35L39 19L34 29H25L28 22H32L35 18L32 15H24L21 12Z" fill="url(#q-silver-f)" />
+  <!-- Q Leg -->
+  <path d="M26 24L37 36H42L31 24H26Z" fill="url(#q-cyan-leg-f)" />
+</svg>

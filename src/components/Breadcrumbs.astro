@@ -10,7 +10,7 @@ const { items } = Astro.props;
   <a href="/">Home</a>
   {items.map((item, index) => (
     <>
-      <span aria-hidden="true">/</span>
+      <span aria-hidden="true" class="breadcrumb-sep">/</span>
       {item.href && index < items.length - 1 ? (
         <a href={item.href}>{item.label}</a>
       ) : (
@@ -32,17 +32,20 @@ const { items } = Astro.props;
   }
 
   .breadcrumbs a {
-    color: var(--text-muted);
+    color: var(--text-secondary);
     transition: color 0.15s ease;
   }
 
   .breadcrumbs a:hover {
-    color: var(--primary-accent);
+    color: var(--royal-blue);
+  }
+
+  .breadcrumb-sep {
+    color: var(--border-medium);
   }
 
   .current-crumb {
-    color: var(--text-secondary);
-    font-weight: 500;
+    color: var(--text-primary);
+    font-weight: 600;
   }
 </style>
-

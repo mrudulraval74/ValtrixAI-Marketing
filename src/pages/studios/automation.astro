@@ -10,11 +10,11 @@ const features = [
     desc: "Uses contextual multi-modal locator graphs to identify UI elements even when class names, IDs, or component hierarchies shift."
   },
   {
-    title: "Parallel Execution Orchestration",
+    title: "Parallel Distributed Orchestration",
     desc: "Distributes thousands of browser, mobile, and API tests across isolated workers with dynamic load rebalancing."
   },
   {
-    title: "Cross-Platform Framework Compatibility",
+    title: "Framework Neutral Interoperability",
     desc: "Executes seamlessly alongside Playwright, Cypress, Selenium, and custom internal test drivers without vendor lock-in."
   },
   {
@@ -25,19 +25,19 @@ const features = [
 ---
 
 <Layout
-  title="Automation Studio | Self-Healing Test Orchestration"
-  description="Valtrix Automation Studio delivers resilient test automation with autonomous DOM self-healing, multi-platform orchestration, and zero flakiness."
+  title="Automation Studio — VERIQON ONE Self-Healing Test Orchestration"
+  description="Explore Automation Studio in VERIQON ONE, developed by VERIQON TECHNOLOGIES: delivers resilient test automation with autonomous DOM self-healing, and zero flakiness."
 >
-  <div class="container" style="padding-top: 2.5rem;">
-    <Breadcrumbs items={[{ label: 'Studios', href: '/platform#studios' }, { label: 'Automation Studio' }]} />
+  <div class="container" style="padding-top: 2rem;">
+    <Breadcrumbs items={[{ label: 'Specialist Studios', href: '/ai-studios' }, { label: 'Automation Studio' }]} />
 
     <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
       <div class="badge">
-        <span class="badge-dot"></span> Zero-Flakiness Testing
+        <span class="badge-dot"></span> VERIQON ONE SPECIALIST STUDIO
       </div>
       <h1 class="heading-xl">Automation Studio</h1>
       <p class="subheading">
-        Engineered to eliminate test maintenance overhead. Autonomous self-healing selectors adapt to code releases in real-time, keeping pipelines green.
+        Engineered to eliminate test maintenance overhead. Autonomous self-healing selectors adapt to code releases in real-time, keeping CI/CD pipelines green.
       </p>
     </header>
 
@@ -50,8 +50,8 @@ const features = [
         { label: "Self-Healed Selectors", value: "18 Resolved", status: "warn" },
         { label: "Execution Time", value: "1m 42s", status: "info" }
       ]}
-      codeSnippet={`// Self-Healing Selector Engine
-await page.locator(valtrix.adaptiveSelector({
+      codeSnippet={`// VERIQON ONE Self-Healing Selector Engine
+await page.locator(veriqon.adaptiveSelector({
   semanticRole: "button",
   intent: "SUBMIT_PAYMENT",
   fallbacks: ["#pay-btn", "[data-testid=checkout]", ".btn-submit"]
@@ -59,20 +59,30 @@ await page.locator(valtrix.adaptiveSelector({
     />
 
     <section class="section" style="padding-top: 2rem;">
+      <div class="text-center section-header">
+        <h2 class="heading-lg">Resilient Automation Capabilities</h2>
+        <p class="subheading">Eliminate routine test maintenance overhead with intelligent self-healing algorithms.</p>
+      </div>
+
       <div class="grid-2">
-        {features.map((f) => (
+        {features.map((item) => (
           <div class="card">
-            <h3 class="heading-md">{f.title}</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">{f.desc}</p>
+            <h3 class="heading-md" style="color: var(--royal-blue);">{item.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.7; margin-top: 8px;">
+              {item.desc}
+            </p>
           </div>
         ))}
       </div>
     </section>
 
-    <CtaSection 
-      title="Eliminate Test Flakiness Today"
-      subtitle="See how self-healing test execution keeps your deployment pipelines moving fast."
+    <CtaSection
+      title="Eliminate Flaky Test Failures in Your CI/CD Pipeline"
+      subtitle="Talk to a VERIQON TECHNOLOGIES engineer to test self-healing automation on your own web and mobile applications."
+      primaryCtaText="Request a Demo"
+      primaryCtaHref="/request-demo"
+      secondaryCtaText="Explore API Testing Studio"
+      secondaryCtaHref="/studios/api-testing"
     />
   </div>
 </Layout>
-

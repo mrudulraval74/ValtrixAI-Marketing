@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" fill="none">
+  <defs>
+    <linearGradient id="vt-v" x1="6" y1="10" x2="26" y2="46" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08C5E8" />
+      <stop offset="0.6" stop-color="#0877E8" />
+      <stop offset="1" stop-color="#0652A8" />
+    </linearGradient>
+    <linearGradient id="vt-silver" x1="18" y1="10" x2="48" y2="46" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="0.4" stop-color="#E2E8F0" />
+      <stop offset="0.8" stop-color="#94A3B8" />
+      <stop offset="1" stop-color="#64748B" />
+    </linearGradient>
+    <linearGradient id="vt-cyan" x1="28" y1="30" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08C5E8" />
+      <stop offset="1" stop-color="#0877E8" />
+    </linearGradient>
+    <linearGradient id="vt-text-blue" x1="64" y1="18" x2="140" y2="38" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08C5E8" />
+      <stop offset="1" stop-color="#0877E8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Emblem -->
+  <g transform="translate(6, 6) scale(1.1)">
+    <path d="M4 8L14 36L22 20L15 8H4Z" fill="url(#vt-v)" />
+    <path d="M14 36L19 14L22 20L14 36Z" fill="#08C5E8" fill-opacity="0.9" />
+    <path d="M19 8H35L40 17L34 28H24L28 20H32L35 16L31 12H22L19 8Z" fill="url(#vt-silver)" />
+    <path d="M25 23L37 36H43L31 23H25Z" fill="url(#vt-cyan)" />
+  </g>
+
+  <!-- VERIQON Wordmark -->
+  <text x="68" y="32" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="800" letter-spacing="0.06em">
+    <tspan fill="url(#vt-text-blue)">VERI</tspan>
+    <tspan fill="#E2E8F0">QON</tspan>
+  </text>
+  <!-- Q checkmark dot accent -->
+  <circle cx="129" cy="21" r="2.5" fill="#08C5E8" />
+  <path d="M125 24L128 27L132 20" stroke="#08C5E8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Subtitle -->
+  <text x="69" y="47" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="9" font-weight="700" letter-spacing="0.22em" fill="#94A3B8">
+    TECHNOLOGIES
+  </text>
+</svg>

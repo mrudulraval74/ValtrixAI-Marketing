@@ -4,75 +4,86 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import StudioMockup from '../../components/StudioMockup.astro';
 import CtaSection from '../../components/CtaSection.astro';
 
-const securityVectors = [
+const secCapabilities = [
   {
-    title: "Continuous Zero-Trust & RBAC Audit",
-    desc: "Validates role access boundaries across hundreds of endpoints, detecting privilege escalation pathways and unauthorized horizontal tenant traversal."
+    title: "Automated DAST Penetration Testing",
+    desc: "Executes continuous dynamic probing across running application endpoints, testing against OWASP Top 10 vulnerabilities, injection flaws, and SSRF vectors."
   },
   {
-    title: "PostgreSQL Row-Level Security (RLS) Discovery",
-    desc: "Audits database table policies to prove mathematical tenant isolation, catching missing policies and insecure SQL bypasses."
+    title: "Multi-Tenant Isolation Verification",
+    desc: "Rigorously verifies Row-Level Security (RLS) policies and cross-organization boundaries to guarantee zero unauthorized cross-tenant data leakage."
   },
   {
-    title: "Dynamic API Vulnerability Scanning (DAST)",
-    desc: "Executes automated threat payloads against running test environments to catch injection vectors, IDOR flaws, and broken object-level authorization."
+    title: "RBAC & Authorization Matrix Audits",
+    desc: "Tests every combination of user roles, scopes, and permission tokens to detect privilege escalation loopholes and broken object-level authorization (BOLA)."
   },
   {
-    title: "Software Supply Chain & Secret Scanning",
-    desc: "Ensures no exposed credentials, unpinned packages, or high-risk dependency vulnerabilities reach release candidates."
+    title: "Cryptographic & Compliance Verification",
+    desc: "Validates TLS cipher configurations, cookie security flags, token expiration handling, and cryptographic key rotation compliance."
   }
 ];
 ---
 
 <Layout
-  title="Security Testing Studio | Automated DAST & Tenant Isolation"
-  description="Automate zero-trust application security verification, PostgreSQL RLS compliance, and dynamic API vulnerability scanning with Valtrix Security Testing Studio."
+  title="Security Studio — VERIQON ONE Continuous DAST & Tenant Isolation"
+  description="Explore Security Studio in VERIQON ONE, developed by VERIQON TECHNOLOGIES: continuous zero-trust security auditing, automated DAST, and multi-tenant RLS verification."
 >
-  <div class="container" style="padding-top: 2.5rem;">
-    <Breadcrumbs items={[{ label: 'Studios', href: '/platform#studios' }, { label: 'Security Testing Studio' }]} />
+  <div class="container" style="padding-top: 2rem;">
+    <Breadcrumbs items={[{ label: 'Specialist Studios', href: '/ai-studios' }, { label: 'Security Studio' }]} />
 
     <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
       <div class="badge">
-        <span class="badge-dot"></span> Zero-Trust Security
+        <span class="badge-dot"></span> VERIQON ONE SPECIALIST STUDIO
       </div>
-      <h1 class="heading-xl">Security Testing Studio</h1>
+      <h1 class="heading-xl">Security Studio</h1>
       <p class="subheading">
-        Proactively identify vulnerabilities, enforce Row-Level Security isolation, and certify authorization boundaries continuously in your test environments.
+        Continuous zero-trust security auditing, automated DAST penetration probing, and multi-tenant Row-Level Security isolation verification.
       </p>
     </header>
 
     <StudioMockup
-      studioName="Security & Authorization Audit Engine"
+      studioName="Security Studio"
       stageBadge="ZERO-TRUST COMPLIANCE"
-      activeTab="Security Matrix"
+      activeTab="Security Audit"
       executionMetrics={[
-        { label: "Tenant Isolation", value: "100% Certified", status: "pass" },
-        { label: "Endpoints Scanned", value: "318 Routes", status: "pass" },
-        { label: "Auth Bypass Attempts", value: "0 Succeeded", status: "pass" }
+        { label: "OWASP Probes Passed", value: "248/248", status: "pass" },
+        { label: "Tenant Isolation Violations", value: "0", status: "pass" },
+        { label: "Audit Ledger Signed", value: "Verified", status: "pass" }
       ]}
-      codeSnippet={`// Zero-Trust Authorization Matrix Scan
-const audit = await valtrix.auditZeroTrustSecurity({
-  environment: "STAGING_SANDBOX",
-  roles: ["SUPER_ADMIN", "QA_LEAD", "ANALYST", "EXTERNAL_VIEWER"],
-  verifyRLSIsolation: true
+      codeSnippet={`// VERIQON ONE Multi-Tenant Isolation Audit
+const securityAudit = await veriqon.auditTenantIsolation({
+  tenantA: "ENTERPRISE_ORG_ALPHA",
+  tenantB: "ENTERPRISE_ORG_BETA",
+  boundaryCheck: "STRICT_ROW_LEVEL_SECURITY_POLICIES",
+  fuzzUserContexts: true
 });`}
     />
 
     <section class="section" style="padding-top: 2rem;">
+      <div class="text-center section-header">
+        <h2 class="heading-lg">Zero-Trust Enterprise Security</h2>
+        <p class="subheading">Catch authorization leaks, broken object-level controls, and injection vectors before production release.</p>
+      </div>
+
       <div class="grid-2">
-        {securityVectors.map((v) => (
+        {secCapabilities.map((c) => (
           <div class="card">
-            <h3 class="heading-md">{v.title}</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">{v.desc}</p>
+            <h3 class="heading-md" style="color: var(--royal-blue);">{c.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.7; margin-top: 8px;">
+              {c.desc}
+            </p>
           </div>
         ))}
       </div>
     </section>
 
-    <CtaSection 
-      title="Harden Your Enterprise Security Posture"
-      subtitle="Verify authorization, RLS, and API security continuously before every production deployment."
+    <CtaSection
+      title="Verify Your Security Posture on Every Deployment"
+      subtitle="Speak with VERIQON TECHNOLOGIES security specialists to evaluate your zero-trust tenant isolation."
+      primaryCtaText="Request a Demo"
+      primaryCtaHref="/request-demo"
+      secondaryCtaText="Explore Manual Testing Studio"
+      secondaryCtaHref="/studios/manual-testing"
     />
   </div>
 </Layout>
-

@@ -1,7 +1,7 @@
 {
-  "name": "valtrixai-marketing",
+  "name": "veriqon-marketing",
   "version": "1.0.0",
-  "description": "Official enterprise marketing website for Valtrix AI Quality Engineering Platform",
+  "description": "Official enterprise marketing website for VERIQON ONE by VERIQON TECHNOLOGIES",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
@@ -15,10 +15,12 @@
     "url": "git+https://github.com/mrudulraval74/ValtrixAI-Marketing.git"
   },
   "keywords": [
-    "valtrix",
-    "quality-engineering",
+    "veriqon",
+    "veriqon-one",
+    "veriqon-technologies",
+    "enterprise-quality-engineering",
+    "autonomous-testing",
     "ai-testing",
-    "enterprise-qa",
     "astro",
     "static-site"
   ],

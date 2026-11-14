@@ -1,0 +1,92 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import StudioMockup from '../../components/StudioMockup.astro';
+import CtaSection from '../../components/CtaSection.astro';
+
+const apiCapabilities = [
+  {
+    title: "OpenAPI & AsyncAPI Contract Audit",
+    desc: "Ingests API definitions and verifies that live endpoints strictly conform to response schemas, headers, status codes, and data types."
+  },
+  {
+    title: "Intelligent Payload Fuzzing",
+    desc: "Synthesizes boundary payloads, unexpected unicode, massive arrays, and invalid type vectors to expose unhandled 500 exceptions."
+  },
+  {
+    title: "Multi-Step Chained Workflows",
+    desc: "Simulates complex business transactions where authentication tokens, session cookies, and transaction IDs pass seamlessly across steps."
+  },
+  {
+    title: "GraphQL Schema & Resolver Testing",
+    desc: "Analyzes GraphQL queries, mutations, subscriptions, query depth limitations, and field-level permissions for data leakage."
+  },
+  {
+    title: "Mock Services & Service Virtualization",
+    desc: "Spins up lightweight, isolated mock servers to test microservice consumers before third-party upstream endpoints are ready."
+  },
+  {
+    title: "CI/CD Gate Integration",
+    desc: "Executes contract regression checks automatically on pull request builds, blocking breaking API changes before staging deployment."
+  }
+];
+---
+
+<Layout
+  title="API Testing Studio — VERIQON ONE Contract Verification & Fuzzing"
+  description="Explore the API Testing Studio in VERIQON ONE, developed by VERIQON TECHNOLOGIES: automated contract verification, payload fuzzing, and microservice integration testing."
+>
+  <div class="container" style="padding-top: 2rem;">
+    <Breadcrumbs items={[{ label: 'Specialist Studios', href: '/ai-studios' }, { label: 'API Testing Studio' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
+      <div class="badge">
+        <span class="badge-dot"></span> VERIQON ONE SPECIALIST STUDIO
+      </div>
+      <h1 class="heading-xl">API Testing Studio</h1>
+      <p class="subheading">
+        Automated contract verification, schema regression detection, and intelligent payload boundary fuzzing across REST, GraphQL, and microservice architectures.
+      </p>
+    </header>
+
+    <StudioMockup
+      studioName="API Testing Studio"
+      stageBadge="CONTRACT &amp; PAYLOAD ENGINE"
+      activeTab="Contract Validation"
+      codeSnippet={`// VERIQON ONE API Contract & Fuzzing Engine
+const contractReport = await veriqon.auditApiContract({
+  specification: "OPENAPI_V3_FIN_SETTLEMENT_SPEC",
+  targetEndpoint: "https://api.internal.bank/v2/transfers",
+  fuzzing: { mode: "BOUNDARY_AND_TYPE_FUZZING", depth: 4 },
+  verifySchemas: true
+});`}
+    />
+
+    <section class="section" style="padding-top: 2rem;">
+      <div class="text-center section-header">
+        <h2 class="heading-lg">Specialist API Testing Capabilities</h2>
+        <p class="subheading">Guarantees distributed microservice resilience and zero breaking changes.</p>
+      </div>
+
+      <div class="grid-3">
+        {apiCapabilities.map((cap) => (
+          <div class="card">
+            <h3 class="heading-md" style="color: var(--royal-blue);">{cap.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 13.5px; line-height: 1.65; margin-top: 8px;">
+              {cap.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CtaSection
+      title="Protect Your Microservice APIs from Silent Breakages"
+      subtitle="Schedule an API quality architecture review with VERIQON TECHNOLOGIES specialists."
+      primaryCtaText="Request a Demo"
+      primaryCtaHref="/request-demo"
+      secondaryCtaText="Explore ETL Testing Studio"
+      secondaryCtaHref="/studios/etl-testing"
+    />
+  </div>
+</Layout>

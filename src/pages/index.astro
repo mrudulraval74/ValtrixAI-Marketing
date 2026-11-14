@@ -3,148 +3,193 @@ import Layout from '../layouts/Layout.astro';
 import StudioMockup from '../components/StudioMockup.astro';
 import CtaSection from '../components/CtaSection.astro';
 
-const operationalScenarios = [
+const qualityLifecycleSteps = [
   {
-    title: "Financial Monitoring",
-    tag: "Capital & Risk Signals",
-    desc: "Portfolio oversight, anomaly detection, and governed escalation for teams that need monitored signals translated into accountable action.",
-    color: "#61adff"
+    step: "01",
+    title: "Requirements Ingestion",
+    desc: "Direct integration with Jira, Confluence, and OpenAPI specs to parse business acceptance criteria into verifiable models."
   },
   {
-    title: "Industrial Inspection",
-    tag: "Computer Vision & Line QA",
-    desc: "Line monitoring, defect triage, and automated operator review where inspection must be fast, visible, and mathematically auditable.",
-    color: "#9d7dff"
+    step: "02",
+    title: "Autonomous Synthesis",
+    desc: "AI reasoning engines generate complete test topologies, synthetic data fixtures, and negative edge conditions."
   },
   {
-    title: "Spatial Operations",
-    tag: "Sensor Fusion & Live Assets",
-    desc: "Live asset monitoring, telemetry review, and spatial awareness for operators who need clear queues, current states, and coordinated response paths.",
-    color: "#ff6fd7"
+    step: "03",
+    title: "Self-Healing Automation",
+    desc: "Distributed browser, mobile, and API execution with dynamic DOM recovery that eliminates flaky test failures."
+  },
+  {
+    step: "04",
+    title: "ETL & Data Integrity",
+    desc: "High-throughput schema validation and row-level hash reconciliation across source systems and data warehouses."
+  },
+  {
+    step: "05",
+    title: "Security & Performance",
+    desc: "Continuous automated DAST penetration probing, tenant isolation checks, and high-concurrency bottleneck forecasting."
+  },
+  {
+    step: "06",
+    title: "Traceable Governance",
+    desc: "Immutable cryptographic audit logs and complete requirement-to-defect traceability for compliance assurance."
   }
 ];
 
 const studios = [
   {
-    title: 'AI End-to-End Studio',
+    name: 'AI Studio',
     tag: 'Autonomous Synthesis',
-    desc: 'Unifies requirements ingestion, architecture discovery, zero-trust review, and self-healing test generation into one governed workspace.',
-    href: '/studios/ai-end-to-end',
-    color: '#79f3ff'
+    desc: 'Transforms requirements into executable test suites, models user workflows, and synthesizes comprehensive edge-case scenarios.',
+    href: '/studios/ai-studio',
+    icon: 'ai'
   },
   {
-    title: 'Automation Studio',
+    name: 'Automation Studio',
     tag: 'Self-Healing Engine',
-    desc: 'Eliminates test suite flakiness through autonomous DOM-change compensation, dynamic selector recovery, and parallel execution orchestration.',
+    desc: 'Executes parallel multi-browser tests with dynamic selector recovery, eliminating script maintenance overhead.',
     href: '/studios/automation',
-    color: '#61adff'
+    icon: 'automation'
   },
   {
-    title: 'ETL Testing Studio',
-    tag: 'Data Pipeline Integrity',
-    desc: 'Continuous schema reconciliation, row-level vector hashing, and high-throughput data warehouse verification across source-to-target runs.',
+    name: 'API Testing Studio',
+    tag: 'Contract Verification',
+    desc: 'Continuous REST and GraphQL contract verification, schema regression detection, and automated payload fuzzing.',
+    href: '/studios/api-testing',
+    icon: 'api'
+  },
+  {
+    name: 'ETL / Data Testing Studio',
+    tag: 'Warehouse Integrity',
+    desc: 'Validates multi-million row datasets, vector hashes, and pipeline integrity across snowflake, BigQuery, and SQL lakes.',
     href: '/studios/etl-testing',
-    color: '#4ef0c1'
+    icon: 'data'
   },
   {
-    title: 'Performance Testing Studio',
+    name: 'Performance Studio',
     tag: 'Predictive Load Analysis',
-    desc: 'Synthetic user generation, bottleneck forecasting, and latency breakdown across multi-tenant services and high-concurrency microservices.',
+    desc: 'Simulates massive concurrent traffic, identifies latency bottlenecks, and forecasts system degradation curves.',
     href: '/studios/performance-testing',
-    color: '#f59e0b'
+    icon: 'perf'
   },
   {
-    title: 'Security Testing Studio',
-    tag: 'Automated DAST & RLS',
-    desc: 'Continuous zero-trust audit, tenant isolation verification, automated penetration probing, and Row-Level Security policy compliance.',
+    name: 'Security Studio',
+    tag: 'Continuous DAST & RLS',
+    desc: 'Automates OWASP vulnerability auditing, multi-tenant data isolation checks, and role-based access verification.',
     href: '/studios/security-testing',
-    color: '#ff6fd7'
+    icon: 'sec'
   },
   {
-    title: 'Manual Testing Studio',
+    name: 'Manual Testing Studio',
     tag: 'AI-Assisted Exploratory',
-    desc: 'Intelligent test session recording, automated defect draft synthesis, and step-by-step reproduction capture for QA engineers.',
+    desc: 'Empowers QA teams with session recording, automatic reproduction capture, and instant defect synthesis.',
     href: '/studios/manual-testing',
-    color: '#9d7dff'
+    icon: 'manual'
   }
 ];
 
-const operatingTheses = [
+const enterprisePillars = [
   {
-    step: "01",
-    title: "Connect Sources",
-    desc: "Bring structured data, telemetry feeds, machine signals, documents, and live operational inputs into one unified intake layer."
+    title: "Deterministic Verification",
+    desc: "Engineered from mathematical foundations to deliver predictable, reproducible quality outcomes without flaky execution false alarms."
   },
   {
-    step: "02",
-    title: "Generate Signals",
-    desc: "Transform noisy inputs into probabilistic models, risk classifications, deterministic anomaly scores, and executive summaries."
+    title: "Zero-Trust Enterprise Architecture",
+    desc: "Strict tenant isolation, Row-Level Security (RLS), and RBAC guarantees that your proprietary data and test payloads never leave your perimeter."
   },
   {
-    step: "03",
-    title: "Human Review",
-    desc: "Keep validation, policy override, and high-stakes escalation inside governed, auditable team review queues."
+    title: "Full-Stack Quality Fabric",
+    desc: "Unifies functional UI, backend microservices, high-volume ETL pipelines, and performance under one single governed operating system."
   },
   {
-    step: "04",
-    title: "Traceable Outcomes",
-    desc: "Every automated test execution, routed decision, and remediated defect is recorded with complete cryptographic lineage."
+    title: "Complete Lineage & Auditability",
+    desc: "Every test run, approval checkpoint, and defect triage is stamped with immutable cryptographic traceability for audit readiness."
   }
+];
+
+const industries = [
+  { title: "Financial Services & Banking", desc: "High-frequency transaction validation, ledger reconciliation, and strict regulatory compliance." },
+  { title: "Healthcare & Life Sciences", desc: "HIPAA-compliant workflows, medical device software verification, and zero-defect data pipelines." },
+  { title: "E-Commerce & Retail", desc: "Peak load resilience testing, multi-step checkout integrity, and payment gateway automation." },
+  { title: "Enterprise SaaS & Telecom", desc: "Multi-tenant tenant isolation auditing, API contract stability, and 99.999% SLA assurance." }
 ];
 ---
 
 <Layout 
-  title="Strategic Intelligence Systems & Quality Engineering" 
-  description="Valtrix AI builds intelligence systems for financial monitoring, industrial inspection, and autonomous quality engineering decision workflows."
+  title="VERIQON TECHNOLOGIES — Engineering Trust Through Intelligence" 
+  description="VERIQON TECHNOLOGIES develops VERIQON ONE, the comprehensive Enterprise Quality Engineering Platform unifying requirements, test automation, data validation, performance, and security."
 >
-  <!-- Hero Section -->
-  <section class="section section-hero" style="padding-top: 3.5rem; padding-bottom: 4rem; text-align: center;">
-    <div class="container">
-      <div class="eyebrow" style="margin-inline: auto;">
-        <span class="badge-dot"></span> Operational Intelligence Systems
-      </div>
-      <h1 class="title">
-        Operational intelligence for <br />
-        <span class="gradient-text">monitored workflows</span>
-      </h1>
-      <p class="copy" style="margin-inline: auto;">
-        Valtrix AI builds software for monitored workflows where teams need clear signals, governed review, and fast routing under real operating constraints.
-      </p>
+  <!-- Hero Section (Corporate Navy & Royal Blue) -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="badge badge-dark">
+          <span class="badge-dot"></span> VERIQON TECHNOLOGIES &bull; FLAGSHIP PLATFORM
+        </div>
+        
+        <h1 class="hero-headline">
+          Engineering Trust <br />
+          <span class="gradient-text-light">Through Intelligence.</span>
+        </h1>
+        
+        <p class="hero-subtext">
+          <strong>VERIQON ONE</strong> is a unified enterprise quality engineering platform that connects requirements, test design, self-healing automation, data warehouse integrity, performance, and security into one deterministic execution fabric.
+        </p>
 
-      <div class="btn-row" style="justify-content: center; margin-top: 2rem;">
-        <a href="/contact" class="btn btn-primary">Schedule Monitored Walkthrough</a>
-        <a href="/platform" class="btn btn-secondary">Explore Platform Architecture</a>
+        <div class="btn-row hero-btn-row">
+          <a href="/platform" class="btn btn-cyan">Explore VERIQON ONE</a>
+          <a href="/request-demo" class="btn btn-dark">Request a Demo</a>
+        </div>
+
+        <div class="hero-trust-bar">
+          <div class="trust-item">
+            <span class="trust-val">7</span>
+            <span class="trust-lbl">Specialist Studios</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="trust-val">100%</span>
+            <span class="trust-lbl">Deterministic Traceability</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="trust-val">Zero-Trust</span>
+            <span class="trust-lbl">Enterprise Security</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Live Interactive Console Mockup -->
-      <StudioMockup 
-        studioName="Unified Monitoring & Testing Engine"
-        stageBadge="LIVE RUNTIME CONSOLE"
-        activeTab="Risk & Exposure"
+      <!-- High-Quality VERIQON ONE Platform Visual Console Preview -->
+      <StudioMockup
+        studioName="Unified Platform Console"
+        stageBadge="LIVE RUNTIME ENGINE"
+        activeTab="Requirement Graph"
       />
     </div>
   </section>
 
-  <!-- Three Monitored Workflow Scenarios -->
-  <section class="section" style="padding-top: 1rem;">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: 3rem;">
-        <div class="eyebrow" style="margin-inline: auto;">
-          <span class="badge-dot"></span> Core Scenarios
-        </div>
-        <h2 class="heading-lg">Three Monitored-Workflow Scenarios</h2>
-        <p class="copy" style="margin-inline: auto;">
-          A single operating model for teams that monitor signals, review risk, and route decisions across finance, industrial environments, and spatial systems.
-        </p>
+  <!-- Corporate Statement & Brand Relationship -->
+  <section class="section section-alt">
+    <div class="container text-center">
+      <div class="eyebrow">
+        <span class="badge-dot"></span> Corporate Philosophy
       </div>
+      <h2 class="heading-lg">Quality Should Be Engineered From the Beginning</h2>
+      <p class="subheading">
+        At <strong>VERIQON TECHNOLOGIES</strong>, we reject the notion that software testing is an afterthought. We build platforms that empower engineering organisations to design, verify, and govern systems with mathematical precision and unwavering operational trust.
+      </p>
 
-      <div class="grid-3">
-        {operationalScenarios.map((item) => (
+      <div class="grid-4" style="margin-top: 3.5rem; text-align: left;">
+        {enterprisePillars.map((p) => (
           <div class="card">
-            <div class="scenario-tag" style={`color: ${item.color};`}>{item.tag}</div>
-            <h3 class="heading-md" style="margin-top: 8px;">{item.title}</h3>
-            <p style="color: var(--muted); font-size: 15px; line-height: 1.7; margin-top: 10px;">
-              {item.desc}
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 class="heading-sm">{p.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 13.5px; line-height: 1.65; margin-top: 8px;">
+              {p.desc}
             </p>
           </div>
         ))}
@@ -152,32 +197,59 @@ const operatingTheses = [
     </div>
   </section>
 
-  <!-- Six Studios Section -->
-  <section class="section" id="studios">
+  <!-- Complete Quality Engineering Lifecycle -->
+  <section class="section">
     <div class="container">
-      <div style="text-align: center; margin-bottom: 3rem;">
-        <div class="eyebrow" style="margin-inline: auto;">
-          <span class="badge-dot"></span> Specialized Studios
+      <div class="text-center section-header">
+        <div class="eyebrow">
+          <span class="badge-dot"></span> End-to-End Verification
         </div>
-        <h2 class="heading-lg">Connected Quality Studios</h2>
-        <p class="copy" style="margin-inline: auto;">
-          Six specialized testing studios providing deep domain intelligence backed by one shared review, routing, and governance platform.
+        <h2 class="heading-lg">The VERIQON ONE Quality Lifecycle</h2>
+        <p class="subheading">
+          From business requirements intake to immutable production release audit, discover how every phase is seamlessly connected.
         </p>
       </div>
 
       <div class="grid-3">
-        {studios.map((s) => (
-          <a href={s.href} class="card studio-card" aria-label={`Learn more about ${s.title}`}>
+        {qualityLifecycleSteps.map((s) => (
+          <div class="card lifecycle-card">
+            <div class="lifecycle-step-num">{s.step}</div>
+            <h3 class="heading-md" style="margin-top: 10px;">{s.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.65; margin-top: 8px;">
+              {s.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The 7 Specialist Testing Studios -->
+  <section class="section section-alt" id="studios">
+    <div class="container">
+      <div class="text-center section-header">
+        <div class="eyebrow">
+          <span class="badge-dot"></span> Specialist Capabilities
+        </div>
+        <h2 class="heading-lg">Seven Purpose-Built Quality Studios</h2>
+        <p class="subheading">
+          Rather than relying on generic tools, VERIQON ONE provides dedicated, specialist studios engineered for every domain of modern enterprise technology.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        {studios.map((st) => (
+          <a href={st.href} class="card studio-card">
             <div>
-              <div class="scenario-tag" style={`color: ${s.color};`}>{s.tag}</div>
-              <h3 class="heading-md" style="margin-top: 8px; color: var(--text);">{s.title}</h3>
-              <p style="color: var(--muted); font-size: 14px; line-height: 1.6; margin-top: 10px;">
-                {s.desc}
+              <div class="studio-tag">{st.tag}</div>
+              <h3 class="heading-md" style="margin-top: 10px; color: var(--text-primary);">{st.name}</h3>
+              <p style="color: var(--text-secondary); font-size: 13.5px; line-height: 1.65; margin-top: 8px;">
+                {st.desc}
               </p>
             </div>
-            <div class="studio-link" style={`color: ${s.color};`}>
-              <span>Explore Studio</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <div class="studio-link-cta">
+              <span>Explore {st.name}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
@@ -185,29 +257,32 @@ const operatingTheses = [
           </a>
         ))}
       </div>
+
+      <div class="text-center" style="margin-top: 3rem;">
+        <a href="/ai-studios" class="btn btn-secondary">View Complete Studios Overview &rarr;</a>
+      </div>
     </div>
   </section>
 
-  <!-- Shared Operating Thesis -->
+  <!-- Industries & Use Cases -->
   <section class="section">
     <div class="container">
-      <div style="text-align: center; margin-bottom: 3rem;">
-        <div class="eyebrow" style="margin-inline: auto;">
-          <span class="badge-dot"></span> Operating Model
+      <div class="text-center section-header">
+        <div class="eyebrow">
+          <span class="badge-dot"></span> Enterprise Adoption
         </div>
-        <h2 class="heading-lg">From Fragmented Signals to Governed Action</h2>
-        <p class="copy" style="margin-inline: auto;">
-          How the platform ingests live telemetry, classifies risk, and routes verified human reviews.
+        <h2 class="heading-lg">Tailored for Mission-Critical Industries</h2>
+        <p class="subheading">
+          Where software failure carries systemic financial, health, or operational consequences, VERIQON ONE provides verified resilience.
         </p>
       </div>
 
       <div class="grid-2">
-        {operatingTheses.map((thesis) => (
+        {industries.map((ind) => (
           <div class="card">
-            <div class="step-badge">{thesis.step}</div>
-            <h3 class="heading-md" style="margin-top: 10px;">{thesis.title}</h3>
-            <p style="color: var(--muted); font-size: 15px; line-height: 1.7; margin-top: 8px;">
-              {thesis.desc}
+            <h3 class="heading-md" style="color: var(--royal-blue);">{ind.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 14.5px; line-height: 1.7; margin-top: 10px;">
+              {ind.desc}
             </p>
           </div>
         ))}
@@ -215,44 +290,166 @@ const operatingTheses = [
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <CtaSection />
+  <!-- Final Call to Action -->
+  <CtaSection
+    title="Transform Your Enterprise Quality Engineering Today"
+    subtitle="Schedule an architectural consultation with VERIQON TECHNOLOGIES specialists and see VERIQON ONE in action."
+    primaryCtaText="Request a Demo"
+    primaryCtaHref="/request-demo"
+    secondaryCtaText="Review Pricing & Tiers"
+    secondaryCtaHref="/pricing"
+  />
 </Layout>
 
 <style>
-  .scenario-tag {
-    font-size: 11px;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+  /* Hero Styles */
+  .hero-section {
+    background: linear-gradient(180deg, #061B36 0%, #0A2547 60%, #081C38 100%);
+    color: #FFFFFF;
+    padding-top: clamp(48px, 6vw, 84px);
+    padding-bottom: clamp(60px, 7vw, 96px);
+    position: relative;
+    overflow: hidden;
   }
 
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(8, 197, 232, 0.4), transparent);
+  }
+
+  .hero-container {
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 860px;
+    margin-inline: auto;
+  }
+
+  .hero-headline {
+    font-size: clamp(36px, 5.5vw, 64px);
+    font-weight: 850;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    margin-top: 1.25rem;
+  }
+
+  .hero-subtext {
+    font-size: clamp(16px, 1.3vw, 19px);
+    line-height: 1.75;
+    color: #C7D0DA;
+    margin-top: 1.5rem;
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
+  .hero-btn-row {
+    justify-content: center;
+    margin-top: 2.25rem;
+  }
+
+  .hero-trust-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(18px, 3vw, 36px);
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trust-val {
+    font-size: 20px;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    color: var(--cyan);
+  }
+
+  .trust-lbl {
+    font-size: 12px;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+
+  .trust-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  @media (max-width: 640px) {
+    .hero-trust-bar {
+      flex-direction: column;
+      gap: 16px;
+    }
+    .trust-divider {
+      display: none;
+    }
+  }
+
+  /* Lifecycle Step Card */
+  .lifecycle-card {
+    border-top: 3px solid var(--royal-blue);
+  }
+
+  .lifecycle-step-num {
+    font-size: 20px;
+    font-weight: 850;
+    font-family: var(--font-mono);
+    color: var(--royal-blue);
+  }
+
+  /* Studio Cards */
   .studio-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    text-decoration: none;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
   }
 
-  .studio-link {
+  .studio-card:hover {
+    border-color: var(--royal-blue);
+    transform: translateY(-4px);
+  }
+
+  .studio-tag {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--royal-blue);
+  }
+
+  .studio-link-cta {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13.5px;
+    font-weight: 650;
+    color: var(--royal-blue);
     margin-top: 24px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-light);
     transition: gap 0.2s ease;
   }
 
-  .studio-card:hover .studio-link {
+  .studio-card:hover .studio-link-cta {
     gap: 10px;
-  }
-
-  .step-badge {
-    font-size: 16px;
-    font-family: var(--font-mono);
-    font-weight: 800;
-    color: var(--cyan);
+    color: var(--electric-blue);
   }
 </style>

@@ -1,31 +1,63 @@
-# Valtrix AI — Enterprise Quality Engineering Marketing Website
+# VERIQON TECHNOLOGIES — Official Marketing Website
+> **Engineering Trust Through Intelligence.**
 
-Official marketing website for the **Valtrix AI Quality Engineering Platform**, built with **Astro 5**, **TypeScript**, and **Static Site Generation (SSG)**, optimized for high-performance static hosting on **Render**.
+Official corporate and product marketing website for **VERIQON TECHNOLOGIES** and its flagship software **VERIQON ONE** (Enterprise Quality Engineering Platform). Built with **Astro 5**, **TypeScript**, and **Static Site Generation (SSG)**, optimized for high-performance static hosting on **Render**.
 
 ---
 
-## Overview
+## Brand Architecture
 
-Valtrix AI unifies requirement analysis, architecture discovery, self-healing test automation, ETL pipeline validation, and continuous security testing into specialized engineering studios.
+- **Parent Company:** **VERIQON TECHNOLOGIES**
+  - Tagline: *Engineering Trust Through Intelligence.*
+  - Scope: Corporate identity, company leadership, vision, governance, security, and global contact.
+- **Flagship Software:** **VERIQON ONE**
+  - Category: *Enterprise Quality Engineering Platform*
+  - Relationship: *Developed and owned by VERIQON TECHNOLOGIES*
+  - Scope: The comprehensive 7-studio platform, architecture, solutions, and enterprise licensing.
 
-### Included Studios & Pages
+---
 
-- **Home (`/`)**: Core value proposition, 6 testing studios, zero-trust foundation, and interactive studio previews.
-- **Platform (`/platform`)**: Four-tier quality architecture and multi-studio engine breakdown.
-- **AI End-to-End Studio (`/studios/ai-end-to-end`)**: Requirements-driven testing from discovery to defect synthesis.
-- **Automation Studio (`/studios/automation`)**: Self-healing DOM execution engine with zero flakiness.
-- **ETL Testing Studio (`/studios/etl-testing`)**: Continuous data lake reconciliation, schema drift, and vector hashing.
-- **Performance Testing Studio (`/studios/performance-testing`)**: Predictive bottleneck modeling and multi-tenant load analysis.
-- **Security Testing Studio (`/studios/security-testing`)**: Automated DAST, zero-trust RBAC audit, and PostgreSQL RLS verification.
-- **Manual Testing Studio (`/studios/manual-testing`)**: AI session recording, smart defect drafting, and automation promotion.
-- **Features (`/features`)**: Complete capability matrix across reasoning, governance, and tooling integration.
-- **Solutions (`/solutions`)**: Industry solutions for FinTech, Healthcare, Enterprise SaaS, and Data Platforms.
-- **Pricing (`/pricing`)**: Transparent evaluation tiers (Pilot, Enterprise Production, and Sovereign On-Premises).
-- **About (`/about`)**: Engineering philosophy, core principles, and platform mission.
-- **Resources (`/resources`)**: Technical blueprints, architecture guides, and best practice manuals.
-- **Contact (`/contact`)**: Technical walkthrough request with interactive client-side validation.
-- **Privacy Policy (`/privacy`)** & **Terms of Service (`/terms`)**: Enterprise data protection and usage terms.
-- **404 Page (`/404`)**: Accessible custom route-not-found handler.
+## Core Visual Palette
+
+The visual system is engineered around a premium, light-first enterprise design with deep navy headers:
+
+- **Brand Navy:** `#061B36`
+- **Deep Navy:** `#0A2547`
+- **Royal Blue:** `#0877E8` (Primary brand color)
+- **Electric Blue:** `#0866D9` (Buttons & emphasis)
+- **Cyan:** `#08C5E8` (Highlights & accents)
+- **Silver / Light Silver:** `#C7D0DA` / `#E8EEF5` (Metallic accents & borders)
+- **Ice Blue:** `#F1F7FD` (Section tints & badge fills)
+
+---
+
+## Platform Studios & Pages
+
+### Product & Platform
+- **Homepage (`/`)**: Corporate positioning, VERIQON ONE platform overview, 6-step quality lifecycle, 7 specialist testing studios, live telemetry console preview.
+- **Platform Architecture (`/platform`)**: Four-tier quality fabric (Intelligent Ingestion, Discovery & Synthesis, Execution Engine, Analytics & Governance).
+- **All 7 Testing Studios (`/ai-studios`)**:
+  1. **AI Studio (`/studios/ai-studio`)**: Autonomous requirement analysis, acceptance criteria synthesis, and multi-modal application discovery.
+  2. **Automation Studio (`/studios/automation`)**: Self-healing DOM execution, resilient locator maintenance, and cross-browser execution.
+  3. **API Testing Studio (`/studios/api-testing`)**: OpenAPI/GraphQL schema validation, contract fuzzing, and latency SLA verification.
+  4. **ETL & Data Testing Studio (`/studios/etl-testing`)**: Continuous data lake reconciliation, schema drift tracking, and high-speed data diffing.
+  5. **Performance Studio (`/studios/performance-testing`)**: Predictive bottleneck modeling and distributed load generation.
+  6. **Security Studio (`/studios/security-testing`)**: Continuous DAST, automated OWASP verification, and RBAC / PostgreSQL RLS boundary auditing.
+  7. **Manual Testing Studio (`/studios/manual-testing`)**: AI session recording, exploratory journey capture, and one-click automation promotion.
+
+### Solutions & Verticals
+- **Solutions (`/solutions`)**: 9 enterprise problem-solution-outcome mappings.
+- **Industries (`/industries`)**: 8 regulated industry profiles (Banking, Healthcare, Retail, Manufacturing, Telecom, Insurance, SaaS, Data Platforms).
+- **Enterprise Architecture (`/enterprise`)**: Zero-trust RBAC, private VPC / air-gapped deployment, SSO/SAML, and compliance standards.
+
+### Company, Resources & Demos
+- **Pricing (`/pricing`)**: Transparent enterprise evaluation tiers (Starter, Professional, Enterprise).
+- **About (`/about`)**: VERIQON TECHNOLOGIES story, leadership philosophy, and dual brand architecture.
+- **Resources (`/resources`)**: Technical whitepapers, documentation blueprints, and searchable FAQ.
+- **Request Demo (`/request-demo`)**: Dedicated platform demonstration reservation flow.
+- **Contact (`/contact`)**: Global corporate inquiry form and direct email channels.
+- **Security & Trust (`/security`)**: Zero-trust architecture, tenant isolation, and cryptographic audit logging.
+- **Privacy Policy (`/privacy`)**, **Terms of Service (`/terms`)**, **Cookie Policy (`/cookies`)**: Complete enterprise governance and compliance documentation.
 
 ---
 
@@ -33,9 +65,9 @@ Valtrix AI unifies requirement analysis, architecture discovery, self-healing te
 
 - **Framework:** [Astro 5](https://astro.build/) (`astro@^5.18.2`)
 - **Language:** TypeScript (`strictNullChecks` enabled)
-- **Styling:** Centralized design system with custom CSS tokens, modern glassmorphism, responsive grids, and purple/black/white enterprise SaaS aesthetics.
-- **Integrations:** `@astrojs/sitemap` (automated XML sitemap generation)
-- **Deployment:** Render Static Site (via `render.yaml` blueprint or manual configuration)
+- **Styling:** Custom CSS design system, CSS clamp responsive typography, zero UI framework overhead.
+- **Search Engine Optimization:** Built-in XML sitemap (`@astrojs/sitemap`), canonical links, Open Graph cards, Twitter cards, and JSON-LD structured data (`Organization` + `SoftwareApplication`).
+- **Hosting:** Render Static Site (via `render.yaml` or direct Git repository linking).
 
 ---
 
@@ -43,7 +75,7 @@ Valtrix AI unifies requirement analysis, architecture discovery, self-healing te
 
 ### Prerequisites
 
-- **Node.js:** `>= 20.0.0` (Node 22 LTS or Node 24 recommended)
+- **Node.js:** `>= 20.0.0` (Node 22 LTS recommended)
 - **npm:** `>= 10.0.0`
 
 ### Installation
@@ -60,62 +92,35 @@ npm install
 ### Local Development Server
 
 ```bash
-# Start local development server with hot-reload
 npm run dev
 ```
 
 Visit `http://localhost:4321` in your browser.
 
-### Type & Project Check
+### Type Checking & Production Build
 
 ```bash
-# Run Astro diagnostic checks
+# Verify TypeScript and Astro types
 npm run check
-```
 
-### Production Build
-
-```bash
-# Compile static output to dist/
+# Generate production static build into dist/
 npm run build
-```
-
-The production assets and HTML files will be generated in `dist/`.
-
-### Local Preview
-
-```bash
-# Preview the production build locally
-npm run preview
 ```
 
 ---
 
-## Deployment to Render
+## Deployment Configuration (Render)
 
-The site is configured for zero-configuration static site deployment on **Render**:
-
-### Automatic Blueprint Deployment
-
-1. In the [Render Dashboard](https://dashboard.render.com/), select **New +** &rarr; **Blueprint**.
-2. Connect `mrudulraval74/ValtrixAI-Marketing`.
-3. Render reads `render.yaml` and deploys automatically.
-
-### Manual Static Site Settings
+The site is configured for zero-configuration static deployment on Render:
 
 | Setting | Value |
 |---|---|
 | **Service Type** | Static Site |
-| **Name** | `valtrix-ai-marketing` |
-| **Repository** | `https://github.com/mrudulraval74/ValtrixAI-Marketing` |
 | **Branch** | `main` |
-| **Root Directory** | *(Leave blank)* |
 | **Build Command** | `npm install && npm run build` |
 | **Publish Directory** | `dist` |
-| **Environment Variable** | `NODE_VERSION`: `22.14.0` |
+| **Auto-Deploy** | Yes (on commit) |
 
 ---
 
-## License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+&copy; 2026 VERIQON TECHNOLOGIES. All rights reserved. VERIQON ONE is an Enterprise Quality Engineering Platform developed and owned by VERIQON TECHNOLOGIES.

@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const enterprisePillars = [
+  {
+    title: "Zero-Trust Multi-Tenancy",
+    desc: "Strict logical and physical data isolation enforced at the database level with Row-Level Security (RLS) and cryptographic tenant boundary validation.",
+    points: ["Complete database schema separation", "Zero cross-organization memory pooling", "Continuous tenant leakage audits"]
+  },
+  {
+    title: "Granular Enterprise RBAC",
+    desc: "Role-Based Access Control mapped directly to your enterprise identity provider via SAML 2.0, OpenID Connect (OIDC), Okta, and Azure AD.",
+    points: ["Fine-grained studio permissions", "Custom role creation & scoping", "Automated JIT user provisioning via SCIM"]
+  },
+  {
+    title: "Dedicated Deployment Topologies",
+    desc: "Choose the deployment model that satisfies your corporate security, sovereignty, and governance requirements without compromising platform power.",
+    points: ["Single-Tenant Dedicated VPC (AWS, Azure, GCP)", "Air-gapped on-premise Kubernetes clusters", "Hybrid cloud with private runner nodes"]
+  },
+  {
+    title: "Cryptographic Audit Trails",
+    desc: "Every requirement alteration, test design approval, and execution trace is stamped with an immutable cryptographic signature for compliance assurance.",
+    points: ["Tamper-evident audit logging", "SOC 2 Type II compliance controls", "Automated regulatory reporting exports"]
+  },
+  {
+    title: "Distributed Hybrid Runners",
+    desc: "Deploy lightweight, private agent runners inside your internal corporate VPCs to test private APIs and databases without opening inbound firewall ports.",
+    points: ["Outbound-only secure telemetry stream", "Zero inbound firewall rule requirements", "Auto-scaling parallel container runners"]
+  },
+  {
+    title: "Enterprise Onboarding & SLA",
+    desc: "Dedicated enterprise customer success engineers, customized architectural reviews, and guaranteed 99.99% platform uptime SLAs.",
+    points: ["Dedicated enterprise solutions architect", "24/7/365 priority tier-1 engineering support", "Migration assistance from legacy QA frameworks"]
+  }
+];
+
+const complianceStandards = [
+  { name: "SOC 2 Type II", desc: "Rigorous operational controls for security, availability, and confidential data handling." },
+  { name: "ISO/IEC 27001", desc: "Certified information security management systems governing all platform processes." },
+  { name: "GDPR & CCPA", desc: "Zero persistent PII storage in test fixtures and complete user data sovereignty support." },
+  { name: "HIPAA Compliant", desc: "BAA agreements and isolated healthcare test execution topologies available." }
+];
+---
+
+<Layout
+  title="Enterprise — Architecture, Security & Governance | VERIQON TECHNOLOGIES"
+  description="Explore the enterprise architecture of VERIQON ONE, developed by VERIQON TECHNOLOGIES: multi-tenancy, zero-trust RBAC, private VPC deployment, and SOC 2 governance."
+>
+  <section class="enterprise-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Enterprise' }]} />
+
+      <div class="badge badge-dark">
+        <span class="badge-dot"></span> ENTERPRISE INFRASTRUCTURE &amp; GOVERNANCE
+      </div>
+      <h1 class="heading-xl hero-title">
+        Enterprise Architecture <br />
+        <span class="gradient-text-light">Engineered for Zero-Trust Security</span>
+      </h1>
+      <p class="subheading subheading-dark hero-lead">
+        <strong>VERIQON ONE</strong> is architected from the ground up to satisfy the most demanding security, compliance, and governance requirements of Global 2000 engineering organisations.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pillars Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center section-header">
+        <div class="eyebrow">
+          <span class="badge-dot"></span> Core Foundations
+        </div>
+        <h2 class="heading-lg">Built for Enterprise Scale and Sovereignty</h2>
+        <p class="subheading">
+          Security and governance are not afterthought add-ons in VERIQON ONE—they form the core foundation of our platform architecture.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        {enterprisePillars.map((p) => (
+          <div class="card ent-card">
+            <h3 class="heading-md" style="color: var(--royal-blue);">{p.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.65; margin-top: 8px;">
+              {p.desc}
+            </p>
+            <ul class="ent-checklist">
+              {p.points.map((pt) => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0877E8" stroke-width="2.5" style="flex-shrink: 0;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Standards Grid -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center section-header">
+        <div class="eyebrow">
+          <span class="badge-dot"></span> Rigorous Compliance
+        </div>
+        <h2 class="heading-lg">Enterprise Security &amp; Compliance Standards</h2>
+        <p class="subheading">
+          Engineered to satisfy internal risk officers, external auditors, and stringent enterprise security evaluations.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        {complianceStandards.map((std) => (
+          <div class="card text-center">
+            <div class="feature-icon" style="margin-inline: auto;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <h3 class="heading-sm" style="color: var(--text-primary);">{std.name}</h3>
+            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6; margin-top: 6px;">
+              {std.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CtaSection
+    title="Review the VERIQON ONE Enterprise Security Whitepaper"
+    subtitle="Request a confidential architecture briefing with VERIQON TECHNOLOGIES information security officers."
+    primaryCtaText="Request a Demo"
+    primaryCtaHref="/request-demo"
+    secondaryCtaText="Contact Enterprise Sales"
+    secondaryCtaHref="/contact"
+  />
+</Layout>
+
+<style>
+  .enterprise-hero {
+    background: linear-gradient(180deg, #061B36 0%, #0A2547 100%);
+    color: #FFFFFF;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-title {
+    color: #FFFFFF;
+    margin-top: 1rem;
+  }
+
+  .hero-lead {
+    margin-top: 1.25rem;
+  }
+
+  .ent-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .ent-checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .ent-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-primary);
+  }
+</style>

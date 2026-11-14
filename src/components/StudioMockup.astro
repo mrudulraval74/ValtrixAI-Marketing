@@ -8,24 +8,25 @@ interface Props {
 }
 
 const {
-  studioName = "AI End-to-End Studio",
-  stageBadge = "OPERATIONAL CONSOLE",
-  activeTab = "Risk & Exposure",
+  studioName = "AI Studio",
+  stageBadge = "ENTERPRISE CONSOLE",
+  activeTab = "Requirement Graph",
   executionMetrics = [
-    { label: "Active Monitored Streams", value: "14 Live", status: "pass" },
-    { label: "Verification Latency", value: "28ms p99", status: "info" },
-    { label: "Model Policy Adherence", value: "100.0%", status: "pass" }
+    { label: "Deterministic Quality Score", value: "99.8%", status: "pass" },
+    { label: "P99 Execution Latency", value: "32ms", status: "info" },
+    { label: "Zero-Trust Policy Adherence", value: "100.0%", status: "pass" }
   ],
-  codeSnippet = `// Monitored Workflow Review & Routing Logic
-const evaluation = await valtrix.evaluateMonitoredStream({
-  streamId: "FIN-PORTFOLIO-ALERT-091",
-  domain: "CAPITAL_RISK_EXPOSURE",
-  governance: "GOVERNED_HUMAN_IN_THE_LOOP_REVIEW"
+  codeSnippet = `// VERIQON ONE Quality Engine Verification Topology
+const testGraph = await veriqon.synthesizeQualityPipeline({
+  source: "REQUIREMENTS_JIRA_CONFLUENCE",
+  engine: "VERIQON_ONE_DETERMINISTIC_RUNTIME",
+  governance: "ZERO_TRUST_RBAC_POLICY",
+  validation: ["CONTRACT_API", "ETL_RECONCILIATION", "DAST_SECURITY"]
 });`
 } = Astro.props;
 ---
 
-<div class="mockup-window glass" role="region" aria-label={`${studioName} Console Preview`}>
+<div class="mockup-window" role="region" aria-label={`${studioName} Console Preview`}>
   <div class="mockup-header">
     <div class="window-controls" aria-hidden="true">
       <span class="window-dot dot-red"></span>
@@ -33,7 +34,8 @@ const evaluation = await valtrix.evaluateMonitoredStream({
       <span class="window-dot dot-green"></span>
     </div>
     <div class="mockup-title">
-      <span>Valtrix AI Console</span> &bull; <span>{studioName}</span>
+      <span class="product-name">VERIQON ONE</span> &bull; <span>{studioName}</span>
+      <span class="powered-badge">by VERIQON TECHNOLOGIES</span>
     </div>
     <div class="mockup-badge">
       {stageBadge}
@@ -41,16 +43,16 @@ const evaluation = await valtrix.evaluateMonitoredStream({
   </div>
 
   <div class="console-body">
-    <!-- Console Tab Bar -->
+    <!-- Console Subbar -->
     <div class="console-subbar">
       <div class="tab-list">
-        <button type="button" class={`console-tab ${activeTab === 'Risk & Exposure' ? 'active' : ''}`}>{activeTab}</button>
-        <button type="button" class="console-tab">Operator Queue</button>
-        <button type="button" class="console-tab">Traceability Graph</button>
-        <button type="button" class="console-tab">Audit History</button>
+        <button type="button" class={`console-tab ${activeTab === 'Requirement Graph' ? 'active' : ''}`}>{activeTab}</button>
+        <button type="button" class="console-tab">Execution Pipeline</button>
+        <button type="button" class="console-tab">Traceability Matrix</button>
+        <button type="button" class="console-tab">Cryptographic Audit</button>
       </div>
       <div class="live-stream-status">
-        <span class="status-pulse"></span> Telemetry Synchronized
+        <span class="status-pulse"></span> Telemetry Active
       </div>
     </div>
 
@@ -58,7 +60,7 @@ const evaluation = await valtrix.evaluateMonitoredStream({
     <div class="console-grid">
       <!-- Left: Engine Execution & Code -->
       <div class="console-pane">
-        <div class="pane-tag">WORKFLOW SYNTHESIS SPECIFICATION</div>
+        <div class="pane-tag">SPECIFICATION &amp; REASONING TOPOLOGY</div>
         <pre class="code-box"><code><span class="code-comment">{codeSnippet}</span></code></pre>
 
         <!-- KPI Metrics Row -->
@@ -74,33 +76,33 @@ const evaluation = await valtrix.evaluateMonitoredStream({
 
       <!-- Right: Real-time Operator Pipeline -->
       <div class="console-pane pane-queue">
-        <div class="pane-tag">MONITORED OPERATOR WORKFLOW QUEUE</div>
+        <div class="pane-tag">VERIFIED EXECUTION &amp; AUDIT PIPELINE</div>
         <div class="queue-list">
           <div class="queue-item item-active">
             <div class="item-head">
-              <span class="item-tag tag-signal">SIGNAL INTAKE</span>
-              <span class="item-time">0.12s ago</span>
+              <span class="item-tag tag-signal">DISCOVERY</span>
+              <span class="item-time">0.08s</span>
             </div>
-            <div class="item-title">Portfolio Exposure Divergence Detected</div>
-            <div class="item-desc">Cross-referenced against verified risk boundary thresholds.</div>
+            <div class="item-title">Enterprise Requirement Topology Parsed</div>
+            <div class="item-desc">User journeys mapped to verifiable acceptance criteria.</div>
           </div>
 
           <div class="queue-item item-review">
             <div class="item-head">
-              <span class="item-tag tag-review">GOVERNED REVIEW</span>
-              <span class="item-time">Pending</span>
+              <span class="item-tag tag-review">GOVERNANCE</span>
+              <span class="item-time">Enforced</span>
             </div>
-            <div class="item-title">Human-in-the-Loop Override Policy</div>
-            <div class="item-desc">Awaiting principal risk engineer authorization check.</div>
+            <div class="item-title">Zero-Trust Role-Based Authorization</div>
+            <div class="item-desc">Execution parameters verified against compliance policies.</div>
           </div>
 
           <div class="queue-item">
             <div class="item-head">
-              <span class="item-tag tag-trace">TRACE RECORD</span>
-              <span class="item-time">Queued</span>
+              <span class="item-tag tag-trace">VERIFICATION</span>
+              <span class="item-time">Complete</span>
             </div>
-            <div class="item-title">Cryptographic Decision Ledger Persistence</div>
-            <div class="item-desc">Immutable audit event written to verified state store.</div>
+            <div class="item-title">Deterministic Defect Trace Ledger</div>
+            <div class="item-desc">Cryptographic test run lineage persisted to audit store.</div>
           </div>
         </div>
       </div>
@@ -109,13 +111,82 @@ const evaluation = await valtrix.evaluateMonitoredStream({
 </div>
 
 <style>
+  .mockup-window {
+    background: #061B36;
+    border: 1px solid rgba(8, 197, 232, 0.28);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(6, 27, 54, 0.45);
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+  }
+
+  .mockup-header {
+    background: #0A2547;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .window-controls {
+    display: flex;
+    gap: 7px;
+  }
+
+  .window-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+  }
+
+  .dot-red { background: #ff5f56; }
+  .dot-yellow { background: #ffbd2e; }
+  .dot-green { background: #27c93f; }
+
+  .mockup-title {
+    font-size: 13px;
+    font-family: var(--font-mono);
+    color: #E2E8F0;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .product-name {
+    font-weight: 750;
+    color: var(--cyan);
+  }
+
+  .powered-badge {
+    font-size: 10px;
+    color: #94A3B8;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .mockup-badge {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--cyan);
+    background: rgba(8, 197, 232, 0.12);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(8, 197, 232, 0.25);
+  }
+
   .console-body {
-    background: rgba(7, 17, 29, 0.95);
+    background: #061B36;
   }
 
   .console-subbar {
-    background: rgba(255, 255, 255, 0.02);
-    border-bottom: 1px solid var(--stroke);
+    background: rgba(10, 37, 71, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 10px 24px;
     display: flex;
     align-items: center;
@@ -140,9 +211,9 @@ const evaluation = await valtrix.evaluateMonitoredStream({
   .console-tab {
     background: transparent;
     border: none;
-    color: var(--muted);
+    color: #C7D0DA;
     font-size: 13px;
-    font-weight: 550;
+    font-weight: 600;
     padding: 6px 14px;
     border-radius: var(--radius-full);
     cursor: pointer;
@@ -152,16 +223,16 @@ const evaluation = await valtrix.evaluateMonitoredStream({
   }
 
   .console-tab.active {
-    background: rgba(97, 173, 255, 0.14);
-    color: var(--cyan);
-    border: 1px solid rgba(121, 243, 255, 0.25);
+    background: rgba(8, 119, 232, 0.25);
+    color: #FFFFFF;
+    border: 1px solid rgba(8, 197, 232, 0.4);
   }
 
   .live-stream-status {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--green);
+    color: var(--cyan);
     font-family: var(--font-mono);
     font-size: 12px;
     white-space: nowrap;
@@ -172,15 +243,15 @@ const evaluation = await valtrix.evaluateMonitoredStream({
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 10px var(--green);
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
   }
 
   .console-grid {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
     gap: 1px;
-    background: var(--stroke);
+    background: rgba(255, 255, 255, 0.08);
   }
 
   @media (max-width: 900px) {
@@ -217,6 +288,10 @@ const evaluation = await valtrix.evaluateMonitoredStream({
       white-space: nowrap;
     }
 
+    .powered-badge {
+      display: none;
+    }
+
     .mockup-badge {
       display: none;
     }
@@ -233,29 +308,34 @@ const evaluation = await valtrix.evaluateMonitoredStream({
   }
 
   .console-pane {
-    background: #08111e;
+    background: #061B36;
     padding: 24px;
   }
 
   .pane-tag {
     font-size: 11px;
     font-family: var(--font-mono);
-    color: var(--muted2);
+    color: var(--cyan);
     letter-spacing: 0.12em;
     margin-bottom: 14px;
+    font-weight: 700;
   }
 
   .code-box {
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--stroke);
+    background: #0A2547;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-sm);
     padding: 16px;
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 12.5px;
     line-height: 1.6;
-    color: #e2e8f0;
+    color: #E2E8F0;
     margin-bottom: 20px;
     overflow-x: auto;
+  }
+
+  .code-comment {
+    color: #94A3B8;
   }
 
   .metrics-row {
@@ -265,9 +345,9 @@ const evaluation = await valtrix.evaluateMonitoredStream({
   }
 
   .metric-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--stroke);
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
     padding: 10px 16px;
     display: flex;
     flex-direction: column;
@@ -276,7 +356,7 @@ const evaluation = await valtrix.evaluateMonitoredStream({
 
   .metric-lbl {
     font-size: 10px;
-    color: var(--muted2);
+    color: #C7D0DA;
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
@@ -287,9 +367,9 @@ const evaluation = await valtrix.evaluateMonitoredStream({
     font-weight: 700;
   }
 
-  .val-pass { color: var(--green); }
-  .val-info { color: var(--blue); }
-  .val-warn { color: var(--amber); }
+  .val-pass { color: var(--cyan); }
+  .val-info { color: #0877E8; }
+  .val-warn { color: #f59e0b; }
 
   .queue-list {
     display: flex;
@@ -298,20 +378,20 @@ const evaluation = await valtrix.evaluateMonitoredStream({
   }
 
   .queue-item {
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid var(--stroke);
-    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
     padding: 14px 16px;
   }
 
   .queue-item.item-active {
-    border-color: rgba(97, 173, 255, 0.3);
-    background: rgba(97, 173, 255, 0.06);
+    border-color: rgba(8, 197, 232, 0.4);
+    background: rgba(8, 197, 232, 0.06);
   }
 
   .queue-item.item-review {
-    border-color: rgba(157, 125, 255, 0.3);
-    background: rgba(157, 125, 255, 0.06);
+    border-color: rgba(8, 119, 232, 0.4);
+    background: rgba(8, 119, 232, 0.06);
   }
 
   .item-head {
@@ -324,42 +404,42 @@ const evaluation = await valtrix.evaluateMonitoredStream({
   .item-tag {
     font-size: 10px;
     font-family: var(--font-mono);
-    font-weight: 700;
+    font-weight: 750;
     padding: 2px 8px;
     border-radius: 4px;
     letter-spacing: 0.05em;
   }
 
   .tag-signal {
-    background: rgba(97, 173, 255, 0.15);
-    color: var(--blue);
+    background: rgba(8, 197, 232, 0.15);
+    color: var(--cyan);
   }
 
   .tag-review {
-    background: rgba(157, 125, 255, 0.15);
-    color: var(--purple);
+    background: rgba(8, 119, 232, 0.2);
+    color: #61adff;
   }
 
   .tag-trace {
-    background: rgba(78, 240, 193, 0.15);
-    color: var(--green);
+    background: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
   }
 
   .item-time {
     font-size: 11px;
-    color: var(--muted2);
+    color: #94A3B8;
     font-family: var(--font-mono);
   }
 
   .item-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
+    font-size: 13.5px;
+    font-weight: 650;
+    color: #FFFFFF;
   }
 
   .item-desc {
     font-size: 12px;
-    color: var(--muted);
+    color: #C7D0DA;
     margin-top: 4px;
     line-height: 1.4;
   }

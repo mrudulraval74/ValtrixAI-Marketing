@@ -6,73 +6,84 @@ import CtaSection from '../../components/CtaSection.astro';
 
 const dataFeatures = [
   {
-    title: "High-Throughput Vector Reconciliation",
-    desc: "Compares billions of records between staging data lakes and analytical warehouses using streaming cryptographic hashing."
+    title: "High-Throughput Vector Hashing",
+    desc: "Reconciles multi-million row datasets in seconds using distributed SIMD vector hashing to verify complete data parity between source and target systems."
   },
   {
-    title: "Schema Evolution & Drift Detection",
-    desc: "Alerts on unintended column drops, nullability changes, or type widening before downstream business intelligence queries break."
+    title: "Continuous Schema Drift Detection",
+    desc: "Monitors upstream tables and downstream warehouse schemas, flagging altered column types, missing fields, or unexpected nullability changes."
   },
   {
-    title: "Business Rule Data Quality Audits",
-    desc: "Validates complex domain logic (ranges, foreign keys, temporal ordering, and composite constraints) automatically."
+    title: "Transformation Logic Verification",
+    desc: "Mathematically verifies SQL transformation scripts, dbt models, and Spark jobs against declared business rules and aggregate assertions."
   },
   {
-    title: "Synthetic Masked Fixture Generation",
-    desc: "Creates statistically representative test datasets with full anonymization, safeguarding PII and production compliance."
+    title: "Data Warehouse Connectors",
+    desc: "Native high-speed integration with Snowflake, Google BigQuery, Databricks Lakehouse, AWS Redshift, PostgreSQL, and Apache Iceberg."
   }
 ];
 ---
 
 <Layout
-  title="ETL Testing Studio | Data Warehouse & Pipeline Validation"
-  description="Validate complex data pipelines, schema migrations, and high-volume data warehouses with Valtrix ETL Testing Studio."
+  title="ETL / Data Testing Studio — VERIQON ONE Data Pipeline Integrity"
+  description="Explore the ETL / Data Testing Studio in VERIQON ONE, developed by VERIQON TECHNOLOGIES: verify data warehouses, transformation logic, and row-level pipeline integrity."
 >
-  <div class="container" style="padding-top: 2.5rem;">
-    <Breadcrumbs items={[{ label: 'Studios', href: '/platform#studios' }, { label: 'ETL Testing Studio' }]} />
+  <div class="container" style="padding-top: 2rem;">
+    <Breadcrumbs items={[{ label: 'Specialist Studios', href: '/ai-studios' }, { label: 'ETL / Data Testing Studio' }]} />
 
     <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
       <div class="badge">
-        <span class="badge-dot"></span> Data Integrity Engine
+        <span class="badge-dot"></span> VERIQON ONE SPECIALIST STUDIO
       </div>
-      <h1 class="heading-xl">ETL Testing Studio</h1>
+      <h1 class="heading-xl">ETL / Data Testing Studio</h1>
       <p class="subheading">
-        Ensures continuous accuracy and schema stability across analytical data lakes, relational databases, streaming brokers, and modern cloud warehouses.
+        Enterprise data warehouse validation, row-level vector hashing, and continuous pipeline reconciliation across multi-million row datasets.
       </p>
     </header>
 
     <StudioMockup
-      studioName="ETL Pipeline Validation Studio"
-      stageBadge="DATA INTEGRITY ENGINE"
-      activeTab="Pipeline Reconciler"
+      studioName="ETL / Data Testing Studio"
+      stageBadge="DATA WAREHOUSE INTEGRITY"
+      activeTab="Data Reconciliation"
       executionMetrics={[
-        { label: "Records Audited", value: "4.8M Rows", status: "pass" },
-        { label: "Schema Drift", value: "0 Detected", status: "pass" },
-        { label: "Transformation Integrity", value: "99.999%", status: "pass" }
+        { label: "Rows Reconciled", value: "48.2M", status: "pass" },
+        { label: "Vector Hash Mismatches", value: "0", status: "pass" },
+        { label: "Throughput", value: "1.4M rows/s", status: "info" }
       ]}
-      codeSnippet={`// ETL Reconciler & Pipeline Audit
-const validation = await valtrix.reconcilePipeline({
-  source: "postgresql://operational_db",
-  target: "snowflake://analytics_warehouse",
-  rules: ["CHECK_NULL_RATIO", "VERIFY_SUM_TOTALS", "VALIDATE_FK_INTEGRITY"]
+      codeSnippet={`// VERIQON ONE High-Throughput Data Reconciliation
+const validation = await veriqon.reconcileDatasets({
+  source: "POSTGRESQL_PROD_REPLICA",
+  target: "SNOWFLAKE_FIN_DW",
+  strategy: "DISTRIBUTED_VECTOR_HASH_RECONCILIATION",
+  tolerance: 0.00000
 });`}
     />
 
     <section class="section" style="padding-top: 2rem;">
+      <div class="text-center section-header">
+        <h2 class="heading-lg">Enterprise Data Verification</h2>
+        <p class="subheading">Certify your analytics, machine learning pipelines, and regulatory reporting on mathematically verified data.</p>
+      </div>
+
       <div class="grid-2">
-        {dataFeatures.map((df) => (
+        {dataFeatures.map((f) => (
           <div class="card">
-            <h3 class="heading-md">{df.title}</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">{df.desc}</p>
+            <h3 class="heading-md" style="color: var(--royal-blue);">{f.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.7; margin-top: 8px;">
+              {f.desc}
+            </p>
           </div>
         ))}
       </div>
     </section>
 
-    <CtaSection 
-      title="Secure Your Critical Data Pipelines"
-      subtitle="Ensure every data transformation is verified with deterministic mathematical proof."
+    <CtaSection
+      title="Protect Your Data Warehouse from Silent Corruption"
+      subtitle="Schedule a consultation with VERIQON TECHNOLOGIES data engineers to benchmark your pipeline reconciliation."
+      primaryCtaText="Request a Demo"
+      primaryCtaHref="/request-demo"
+      secondaryCtaText="Explore Performance Studio"
+      secondaryCtaHref="/studios/performance-testing"
     />
   </div>
 </Layout>
-

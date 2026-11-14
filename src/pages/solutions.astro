@@ -5,71 +5,188 @@ import CtaSection from '../components/CtaSection.astro';
 
 const solutions = [
   {
-    title: "Financial Technology & Banking",
-    challenge: "High audit scrutiny, strict PII regulations, and zero tolerance for calculation drifts in ledger pipelines.",
-    solution: "ETL Testing Studio with synthetic data masking and Security Testing Studio with mathematical RLS isolation verification."
+    title: "Software Quality Engineering",
+    category: "FOUNDATIONAL ENGINEERING",
+    problem: "Fragmented QA tools create blind spots between requirements, automated tests, manual testing, and production defects.",
+    solution: "VERIQON ONE unifies the complete software quality lifecycle into a single governed platform with bidirectional traceability.",
+    outcome: "Eliminates testing silos, reduces defect leakage into staging, and accelerates release velocity by up to 3x."
   },
   {
-    title: "Healthcare & Life Sciences",
-    challenge: "Complex regulatory compliance, patient data privacy (HIPAA), and critical clinical workflow stability.",
-    solution: "AI End-to-End Studio with 100% requirements-to-execution traceability and fully on-premises local model deployment."
+    title: "Enterprise Test Management",
+    category: "GOVERNANCE & VISIBILITY",
+    problem: "QA managers struggle with disconnected spreadsheets, unverified test coverage metrics, and slow reporting cycles.",
+    solution: "Centralized execution dashboards, requirements-to-test mapping, and automated compliance audit reporting.",
+    outcome: "Total executive visibility into release readiness and complete auditability across all test runs."
   },
   {
-    title: "Enterprise SaaS & Cloud Platforms",
-    challenge: "Rapid release cadences, multi-tenant database architectures, and flaky browser test suites blocking releases.",
-    solution: "Automation Studio with autonomous self-healing DOM selectors and parallel distributed test execution orchestration."
+    title: "Intelligent Test Automation",
+    category: "RESILIENT EXECUTION",
+    problem: "Automated test suites suffer from chronic flakiness and high maintenance overhead whenever UI selectors shift.",
+    solution: "Self-healing execution algorithms dynamically resolve altered DOM hierarchies and locator drifts in real time.",
+    outcome: "Reduces routine script maintenance by up to 90%, restoring team confidence in CI/CD automation gates."
   },
   {
-    title: "Data Warehousing & BI Infrastructure",
-    challenge: "Undetected schema drifts, silent NULL value propagation, and reporting mismatches across cloud data lakes.",
-    solution: "Continuous ETL reconciliation verifying row-level transformations and schema contracts prior to business stakeholder reporting."
+    title: "API Testing & Contract Verification",
+    category: "MICROSERVICE RELIABILITY",
+    problem: "Breaking changes between interdependent microservices slip past staging, causing catastrophic production failures.",
+    solution: "Continuous OpenAPI and AsyncAPI contract audits, automated payload boundary fuzzing, and multi-step scenario simulation.",
+    outcome: "Guarantees backward compatibility and eliminates cross-service integration regressions."
+  },
+  {
+    title: "ETL and Data Quality",
+    category: "DATA ASSURANCE",
+    problem: "Silent data corruption, missing rows, and column type mismatches poison analytics, dashboards, and ML models.",
+    solution: "High-throughput distributed vector hashing to verify complete data parity between source stores and data warehouses.",
+    outcome: "Certifies reporting pipelines on 100% mathematically verified data with zero row-level discrepancies."
+  },
+  {
+    title: "Performance Engineering",
+    category: "SCALABILITY & RESILIENCE",
+    problem: "Systems crash or experience severe latency spikes under sudden seasonal traffic surges or high-concurrency loads.",
+    solution: "Predictive load generation simulating millions of concurrent users with sub-millisecond latency breakdown.",
+    outcome: "Identifies database and thread bottlenecks beforehand, ensuring systems maintain 99.999% availability."
+  },
+  {
+    title: "Security Testing & Continuous DAST",
+    category: "ZERO-TRUST POSTURE",
+    problem: "Infrequent manual penetration tests leave newly deployed microservices vulnerable to authorization bypass and injection.",
+    solution: "Automated continuous DAST probing, OWASP Top 10 verification, and multi-tenant Row-Level Security isolation checks.",
+    outcome: "Catches critical security vulnerabilities directly in CI/CD before code merges to production."
+  },
+  {
+    title: "AI-Powered Quality Assurance",
+    category: "NEXT-GEN PRODUCTIVITY",
+    problem: "Manual test case authoring cannot keep pace with two-week sprint cycles, resulting in compromised coverage.",
+    solution: "Autonomous test synthesis parses requirements into executable test suites, boundary fixtures, and negative edge scenarios.",
+    outcome: "Empowers QA teams to achieve 98%+ requirements coverage within minutes of acceptance criteria signoff."
+  },
+  {
+    title: "Enterprise Release Confidence",
+    category: "CONTINUOUS DELIVERY",
+    problem: "Release managers rely on guesswork, subjective QA approvals, and risky late-night production rollouts.",
+    solution: "Deterministic release readiness scoring backed by verified execution traces and immutable cryptographic audit logs.",
+    outcome: "Enables predictable, low-stress continuous deployment with zero rollbacks and verified release confidence."
   }
 ];
 ---
 
 <Layout
-  title="Enterprise Solutions by Industry & Architecture"
-  description="Explore how Valtrix AI delivers mission-critical quality engineering for FinTech, Healthcare, Enterprise SaaS, and Data Platforms."
+  title="Solutions — Enterprise Quality Engineering Solutions | VERIQON TECHNOLOGIES"
+  description="Discover how VERIQON ONE solves enterprise software testing challenges: software quality engineering, intelligent test automation, data quality, and release confidence."
 >
-  <div class="container" style="padding-top: 2.5rem;">
-    <Breadcrumbs items={[{ label: 'Solutions' }]} />
+  <section class="solutions-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Solutions' }]} />
 
-    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 3rem;">
-      <div class="badge">
-        <span class="badge-dot"></span> Mission-Critical Applications
+      <div class="badge badge-dark">
+        <span class="badge-dot"></span> STRATEGIC QUALITY SOLUTIONS
       </div>
-      <h1 class="heading-xl">Enterprise Quality Solutions</h1>
-      <p class="subheading">
-        Tailored quality engineering workflows designed for high-consequence industries requiring uncompromising security and continuous compliance.
+      <h1 class="heading-xl hero-title">
+        Enterprise Quality Solutions <br />
+        <span class="gradient-text-light">Engineered for Complex Systems</span>
+      </h1>
+      <p class="subheading subheading-dark hero-lead">
+        From financial transactions to high-throughput data warehouses, <strong>VERIQON ONE</strong> solves the hardest quality engineering problems facing modern technology leaders.
       </p>
-    </header>
+    </div>
+  </section>
 
-    <div class="grid-2">
-      {solutions.map((s) => (
-        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <h2 class="heading-md" style="color: var(--text-primary);">{s.title}</h2>
-            <div style="margin-top: 1rem;">
-              <span style="font-size: 0.75rem; text-transform: uppercase; font-family: var(--font-mono); color: #f59e0b; font-weight: 700;">Challenge</span>
-              <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-top: 0.25rem;">
-                {s.challenge}
-              </p>
+  <!-- Solutions Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-3">
+        {solutions.map((sol) => (
+          <div class="card solution-card">
+            <div class="solution-cat">{sol.category}</div>
+            <h2 class="heading-md" style="margin-top: 8px;">{sol.title}</h2>
+            
+            <div class="solution-block">
+              <span class="block-lbl text-danger">The Problem:</span>
+              <p>{sol.problem}</p>
             </div>
-            <div style="margin-top: 1.25rem;">
-              <span style="font-size: 0.75rem; text-transform: uppercase; font-family: var(--font-mono); color: #10b981; font-weight: 700;">Valtrix Solution</span>
-              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-top: 0.25rem;">
-                {s.solution}
-              </p>
+
+            <div class="solution-block">
+              <span class="block-lbl text-primary">The Solution:</span>
+              <p>{sol.solution}</p>
+            </div>
+
+            <div class="solution-block outcome-block">
+              <span class="block-lbl text-success">Verified Outcome:</span>
+              <p>{sol.outcome}</p>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
+  </section>
 
-    <CtaSection 
-      title="Discuss Your Industry Quality Requirements"
-      subtitle="Speak with our engineering specialists to design an architecture verification plan for your organization."
-    />
-  </div>
+  <!-- CTA -->
+  <CtaSection
+    title="Tailor a Solution to Your Engineering Architecture"
+    subtitle="Connect with VERIQON TECHNOLOGIES enterprise architects to assess your testing pain points and construct a bespoke quality roadmap."
+    primaryCtaText="Request a Demo"
+    primaryCtaHref="/request-demo"
+    secondaryCtaText="Explore Industry Verticals"
+    secondaryCtaHref="/industries"
+  />
 </Layout>
 
+<style>
+  .solutions-hero {
+    background: linear-gradient(180deg, #061B36 0%, #0A2547 100%);
+    color: #FFFFFF;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-title {
+    color: #FFFFFF;
+    margin-top: 1rem;
+  }
+
+  .hero-lead {
+    margin-top: 1.25rem;
+  }
+
+  .solution-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 3px solid var(--royal-blue);
+  }
+
+  .solution-cat {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    font-weight: 750;
+    color: var(--royal-blue);
+    letter-spacing: 0.1em;
+  }
+
+  .solution-block {
+    margin-top: 14px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .block-lbl {
+    font-weight: 750;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .text-danger { color: #dc2626; }
+  .text-primary { color: var(--royal-blue); }
+  .text-success { color: #16a34a; }
+
+  .outcome-block {
+    background: var(--bg-subtle);
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    border-left: 2px solid #16a34a;
+  }
+</style>

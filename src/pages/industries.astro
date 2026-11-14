@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const industryList = [
+  {
+    title: "Banking & Financial Services",
+    tagline: "Ledger Parity, Regulatory Compliance & Millisecond Audits",
+    challenges: "Strict regulatory requirements (PCI-DSS, Basel III), high-frequency transactions, zero-tolerance data corruption, and complex legacy core banking migrations.",
+    howVeriqonHelps: "VERIQON ONE deploys automated vector hashing across financial ledgers, validates ISO 20022 and SWIFT message payloads, and executes continuous zero-trust security audits.",
+    outcomes: "100% verified settlement accuracy, zero cross-account data leakage, and automated regulatory audit trail generation."
+  },
+  {
+    title: "Healthcare & Life Sciences",
+    tagline: "HIPAA Assurance, Zero-Defect Data & Device Verification",
+    challenges: "Stringent FDA guidelines, HIPAA patient privacy mandates, mission-critical medical device software, and highly sensitive EHR data flows.",
+    howVeriqonHelps: "Validates HL7/FHIR healthcare API contracts, ensures complete anonymization in synthetic test fixtures, and enforces strict tenant and role-based data isolation.",
+    outcomes: "Eliminates PHI compliance exposure in testing environments while guaranteeing medical application reliability."
+  },
+  {
+    title: "Retail & E-Commerce",
+    tagline: "Black Friday Resilience, Payment Integrity & Omnichannel QA",
+    challenges: "Extreme seasonal traffic surges, complex checkout cart workflows, multiple payment gateways, and frequent frontend marketing release deployments.",
+    howVeriqonHelps: "Executes 250,000+ concurrent simulated shoppers in Performance Studio while Automation Studio's self-healing engine absorbs frequent UI updates without breaking.",
+    outcomes: "Zero downtime during peak shopping flash sales and 100% payment transaction checkout completion."
+  },
+  {
+    title: "Manufacturing & Industrial IoT",
+    tagline: "Telemetry Integrity, PLC Verification & Hardware-in-the-Loop",
+    challenges: "High-frequency sensor streams, factory floor automation software, distributed edge nodes, and hardware-software communication synchronicity.",
+    howVeriqonHelps: "ETL / Data Testing Studio reconciles millions of telemetry data points per second against expected manufacturing tolerance thresholds.",
+    outcomes: "Prevents assembly line halt events and catches sensor drift before equipment calibration is compromised."
+  },
+  {
+    title: "Telecommunications & 5G",
+    tagline: "Low-Latency Service Meshes, Billing Integrity & OSS/BSS",
+    challenges: "Massive subscriber event pipelines, microsecond network switching SLAs, complex rating and billing transformations, and multi-cloud infrastructure.",
+    howVeriqonHelps: "Continuous API Testing Studio validates distributed network microservices and high-throughput data warehouse billing reconciliation.",
+    outcomes: "Eliminates billing leakage, guarantees sub-millisecond API response SLAs, and supports seamless 5G service rollouts."
+  },
+  {
+    title: "Insurance & InsurTech",
+    tagline: "Actuarial Calculation Parity, Policyholder Security & Claims QA",
+    challenges: "Complex multi-variable actuarial calculation models, legacy policy admin systems, high claim submission volumes, and sensitive PII data handling.",
+    howVeriqonHelps: "Tests end-to-end claim submission workflows, validates mathematical rating algorithms against expected edge cases, and secures customer portals.",
+    outcomes: "Reduces claims settlement cycle times and ensures 100% actuarial calculation accuracy across all policy tiers."
+  },
+  {
+    title: "Enterprise Technology & SaaS",
+    tagline: "Multi-Tenant Isolation, API Stability & Rapid Continuous Delivery",
+    challenges: "Frequent daily deployments, multi-tenant database isolation, backward-compatible public APIs, and customer SLA guarantees.",
+    howVeriqonHelps: "Integrates directly into CI/CD to run regression suites, verify tenant separation with Row-Level Security audits, and detect breaking API changes on PRs.",
+    outcomes: "Enables engineering teams to deploy multiple times per day with verified release confidence and zero customer-facing regressions."
+  },
+  {
+    title: "Data & Analytics Enterprises",
+    tagline: "Lakehouse Integrity, Vector Validation & BI Pipeline Trust",
+    challenges: "Massive scale ETL workloads, complex dbt transformations, multi-engine lakehouses (Snowflake, Databricks, BigQuery), and unreliable dashboards.",
+    howVeriqonHelps: "High-speed SIMD vector hashing verifies complete row parity and schema consistency across source and target data stores in minutes.",
+    outcomes: "Guarantees executive decision-makers and automated machine learning models operate exclusively on verified, certified data."
+  }
+];
+---
+
+<Layout
+  title="Industries — Enterprise Vertical Applications | VERIQON TECHNOLOGIES"
+  description="Discover how VERIQON ONE serves mission-critical enterprise industries: financial services, healthcare, retail, manufacturing, telecom, insurance, and SaaS."
+>
+  <section class="industries-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Industries' }]} />
+
+      <div class="badge badge-dark">
+        <span class="badge-dot"></span> INDUSTRY APPLICATIONS
+      </div>
+      <h1 class="heading-xl hero-title">
+        Enterprise Quality Engineering <br />
+        <span class="gradient-text-light">For Mission-Critical Verticals</span>
+      </h1>
+      <p class="subheading subheading-dark hero-lead">
+        When software reliability directly impacts balance sheets, patient outcomes, or global supply chains, leading enterprises rely on <strong>VERIQON ONE</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Industries Listing -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        {industryList.map((ind) => (
+          <div class="card industry-card">
+            <h2 class="heading-md" style="color: var(--royal-blue);">{ind.title}</h2>
+            <p class="ind-tagline">{ind.tagline}</p>
+
+            <div class="ind-section">
+              <span class="ind-lbl">Industry Challenges:</span>
+              <p>{ind.challenges}</p>
+            </div>
+
+            <div class="ind-section">
+              <span class="ind-lbl">How VERIQON ONE Delivers:</span>
+              <p>{ind.howVeriqonHelps}</p>
+            </div>
+
+            <div class="ind-outcome-box">
+              <span class="ind-lbl" style="color: #16a34a;">Verified Outcome:</span>
+              <p>{ind.outcomes}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CtaSection
+    title="Schedule an Industry-Specific Architecture Review"
+    subtitle="Consult with VERIQON TECHNOLOGIES specialists experienced in your vertical's regulatory and operational testing requirements."
+    primaryCtaText="Request a Demo"
+    primaryCtaHref="/request-demo"
+    secondaryCtaText="Review Enterprise Architecture"
+    secondaryCtaHref="/enterprise"
+  />
+</Layout>
+
+<style>
+  .industries-hero {
+    background: linear-gradient(180deg, #061B36 0%, #0A2547 100%);
+    color: #FFFFFF;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-title {
+    color: #FFFFFF;
+    margin-top: 1rem;
+  }
+
+  .hero-lead {
+    margin-top: 1.25rem;
+  }
+
+  .industry-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .ind-tagline {
+    font-size: 13.5px;
+    font-weight: 650;
+    color: var(--text-primary);
+    margin-top: 4px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .ind-section {
+    margin-top: 14px;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  .ind-lbl {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .ind-outcome-box {
+    margin-top: 16px;
+    background: var(--bg-subtle);
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid #16a34a;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-primary);
+  }
+</style>

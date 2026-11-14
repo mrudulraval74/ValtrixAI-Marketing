@@ -1,0 +1,299 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const studiosList = [
+  {
+    id: "ai-studio",
+    title: "AI Studio",
+    tagline: "Autonomous Discovery to Test Synthesis",
+    desc: "Transforms complex enterprise requirement specifications, user stories, and OpenAPI schemas into full-stack executable test suites with deep edge-case reasoning.",
+    capabilities: [
+      "Natural language requirements ingestion & gap analysis",
+      "Dynamic test topology generation",
+      "Synthetic test fixture synthesis",
+      "Traceability matrix calculation"
+    ],
+    value: "Reduces sprint test design cycles by up to 75% while capturing boundary defects before code deployment.",
+    href: "/studios/ai-studio",
+    badge: "REASONING ENGINE"
+  },
+  {
+    id: "automation",
+    title: "Automation Studio",
+    tagline: "Self-Healing Test Execution Engine",
+    desc: "Eliminates test suite flakiness through autonomous DOM-change compensation, dynamic selector recovery, and parallel distributed browser orchestration.",
+    capabilities: [
+      "Dynamic visual locator graph matching",
+      "Zero-maintenance selector self-healing",
+      "Cross-browser headless virtual grid",
+      "Step-level visual diff regression"
+    ],
+    value: "Eliminates up to 90% of routine test maintenance overhead caused by rapid frontend UI updates.",
+    href: "/studios/automation",
+    badge: "EXECUTION ENGINE"
+  },
+  {
+    id: "api-testing",
+    title: "API Testing Studio",
+    tagline: "Contract Verification & Payload Fuzzing",
+    desc: "Comprehensive REST, GraphQL, and gRPC contract verification, automated schema drift detection, and stateful multi-step microservice scenario execution.",
+    capabilities: [
+      "Automated OpenAPI & AsyncAPI contract auditing",
+      "Stateful chained request validation",
+      "Intelligent payload boundary fuzzing",
+      "Microservice dependency simulation"
+    ],
+    value: "Prevents breaking API schema changes and silent downstream regression in distributed microservice topologies.",
+    href: "/studios/api-testing",
+    badge: "INTEGRATION ENGINE"
+  },
+  {
+    id: "etl-testing",
+    title: "ETL / Data Testing Studio",
+    tagline: "Data Warehouse & Pipeline Integrity",
+    desc: "Continuous schema reconciliation, row-level vector hashing, and high-throughput data warehouse verification across source-to-target runs.",
+    capabilities: [
+      "Multi-million row parallel vector hashing",
+      "Source-to-target transform validation",
+      "Nullness, range, and duplicate integrity audits",
+      "Snowflake, BigQuery, Databricks, & SQL connectors"
+    ],
+    value: "Ensures reporting, compliance, and machine learning models run on certified, mathematically validated data.",
+    href: "/studios/etl-testing",
+    badge: "DATA INTEGRITY"
+  },
+  {
+    id: "performance-testing",
+    title: "Performance Studio",
+    tagline: "Predictive Bottleneck & Load Analysis",
+    desc: "Synthetic user generation, bottleneck forecasting, and latency breakdown across multi-tenant services and high-concurrency microservices.",
+    capabilities: [
+      "Distributed traffic generation at scale",
+      "Latency percentiles breakdown (p50, p95, p99)",
+      "Database connection pool exhaustion detection",
+      "Degradation curve regression analysis"
+    ],
+    value: "Validates system resilience under peak real-world traffic spikes before production incidents occur.",
+    href: "/studios/performance-testing",
+    badge: "RESILIENCE ENGINE"
+  },
+  {
+    id: "security-testing",
+    title: "Security Studio",
+    tagline: "Continuous DAST & Multi-Tenant Audit",
+    desc: "Automated Dynamic Application Security Testing (DAST), tenant isolation verification, and Row-Level Security (RLS) policy compliance.",
+    capabilities: [
+      "Continuous OWASP Top 10 penetration probing",
+      "Multi-tenant isolation & RLS boundary auditing",
+      "Authentication token leak & replay detection",
+      "Cryptographic configuration checks"
+    ],
+    value: "Detects authorization flaws and tenant leakage early in CI/CD without expensive external audit delays.",
+    href: "/studios/security-testing",
+    badge: "ZERO-TRUST AUDIT"
+  },
+  {
+    id: "manual-testing",
+    title: "Manual Testing Studio",
+    tagline: "AI-Assisted Exploratory QA",
+    desc: "Intelligent test session recording, automated defect draft synthesis, and step-by-step reproduction capture for QA engineers.",
+    capabilities: [
+      "Browser & mobile session step recording",
+      "One-click reproduction step generation",
+      "Network payload and console snapshot capture",
+      "Direct bi-directional sync with Jira defect tracking"
+    ],
+    value: "Transforms manual exploratory testing into auditable, reproducible defect assets in seconds.",
+    href: "/studios/manual-testing",
+    badge: "EXPLORATORY QA"
+  }
+];
+---
+
+<Layout
+  title="VERIQON ONE Specialist Studios — 7 Enterprise Testing Capabilities"
+  description="Explore the seven purpose-built testing studios of VERIQON ONE, developed by VERIQON TECHNOLOGIES: AI Studio, Automation, API, ETL, Performance, Security, and Manual Testing."
+>
+  <!-- Hero Section -->
+  <section class="studios-hero">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Specialist Studios' }]} />
+
+      <div class="badge badge-dark">
+        <span class="badge-dot"></span> VERIQON ONE SUITE
+      </div>
+      <h1 class="heading-xl hero-title">
+        Seven Specialist Testing Studios. <br />
+        <span class="gradient-text-light">One Unified Operating Fabric.</span>
+      </h1>
+      <p class="subheading subheading-dark hero-lead">
+        VERIQON ONE rejects the limitations of generic one-size-fits-all QA tools. Every studio is purpose-engineered for its specific verification domain, all synchronized through the VERIQON Central Platform.
+      </p>
+    </div>
+  </section>
+
+  <!-- Studios Listing -->
+  <section class="section">
+    <div class="container">
+      <div class="studios-stack">
+        {studiosList.map((st) => (
+          <div class="studio-feature-card" id={st.id}>
+            <div class="studio-card-header">
+              <div class="studio-badge-pill">{st.badge}</div>
+              <h2 class="heading-lg" style="margin-top: 8px;">{st.title}</h2>
+              <p class="studio-tagline">{st.tagline}</p>
+            </div>
+
+            <p class="studio-desc">{st.desc}</p>
+
+            <div class="grid-2 studio-detail-grid">
+              <div class="cap-column">
+                <h3 class="detail-label">Key Capabilities</h3>
+                <ul class="cap-checklist">
+                  {st.capabilities.map((c) => (
+                    <li>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0877E8" stroke-width="2.5" style="flex-shrink: 0;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="val-column">
+                <h3 class="detail-label">Business Value</h3>
+                <div class="value-highlight-box">
+                  <p>{st.value}</p>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                  <a href={st.href} class="btn btn-secondary" style="width: 100%;">
+                    Detailed {st.title} Specifications &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CtaSection
+    title="Ready to Tour the VERIQON ONE Studios?"
+    subtitle="Request a live walkthrough with our solutions engineering team to see your specific workload executed in the relevant studio."
+    primaryCtaText="Request a Demo"
+    primaryCtaHref="/request-demo"
+    secondaryCtaText="Review Enterprise Architecture"
+    secondaryCtaHref="/enterprise"
+  />
+</Layout>
+
+<style>
+  .studios-hero {
+    background: linear-gradient(180deg, #061B36 0%, #0A2547 100%);
+    color: #FFFFFF;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-title {
+    color: #FFFFFF;
+    margin-top: 1rem;
+  }
+
+  .hero-lead {
+    margin-top: 1.25rem;
+  }
+
+  .studios-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .studio-feature-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: clamp(28px, 4vw, 48px);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .studio-feature-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--royal-blue);
+  }
+
+  .studio-badge-pill {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    font-weight: 750;
+    color: var(--royal-blue);
+    background: rgba(8, 119, 232, 0.08);
+    border: 1px solid rgba(8, 119, 232, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .studio-tagline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--royal-blue);
+    margin-top: 4px;
+  }
+
+  .studio-desc {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-top: 1rem;
+    max-width: 960px;
+  }
+
+  .studio-detail-grid {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .detail-label {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .cap-checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cap-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-primary);
+  }
+
+  .value-highlight-box {
+    background: var(--bg-subtle);
+    border-left: 3px solid var(--royal-blue);
+    padding: 16px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+</style>

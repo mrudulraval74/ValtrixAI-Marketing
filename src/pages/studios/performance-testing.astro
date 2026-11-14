@@ -4,75 +4,87 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import StudioMockup from '../../components/StudioMockup.astro';
 import CtaSection from '../../components/CtaSection.astro';
 
-const performancePillars = [
+const perfFeatures = [
   {
-    title: "Predictive Bottleneck Modeling",
-    desc: "Simulates traffic ramps and pinpoints CPU thread starvation, database connection pool exhaustion, and memory leaks before they reach production."
+    title: "Distributed Load Generation",
+    desc: "Simulates millions of concurrent user sessions across global geographic regions with realistic latency profiles and varied device headers."
   },
   {
-    title: "Realistic Multi-Tenant Concurrency",
-    desc: "Emulates variable user workflows with stochastic wait times and heterogeneous payload sizes rather than trivial repetitive HTTP hits."
+    title: "Predictive Degradation Curves",
+    desc: "Identifies the exact concurrency threshold where system response times degrade, forecasting memory leaks and thread pool starvation."
   },
   {
-    title: "End-to-End Latency Waterfall",
-    desc: "Correlates client-side rendering times with API gateway latency and deep backend database query spans."
+    title: "Microservice Latency Waterfall",
+    desc: "Breaks down end-to-end transaction latency across API gateways, service meshes, database queries, and third-party SaaS webhooks."
   },
   {
-    title: "Continuous CI/CD Gate Integration",
-    desc: "Enforces strict performance SLAs in automated pull requests, rejecting regressions in p95 and p99 response percentiles."
+    title: "Automated Regression Baselines",
+    desc: "Compares current build load profiles against historical benchmarks in CI/CD, flagging latency regressions before staging approval."
   }
 ];
 ---
 
 <Layout
-  title="Performance Testing Studio | Predictive Scale & Concurrency"
-  description="Forecast system limits and eliminate latency bottlenecks with Valtrix Performance Testing Studio. Realistic load generation and deep tracing."
+  title="Performance Studio — VERIQON ONE High-Concurrency Load Simulation"
+  description="Explore Performance Studio in VERIQON ONE, developed by VERIQON TECHNOLOGIES: predictive bottleneck forecasting, latency breakdown, and enterprise load simulation."
 >
-  <div class="container" style="padding-top: 2.5rem;">
-    <Breadcrumbs items={[{ label: 'Studios', href: '/platform#studios' }, { label: 'Performance Testing Studio' }]} />
+  <div class="container" style="padding-top: 2rem;">
+    <Breadcrumbs items={[{ label: 'Specialist Studios', href: '/ai-studios' }, { label: 'Performance Studio' }]} />
 
     <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem;">
       <div class="badge">
-        <span class="badge-dot"></span> Enterprise Scale
+        <span class="badge-dot"></span> VERIQON ONE SPECIALIST STUDIO
       </div>
-      <h1 class="heading-xl">Performance Testing Studio</h1>
+      <h1 class="heading-xl">Performance Studio</h1>
       <p class="subheading">
-        Simulate real-world global traffic spikes, analyze multi-tenant microservice bottlenecks, and guarantee high-availability throughput SLAs.
+        Synthetic user generation, bottleneck forecasting, and sub-millisecond latency analysis across multi-tenant microservices and distributed databases.
       </p>
     </header>
 
     <StudioMockup
-      studioName="Performance Simulation & Latency Engine"
-      stageBadge="LOAD FORECASTING"
-      activeTab="Execution Trace"
+      studioName="Performance Studio"
+      stageBadge="CONCURRENCY &amp; RESILIENCE"
+      activeTab="Load Simulation"
       executionMetrics={[
-        { label: "Concurrent Virtual Users", value: "25,000", status: "info" },
-        { label: "p99 Response Time", value: "48ms", status: "pass" },
+        { label: "Simulated Concurrent VUs", value: "250,000", status: "pass" },
+        { label: "P99 Response Time", value: "38ms", status: "pass" },
         { label: "Error Rate", value: "0.00%", status: "pass" }
       ]}
-      codeSnippet={`// Distributed Concurrency Simulation
-await valtrix.orchestrateLoadRun({
-  target: "https://api.enterprise.internal",
-  rampUp: "5m to 25k users",
-  thresholds: { "p99": "< 120ms", "error_rate": "< 0.01%" }
+      codeSnippet={`// VERIQON ONE Distributed Performance Simulation
+const loadRun = await veriqon.executeLoadScenario({
+  targetService: "CHECKOUT_API_CLUSTER",
+  profile: "SPIKE_AND_SUSTAIN_PEAK",
+  targetVUs: 250000,
+  rampDuration: "5m",
+  breakOnThresholdViolation: true
 });`}
     />
 
     <section class="section" style="padding-top: 2rem;">
+      <div class="text-center section-header">
+        <h2 class="heading-lg">Predictive Performance Engineering</h2>
+        <p class="subheading">Uncover architectural bottlenecks before they cause costly production outages.</p>
+      </div>
+
       <div class="grid-2">
-        {performancePillars.map((p) => (
+        {perfFeatures.map((f) => (
           <div class="card">
-            <h3 class="heading-md">{p.title}</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">{p.desc}</p>
+            <h3 class="heading-md" style="color: var(--royal-blue);">{f.title}</h3>
+            <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.7; margin-top: 8px;">
+              {f.desc}
+            </p>
           </div>
         ))}
       </div>
     </section>
 
-    <CtaSection 
-      title="Prepare Your Systems for Peak Traffic"
-      subtitle="Benchmark latency, discover bottlenecks, and scale with total confidence."
+    <CtaSection
+      title="Prepare Your Systems for Peak Enterprise Demand"
+      subtitle="Speak with a VERIQON TECHNOLOGIES performance architect to design your high-throughput stress simulation."
+      primaryCtaText="Request a Demo"
+      primaryCtaHref="/request-demo"
+      secondaryCtaText="Explore Security Studio"
+      secondaryCtaHref="/studios/security-testing"
     />
   </div>
 </Layout>
-

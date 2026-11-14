@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<Layout
+  title="Cookie Policy | VERIQON TECHNOLOGIES"
+  description="VERIQON TECHNOLOGIES Cookie Policy. Understand our privacy-first cookie policy and data storage practices."
+>
+  <div class="container" style="padding-top: 2.5rem; padding-bottom: 5rem;">
+    <Breadcrumbs items={[{ label: 'Cookie Policy' }]} />
+
+    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 2rem; text-align: left;">
+      <div class="badge">
+        <span class="badge-dot"></span> Privacy &amp; Cookies
+      </div>
+      <h1 class="heading-xl" style="margin-top: 0.75rem;">Cookie Policy</h1>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Effective Date: November 2026 &bull; VERIQON TECHNOLOGIES</p>
+    </header>
+
+    <div class="card legal-content" style="max-width: 900px; padding: 2.5rem; display: flex; flex-direction: column; gap: 2rem; line-height: 1.8;">
+      <section>
+        <h2 class="heading-md">1. What Are Cookies?</h2>
+        <p>
+          Cookies are small text files placed on your computer or mobile device when you browse websites. They are used to make websites work efficiently, remember your preferences, and provide analytical information to site operators.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="heading-md">2. Our Use of Cookies</h2>
+        <p>
+          <strong>VERIQON TECHNOLOGIES</strong> believes in privacy-by-design. Our marketing website utilizes strictly necessary cookies and minimal session telemetry required for reliable page navigation, security protection, and interactive form handling.
+        </p>
+        <ul style="margin-left: 1.5rem; margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-secondary);">
+          <li><strong>Strictly Necessary Cookies:</strong> Essential for browsing and using site features such as secure inquiry submission.</li>
+          <li><strong>Performance &amp; Analytics:</strong> Aggregated, privacy-respecting metrics to evaluate site traffic and load performance without identifying individual users.</li>
+          <li><strong>Zero Cross-Site Tracking:</strong> We do not sell user data or utilize cross-site behavioural advertising networks.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="heading-md">3. Managing Cookie Preferences</h2>
+        <p>
+          Most web browsers allow you to control cookie settings through their preferences menu. You can block or delete cookies in your browser settings at any time without impacting your core experience on our public website.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="heading-md">4. Contact Us</h2>
+        <p>
+          If you have questions regarding our cookie practices, please contact our privacy compliance team at <a href="mailto:privacy@veriqon.com" style="color: var(--royal-blue); text-decoration: underline;">privacy@veriqon.com</a>.
+        </p>
+      </section>
+    </div>
+  </div>
+</Layout>

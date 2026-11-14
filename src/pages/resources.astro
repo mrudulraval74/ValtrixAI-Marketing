@@ -3,73 +3,240 @@ import Layout from '../layouts/Layout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import CtaSection from '../components/CtaSection.astro';
 
-const resources = [
+const technicalGuides = [
   {
-    type: "Architecture Guide",
-    title: "Client-Server Zero-Trust Quality Verification",
-    desc: "A comprehensive guide to configuring target machine connectivity, discovery agents, and cryptographic execution evidence.",
-    href: "/platform"
+    title: "Zero-Trust Quality Architecture Whitepaper",
+    category: "ARCHITECTURE BRIEF",
+    readTime: "12 min read",
+    desc: "A comprehensive deep dive into zero-trust tenant isolation, Row-Level Security policy auditing, and cryptographic test run lineage persistence.",
+    linkText: "Read Architecture Brief &rarr;"
   },
   {
-    type: "Best Practice",
-    title: "Self-Healing Test Automation Strategies",
-    desc: "How multi-modal locator graphs prevent pipeline failures when class names, DOM trees, and UI design tokens change.",
-    href: "/studios/automation"
+    title: "Eliminating Test Flakiness with Dynamic DOM Graphs",
+    category: "ENGINEERING INSIGHTS",
+    readTime: "9 min read",
+    desc: "How multi-modal contextual locator algorithms adapt to frontend framework updates without human selector intervention.",
+    linkText: "Read Engineering Guide &rarr;"
   },
   {
-    type: "Data Engineering",
-    title: "Continuous ETL & Data Lake Reconciliation",
-    desc: "Techniques for validating schema drift, row-level vector hashing, and data transformation integrity at scale.",
-    href: "/studios/etl-testing"
+    title: "High-Throughput Vector Hashing in Data Warehouse Validation",
+    category: "DATA ENGINEERING",
+    readTime: "14 min read",
+    desc: "Implementing distributed SIMD vector hashing algorithms to reconcile multi-million row datasets across cloud warehouses in seconds.",
+    linkText: "Read Technical Paper &rarr;"
   },
   {
-    type: "Security Manual",
-    title: "PostgreSQL Row-Level Security (RLS) Verification",
-    desc: "Automating zero-trust multi-tenant isolation testing directly against relational database policies.",
-    href: "/studios/security-testing"
+    title: "CI/CD Gate Integration with GitHub Actions & GitLab CI",
+    category: "DEVELOPER GUIDE",
+    readTime: "8 min read",
+    desc: "Step-by-step instructions for running parallel VERIQON ONE test suites directly inside PR validation pipelines.",
+    linkText: "View Documentation &rarr;"
+  },
+  {
+    title: "Automated DAST in Continuous Deployment Workflows",
+    category: "SECURITY BRIEF",
+    readTime: "11 min read",
+    desc: "Best practices for embedding automated penetration probing and OWASP compliance gates into high-velocity release cadences.",
+    linkText: "Read Security Guide &rarr;"
+  },
+  {
+    title: "Predictive Load Modeling for Microservice Topologies",
+    category: "PERFORMANCE GUIDE",
+    readTime: "10 min read",
+    desc: "Simulating realistic peak user traffic curves and isolating latency regressions across distributed service meshes.",
+    linkText: "Read Performance Guide &rarr;"
+  }
+];
+
+const faqs = [
+  {
+    q: "How does VERIQON ONE differ from legacy test automation frameworks like Selenium or Cypress?",
+    a: "VERIQON ONE is not just a script runner. It is a full-lifecycle enterprise quality engineering platform that connects requirements ingestion, AI test synthesis, self-healing execution, API contract verification, and ETL data validation into one unified, governed operating system."
+  },
+  {
+    q: "Can VERIQON ONE run inside our private enterprise VPC or on-premise cloud?",
+    a: "Yes. VERIQON ONE supports dedicated single-tenant VPC deployments on AWS, Azure, and Google Cloud, as well as 100% air-gapped on-premise Kubernetes installations with zero external telemetry egress."
+  },
+  {
+    q: "Does VERIQON ONE require us to rewrite our existing test suites?",
+    a: "No. VERIQON ONE seamlessly executes and enhances existing Playwright, Cypress, Selenium, and custom test drivers while layering on autonomous self-healing, unified reporting, and cryptographic traceability."
+  },
+  {
+    q: "How does the ETL / Data Testing Studio validate multi-million row data warehouses?",
+    a: "Our engine uses distributed SIMD-accelerated vector hashing to calculate deterministic parity fingerprints across datasets without requiring slow, full-table row extraction over network boundaries."
+  },
+  {
+    q: "What identity and access management standards are supported?",
+    a: "We natively support SAML 2.0, OpenID Connect (OIDC), Okta, Azure Active Directory, and automated user provisioning via SCIM with granular role-based access control."
   }
 ];
 ---
 
 <Layout
-  title="Resources, Architecture Guides & Technical Documentation"
-  description="Explore Valtrix AI technical resources, quality engineering guides, architecture blueprints, and best practices."
+  title="Resources & Documentation — VERIQON TECHNOLOGIES"
+  description="Technical documentation, engineering whitepapers, quality architecture guides, and frequently asked questions from VERIQON TECHNOLOGIES."
 >
-  <div class="container" style="padding-top: 2.5rem;">
-    <Breadcrumbs items={[{ label: 'Resources' }]} />
+  <section class="resources-hero">
+    <div class="container text-center">
+      <Breadcrumbs items={[{ label: 'Resources' }]} />
 
-    <header class="section-hero" style="padding-top: 1rem; padding-bottom: 3rem;">
-      <div class="badge">
-        <span class="badge-dot"></span> Knowledge Base
+      <div class="badge badge-dark">
+        <span class="badge-dot"></span> ENGINEERING KNOWLEDGE BASE
       </div>
-      <h1 class="heading-xl">Technical Resources &amp; Guides</h1>
-      <p class="subheading">
-        Deep-dive engineering resources, architecture specifications, and best practices for autonomous quality engineering teams.
+      <h1 class="heading-xl hero-title">
+        Technical Resources &amp; Guides
+      </h1>
+      <p class="subheading subheading-dark hero-lead">
+        In-depth architecture whitepapers, engineering best practices, and integration documentation authored by VERIQON TECHNOLOGIES specialists.
       </p>
-    </header>
-
-    <div class="grid-2">
-      {resources.map((r) => (
-        <a href={r.href} class="card" style="text-decoration: none; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--primary-accent); font-weight: 700; text-transform: uppercase;">
-              {r.type}
-            </span>
-            <h2 class="heading-md" style="font-size: 1.25rem; margin-top: 0.5rem; color: var(--text-primary);">
-              {r.title}
-            </h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-top: 0.5rem;">
-              {r.desc}
-            </p>
-          </div>
-          <div style="margin-top: 1.5rem; font-size: 0.85rem; font-weight: 600; color: var(--primary-accent);">
-            Read Guide →
-          </div>
-        </a>
-      ))}
     </div>
+  </section>
 
-    <CtaSection />
-  </div>
+  <!-- Guides Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-3">
+        {technicalGuides.map((g) => (
+          <div class="card guide-card">
+            <div>
+              <div class="guide-meta">
+                <span class="guide-cat">{g.category}</span>
+                <span class="guide-time">{g.readTime}</span>
+              </div>
+              <h2 class="heading-md" style="font-size: 1.25rem; margin-top: 10px;">{g.title}</h2>
+              <p style="color: var(--text-secondary); font-size: 13.5px; line-height: 1.65; margin-top: 8px;">
+                {g.desc}
+              </p>
+            </div>
+            <div class="guide-link-box">
+              <span class="guide-link">{g.linkText}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section section-alt">
+    <div class="container" style="max-width: 900px;">
+      <div class="text-center section-header">
+        <div class="eyebrow">
+          <span class="badge-dot"></span> Common Questions
+        </div>
+        <h2 class="heading-lg">Frequently Asked Questions</h2>
+        <p class="subheading">
+          Answers to architectural, deployment, and technical questions regarding VERIQON ONE.
+        </p>
+      </div>
+
+      <div class="faq-accordion">
+        {faqs.map((faq) => (
+          <div class="faq-item">
+            <h3 class="faq-question">{faq.q}</h3>
+            <p class="faq-answer">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CtaSection
+    title="Ready to Deep Dive with a Solutions Architect?"
+    subtitle="Request a 1-on-1 technical session with our engineering team to review your specific tech stack and integration requirements."
+    primaryCtaText="Request a Demo"
+    primaryCtaHref="/request-demo"
+    secondaryCtaText="Contact Sales Team"
+    secondaryCtaHref="/contact"
+  />
 </Layout>
 
+<style>
+  .resources-hero {
+    background: linear-gradient(180deg, #061B36 0%, #0A2547 100%);
+    color: #FFFFFF;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-title {
+    color: #FFFFFF;
+    margin-top: 1rem;
+  }
+
+  .hero-lead {
+    margin-top: 1.25rem;
+    margin-inline: auto;
+  }
+
+  .guide-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .guide-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    font-family: var(--font-mono);
+  }
+
+  .guide-cat {
+    color: var(--royal-blue);
+    font-weight: 750;
+    letter-spacing: 0.08em;
+  }
+
+  .guide-time {
+    color: var(--text-muted);
+  }
+
+  .guide-link-box {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .guide-link {
+    font-size: 13.5px;
+    font-weight: 650;
+    color: var(--royal-blue);
+    cursor: pointer;
+  }
+
+  .guide-card:hover .guide-link {
+    color: var(--electric-blue);
+    text-decoration: underline;
+  }
+
+  /* FAQ Accordion */
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .faq-item {
+    background: #FFFFFF;
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .faq-question {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .faq-answer {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-top: 10px;
+  }
+</style>
