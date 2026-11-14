@@ -254,6 +254,7 @@ svg {
 }
 
 @media (max-width: 540px) {
+
   .btn-row,
   .btn-group {
     flex-direction: column;
@@ -267,7 +268,8 @@ svg {
     text-align: center;
   }
 
-  .card, .glass {
+  .card,
+  .glass {
     padding: 22px 18px;
     border-radius: 20px;
   }
