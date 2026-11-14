@@ -117,6 +117,61 @@ const faqs = [
     </div>
   </section>
 
+  <!-- CI/CD & Developer CLI Integration Showcase (Modeled from Real Platform Screen) -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center section-header">
+        <div class="eyebrow">
+          <span class="badge-dot"></span> Developer Experience
+        </div>
+        <h2 class="heading-lg">Continuous Pipeline &amp; Webhook Integration</h2>
+        <p class="subheading">
+          Trigger synthesized suites, stream telemetry to your terminal, and import JUnit results with the lightweight, zero-dependency <code>veriqon_cli.py</code> client.
+        </p>
+      </div>
+
+      <div class="card" style="background: #061B36; color: #FFFFFF; border: 1px solid rgba(8, 197, 232, 0.35); padding: 2rem; max-width: 960px; margin-inline: auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 12px; margin-bottom: 16px;">
+          <div style="font-size: 13px; font-weight: 700; color: var(--cyan); font-family: var(--font-mono);">
+            PIPELINE HOOK &bull; GITHUB ACTIONS &bull; GITLAB CI &bull; JENKINS
+          </div>
+          <span style="font-size: 11px; background: rgba(8, 197, 232, 0.15); color: var(--cyan); padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono);">
+            Zero Dependencies
+          </span>
+        </div>
+
+        <pre style="background: #041224; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 18px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.6; color: #C7D0DA; overflow-x: auto;"><code><span style="color: #64748B;"># 1. Fetch the lightweight client directly inside your runner</span>
+curl -o veriqon_cli.py https://api.veriqon.com/ci/cli
+export VERIQON_URL="https://veriqon-technologies.onrender.com"
+export VERIQON_TOKEN="vtx_prod_live_948a27b8"
+
+<span style="color: #64748B;"># 2. Dispatch automated test execution on private runner nodes</span>
+python veriqon_cli.py run --project PRJ-14 --fail-on-failed
+
+<span style="color: #64748B;"># 3. Ingest third-party test reports (Playwright, Jest, PyTest, Maven) into Traceability Matrix</span>
+python veriqon_cli.py import-junit --project PRJ-14 --file report.xml --build $GITHUB_RUN_ID</code></pre>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px;">
+          <div style="background: rgba(10, 37, 71, 0.6); padding: 12px 14px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.06);">
+            <div style="font-size: 10px; font-family: var(--font-mono); color: #94A3B8;">WEBHOOK SIGNATURE</div>
+            <div style="font-size: 13.5px; font-weight: 700; color: #FFFFFF; margin-top: 4px;">HMAC SHA-256</div>
+            <div style="font-size: 11px; color: var(--cyan); margin-top: 2px;">x-veriqon-signature verified</div>
+          </div>
+          <div style="background: rgba(10, 37, 71, 0.6); padding: 12px 14px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.06);">
+            <div style="font-size: 10px; font-family: var(--font-mono); color: #94A3B8;">TOKEN EXPIRATION</div>
+            <div style="font-size: 13.5px; font-weight: 700; color: #FFFFFF; margin-top: 4px;">Configurable TTL</div>
+            <div style="font-size: 11px; color: #61adff; margin-top: 2px;">Auto-revocation on breach</div>
+          </div>
+          <div style="background: rgba(10, 37, 71, 0.6); padding: 12px 14px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.06);">
+            <div style="font-size: 10px; font-family: var(--font-mono); color: #94A3B8;">CONNECTOR STATUS</div>
+            <div style="font-size: 13.5px; font-weight: 700; color: #FFFFFF; margin-top: 4px;">Jira &bull; Confluence &bull; Git</div>
+            <div style="font-size: 11px; color: #10b981; margin-top: 2px;">Bidirectional sync active</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ Section -->
   <section class="section section-alt">
     <div class="container" style="max-width: 900px;">

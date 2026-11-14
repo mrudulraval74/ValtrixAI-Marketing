@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: valtrix-ai-marketing
+    name: veriqon-technologies
     runtime: static
     branch: main
     buildCommand: npm install && npm run build

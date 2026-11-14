@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://valtrix-ai-marketing.onrender.com/sitemap-index.xml
-
+Sitemap: https://veriqon-technologies.onrender.com/sitemap-index.xml
