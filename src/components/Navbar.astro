@@ -102,37 +102,37 @@ const currentPath = Astro.url.pathname;
       </button>
     </div>
   </div>
-
-  <!-- Mobile Drawer Backdrop -->
-  <div class="mobile-backdrop" id="mobile-backdrop"></div>
-
-  <!-- Mobile Drawer -->
-  <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
-    <div class="mobile-drawer-content">
-      <div class="mobile-group-label">Core Platform</div>
-      <a href="/platform" class="mobile-link">Platform Architecture</a>
-      <a href="/studios/ai-end-to-end" class="mobile-link">AI End-to-End Studio</a>
-      <a href="/studios/automation" class="mobile-link">Automation Studio</a>
-      <a href="/studios/etl-testing" class="mobile-link">ETL Testing Studio</a>
-      <a href="/studios/performance-testing" class="mobile-link">Performance Testing Studio</a>
-      <a href="/studios/security-testing" class="mobile-link">Security Testing Studio</a>
-      <a href="/studios/manual-testing" class="mobile-link">Manual Testing Studio</a>
-
-      <div class="mobile-group-label">Enterprise &amp; Company</div>
-      <a href="/features" class="mobile-link">Features Matrix</a>
-      <a href="/solutions" class="mobile-link">Industry Solutions</a>
-      <a href="/pricing" class="mobile-link">Pricing &amp; Tiers</a>
-      <a href="/about" class="mobile-link">About Valtrix</a>
-      <a href="/resources" class="mobile-link">Technical Guides</a>
-      <a href="/contact" class="mobile-link">Contact</a>
-
-      <div class="mobile-drawer-cta">
-        <a href="/contact" class="btn btn-primary" style="width: 100%;">Schedule Walkthrough</a>
-        <a href="/platform" class="btn btn-secondary" style="width: 100%;">Explore Platform</a>
-      </div>
-    </div>
-  </aside>
 </header>
+
+<!-- Mobile Drawer Backdrop (outside header for direct viewport fixed positioning) -->
+<div class="mobile-backdrop" id="mobile-backdrop"></div>
+
+<!-- Mobile Drawer (outside header for direct viewport fixed positioning) -->
+<aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+  <div class="mobile-drawer-content">
+    <div class="mobile-group-label">Core Platform</div>
+    <a href="/platform" class="mobile-link">Platform Architecture</a>
+    <a href="/studios/ai-end-to-end" class="mobile-link">AI End-to-End Studio</a>
+    <a href="/studios/automation" class="mobile-link">Automation Studio</a>
+    <a href="/studios/etl-testing" class="mobile-link">ETL Testing Studio</a>
+    <a href="/studios/performance-testing" class="mobile-link">Performance Testing Studio</a>
+    <a href="/studios/security-testing" class="mobile-link">Security Testing Studio</a>
+    <a href="/studios/manual-testing" class="mobile-link">Manual Testing Studio</a>
+
+    <div class="mobile-group-label">Enterprise &amp; Company</div>
+    <a href="/features" class="mobile-link">Features Matrix</a>
+    <a href="/solutions" class="mobile-link">Industry Solutions</a>
+    <a href="/pricing" class="mobile-link">Pricing &amp; Tiers</a>
+    <a href="/about" class="mobile-link">About Valtrix</a>
+    <a href="/resources" class="mobile-link">Technical Guides</a>
+    <a href="/contact" class="mobile-link">Contact</a>
+
+    <div class="mobile-drawer-cta">
+      <a href="/contact" class="btn btn-primary" style="width: 100%;">Schedule Walkthrough</a>
+      <a href="/platform" class="btn btn-secondary" style="width: 100%;">Explore Platform</a>
+    </div>
+  </div>
+</aside>
 
 <style>
   .nav {
@@ -378,18 +378,17 @@ const currentPath = Astro.url.pathname;
     .mobile-backdrop {
       display: block;
       position: fixed;
+      inset: 0;
       top: var(--nav-h);
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.72);
+      background: rgba(0, 0, 0, 0.76);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
       transition: opacity 0.25s ease, visibility 0.25s ease;
-      z-index: 101;
+      z-index: 999;
+      touch-action: none;
     }
 
     .mobile-backdrop.open {
@@ -408,12 +407,15 @@ const currentPath = Astro.url.pathname;
       height: calc(100dvh - var(--nav-h));
       background: #08111e;
       border-left: 1px solid var(--stroke-strong);
-      box-shadow: -12px 0 40px rgba(0, 0, 0, 0.7);
+      box-shadow: -14px 0 44px rgba(0, 0, 0, 0.8);
       transform: translateX(100%);
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
       overflow-y: auto;
+      overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
-      z-index: 102;
+      touch-action: pan-y;
+      overscroll-behavior: contain;
+      z-index: 1000;
     }
 
     .mobile-drawer.open {
@@ -421,9 +423,10 @@ const currentPath = Astro.url.pathname;
     }
 
     .mobile-drawer-content {
-      padding: 1.5rem 1.5rem 3rem;
+      padding: 1.5rem 1.5rem 6.5rem;
       display: flex;
       flex-direction: column;
+      min-height: calc(100% + 1px);
     }
 
     .mobile-group-label {
@@ -503,7 +506,16 @@ const currentPath = Astro.url.pathname;
     toggleBtn.setAttribute('aria-expanded', open.toString());
     drawer.classList.toggle('open', open);
     backdrop.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+
+    if (open) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
 
     const menuIcon = toggleBtn.querySelector('.icon-menu') as HTMLElement;
     const closeIcon = toggleBtn.querySelector('.icon-close') as HTMLElement;
@@ -527,6 +539,12 @@ const currentPath = Astro.url.pathname;
       link.addEventListener('click', () => {
         setDrawerOpen(false);
       });
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) {
+        setDrawerOpen(false);
+      }
     });
 
     window.addEventListener('resize', () => {
