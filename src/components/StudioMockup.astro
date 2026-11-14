@@ -1,144 +1,508 @@
 ---
 interface Props {
-  studioName: string;
+  studioName?: string;
   stageBadge?: string;
   activeTab?: string;
-  executionMetrics?: { label: string; value: string; status?: 'pass' | 'warn' | 'info' }[];
+  defaultTab?: 'lifecycle' | 'execution' | 'traceability' | 'defects' | 'knowledge';
+  executionMetrics?: { label: string; value: string; status?: 'pass' | 'warn' | 'info' | string }[];
   codeSnippet?: string;
 }
 
 const {
-  studioName = "AI Studio",
-  stageBadge = "ENTERPRISE CONSOLE",
-  activeTab = "Requirement Graph",
+  studioName = "Unified Platform Console",
+  stageBadge = "ENTERPRISE RUNTIME",
+  activeTab = "Quality Lifecycle",
+  defaultTab = "lifecycle",
   executionMetrics = [
     { label: "Deterministic Quality Score", value: "99.8%", status: "pass" },
     { label: "P99 Execution Latency", value: "32ms", status: "info" },
     { label: "Zero-Trust Policy Adherence", value: "100.0%", status: "pass" }
   ],
-  codeSnippet = `// VERIQON ONE Quality Engine Verification Topology
-const testGraph = await veriqon.synthesizeQualityPipeline({
-  source: "REQUIREMENTS_JIRA_CONFLUENCE",
-  engine: "VERIQON_ONE_DETERMINISTIC_RUNTIME",
-  governance: "ZERO_TRUST_RBAC_POLICY",
-  validation: ["CONTRACT_API", "ETL_RECONCILIATION", "DAST_SECURITY"]
-});`
+  codeSnippet
 } = Astro.props;
 ---
 
-<div class="mockup-window" role="region" aria-label={`${studioName} Console Preview`}>
-  <div class="mockup-header">
-    <div class="window-controls" aria-hidden="true">
-      <span class="window-dot dot-red"></span>
-      <span class="window-dot dot-yellow"></span>
-      <span class="window-dot dot-green"></span>
+<div class="mockup-window" role="region" aria-label="VERIQON ONE Platform Console Preview" data-default-tab={defaultTab}>
+  <!-- Top Application Bar (Faithful to real VERIQON ONE software) -->
+  <div class="mockup-topbar">
+    <div class="topbar-left">
+      <div class="window-controls" aria-hidden="true">
+        <span class="window-dot dot-red"></span>
+        <span class="window-dot dot-yellow"></span>
+        <span class="window-dot dot-green"></span>
+      </div>
+      <div class="brand-divider"></div>
+      <div class="app-identity">
+        <svg class="topbar-emblem" width="22" height="22" viewBox="0 0 100 100" fill="none">
+          <path d="M12 20 L35 76 L52 40 L35 20 Z" fill="#0877E8"/>
+          <path d="M42 20 L60 56 L68 40 L58 20 Z" fill="#08C5E8"/>
+          <path d="M52 20 L78 20 L88 38 L76 56 L64 56 L72 40 Z" fill="#C7D0DA"/>
+          <path d="M60 56 L78 80 L62 80 L48 62 Z" fill="#08C5E8"/>
+        </svg>
+        <span class="app-name">VERIQON ONE</span>
+        <span class="app-studio-tag">&bull; {studioName}</span>
+        <span class="app-workspace">Default Workspace &bull; Primary Project</span>
+      </div>
     </div>
-    <div class="mockup-title">
-      <span class="product-name">VERIQON ONE</span> &bull; <span>{studioName}</span>
-      <span class="powered-badge">by VERIQON TECHNOLOGIES</span>
+
+    <div class="topbar-center">
+      <div class="topbar-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span>Search requirements, test cases, studios...</span>
+        <kbd>Ctrl K</kbd>
+      </div>
     </div>
-    <div class="mockup-badge">
-      {stageBadge}
+
+    <div class="topbar-right">
+      <div class="status-indicator">
+        <span class="pulse-dot"></span>
+        <span>AI Engine Active</span>
+      </div>
+      <span class="badge-stage">{stageBadge}</span>
     </div>
   </div>
 
-  <div class="console-body">
-    <!-- Console Subbar -->
-    <div class="console-subbar">
-      <div class="tab-list">
-        <button type="button" class={`console-tab ${activeTab === 'Requirement Graph' ? 'active' : ''}`}>{activeTab}</button>
-        <button type="button" class="console-tab">Execution Pipeline</button>
-        <button type="button" class="console-tab">Traceability Matrix</button>
-        <button type="button" class="console-tab">Cryptographic Audit</button>
-      </div>
-      <div class="live-stream-status">
-        <span class="status-pulse"></span> Telemetry Active
-      </div>
-    </div>
+  <!-- Interactive Platform Sub-navigation Tabs -->
+  <div class="mockup-nav-tabs" role="tablist">
+    <button type="button" class="tab-btn active" data-tab="lifecycle" role="tab" aria-selected="true">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7"></rect>
+        <rect x="14" y="3" width="7" height="7"></rect>
+        <rect x="14" y="14" width="7" height="7"></rect>
+        <rect x="3" y="14" width="7" height="7"></rect>
+      </svg>
+      <span>Quality Lifecycle</span>
+    </button>
+    <button type="button" class="tab-btn" data-tab="execution" role="tab" aria-selected="false">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+      </svg>
+      <span>Execution Center</span>
+      <span class="tab-counter">12 Nodes</span>
+    </button>
+    <button type="button" class="tab-btn" data-tab="traceability" role="tab" aria-selected="false">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="20" x2="18" y2="10"></line>
+        <line x1="12" y1="20" x2="12" y2="4"></line>
+        <line x1="6" y1="20" x2="6" y2="14"></line>
+      </svg>
+      <span>Traceability &amp; Coverage</span>
+    </button>
+    <button type="button" class="tab-btn" data-tab="defects" role="tab" aria-selected="false">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+        <path d="M9 9h6v6H9z"></path>
+      </svg>
+      <span>Defect Management</span>
+    </button>
+    <button type="button" class="tab-btn" data-tab="knowledge" role="tab" aria-selected="false">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+      <span>Knowledge Hub &amp; RAG</span>
+    </button>
+  </div>
 
-    <!-- Main Console Grid -->
-    <div class="console-grid">
-      <!-- Left: Engine Execution & Code -->
-      <div class="console-pane">
-        <div class="pane-tag">SPECIFICATION &amp; REASONING TOPOLOGY</div>
-        <pre class="code-box"><code><span class="code-comment">{codeSnippet}</span></code></pre>
-
-        <!-- KPI Metrics Row -->
-        <div class="metrics-row">
+  <!-- TAB PANELS -->
+  <div class="mockup-content">
+    
+    <!-- 1. QUALITY LIFECYCLE (Real App Screen Rebranded) -->
+    <div class="tab-panel active" id="panel-lifecycle" role="tabpanel">
+      <div class="panel-header-banner">
+        <div>
+          <div class="banner-eyebrow">AUTONOMOUS QUALITY ENGINEERING LIFECYCLE</div>
+          <h3 class="banner-title">Deterministic 5-Stage Verification Fabric</h3>
+        </div>
+        <div class="banner-stats">
           {executionMetrics.map((m) => (
-            <div class="metric-card">
-              <span class="metric-lbl">{m.label}</span>
-              <span class={`metric-val val-${m.status || 'info'}`}>{m.value}</span>
-            </div>
+            <span class="stat-pill">
+              <strong style={`color: ${m.status === 'pass' ? 'var(--cyan)' : '#61adff'}`}>{m.value}</strong> {m.label}
+            </span>
           ))}
         </div>
       </div>
 
-      <!-- Right: Real-time Operator Pipeline -->
-      <div class="console-pane pane-queue">
-        <div class="pane-tag">VERIFIED EXECUTION &amp; AUDIT PIPELINE</div>
-        <div class="queue-list">
-          <div class="queue-item item-active">
-            <div class="item-head">
-              <span class="item-tag tag-signal">DISCOVERY</span>
-              <span class="item-time">0.08s</span>
-            </div>
-            <div class="item-title">Enterprise Requirement Topology Parsed</div>
-            <div class="item-desc">User journeys mapped to verifiable acceptance criteria.</div>
+      <div class="lifecycle-steps-grid">
+        <!-- Step 1 -->
+        <div class="lifecycle-step-card">
+          <div class="step-num-badge">STEP 01</div>
+          <div class="step-icon-wrap" style="color: var(--royal-blue); background: rgba(8, 119, 232, 0.12);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
           </div>
-
-          <div class="queue-item item-review">
-            <div class="item-head">
-              <span class="item-tag tag-review">GOVERNANCE</span>
-              <span class="item-time">Enforced</span>
-            </div>
-            <div class="item-title">Zero-Trust Role-Based Authorization</div>
-            <div class="item-desc">Execution parameters verified against compliance policies.</div>
+          <h4 class="step-title">Specify &amp; Ingest</h4>
+          <p class="step-sub">Requirements &amp; User Stories</p>
+          <div class="step-footer">
+            <span class="step-val">42 Tracked</span>
+            <span class="step-badge-ready">Active Sync</span>
           </div>
+        </div>
 
-          <div class="queue-item">
-            <div class="item-head">
-              <span class="item-tag tag-trace">VERIFICATION</span>
-              <span class="item-time">Complete</span>
+        <!-- Step 2 -->
+        <div class="lifecycle-step-card step-highlight">
+          <div class="step-num-badge" style="color: var(--cyan);">STEP 02 &bull; AI FLAGSHIP</div>
+          <div class="step-icon-wrap" style="color: var(--cyan); background: rgba(8, 197, 232, 0.15);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h4 class="step-title">AI Synthesis</h4>
+          <p class="step-sub">Autonomous Test Modeling</p>
+          <div class="step-footer">
+            <span class="step-val" style="color: var(--cyan);">1,420 Generated</span>
+            <span class="step-badge-ai">Ollama / Private LLM</span>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="lifecycle-step-card">
+          <div class="step-num-badge">STEP 03</div>
+          <div class="step-icon-wrap" style="color: #10b981; background: rgba(16, 185, 129, 0.12);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+          </div>
+          <h4 class="step-title">Plan &amp; Structure</h4>
+          <p class="step-sub">Suites &amp; Traceability</p>
+          <div class="step-footer">
+            <span class="step-val">48 Test Suites</span>
+            <span class="step-badge-ready">Plan Ready</span>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="lifecycle-step-card">
+          <div class="step-num-badge">STEP 04</div>
+          <div class="step-icon-wrap" style="color: #f59e0b; background: rgba(245, 158, 11, 0.12);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="10 8 16 12 10 16 10 8"></polygon>
+            </svg>
+          </div>
+          <h4 class="step-title">Execute &amp; Monitor</h4>
+          <p class="step-sub">Execution Center &amp; Workers</p>
+          <div class="step-footer">
+            <span class="step-val">12 Active Nodes</span>
+            <span class="step-badge-ready">Queue Live</span>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="lifecycle-step-card">
+          <div class="step-num-badge">STEP 05</div>
+          <div class="step-icon-wrap" style="color: #08C5E8; background: rgba(8, 197, 232, 0.12);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h4 class="step-title">Triage &amp; Protect</h4>
+          <p class="step-sub">AI Root Cause &amp; Defense</p>
+          <div class="step-footer">
+            <span class="step-val" style="color: #10b981;">99.8% Pass Rate</span>
+            <span class="step-badge-ready">Audit Clean</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-time Console Telemetry Feed -->
+      <div class="console-stream-box">
+        <div class="stream-header">
+          <span class="stream-tag">LIVE SYNTHESIS TOPOLOGY &bull; {activeTab}</span>
+          <span class="stream-ts">Timestamp: 2026-11-14 22:18:40 UTC</span>
+        </div>
+        {codeSnippet && (
+          <pre class="studio-code-snippet" style="background: rgba(10, 37, 71, 0.7); border: 1px solid rgba(8, 197, 232, 0.25); border-radius: 6px; padding: 12px; margin-bottom: 12px; color: #E2E8F0; font-family: var(--font-mono); font-size: 11.5px; overflow-x: auto; line-height: 1.5;"><code>{codeSnippet}</code></pre>
+        )}
+        <div class="stream-code">
+          <code><span class="c-cyan">&gt; [Ingestion]</span> Parsed 42 enterprise PRD epics from Jira / Confluence gateway. Zero orphan requirements.</code>
+          <code><span class="c-blue">&gt; [Synthesis]</span> Synthesized 1,420 deterministic test cases across 7 specialist studios.</code>
+          <code><span class="c-green">&gt; [Self-Healing]</span> DOM locator drift detected on checkout button &mdash; auto-repaired in 14ms using semantic AST embeddings.</code>
+          <code><span class="c-cyan">&gt; [Security]</span> PostgreSQL RLS boundary audit completed: 100% tenant isolation verified across all schemas.</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. UNIFIED EXECUTION CENTER -->
+    <div class="tab-panel" id="panel-execution" role="tabpanel">
+      <div class="execution-kpis">
+        <div class="kpi-box">
+          <div class="kpi-label">TOTAL EXECUTIONS</div>
+          <div class="kpi-value">12,480</div>
+          <div class="kpi-delta">+1,420 today</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">QUEUE DEPTH</div>
+          <div class="kpi-value" style="color: var(--cyan);">0</div>
+          <div class="kpi-delta">Real-time throughput</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">ACTIVE RUNNER NODES</div>
+          <div class="kpi-value" style="color: #61adff;">12 Online</div>
+          <div class="kpi-delta">Kubernetes Auto-scale</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">PASS RATE</div>
+          <div class="kpi-value" style="color: #10b981;">99.64%</div>
+          <div class="kpi-delta">Zero flaky failures</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">P99 LATENCY</div>
+          <div class="kpi-value">32ms</div>
+          <div class="kpi-delta">Air-gapped runtime</div>
+        </div>
+      </div>
+
+      <div class="execution-grid-details">
+        <div class="sub-panel">
+          <div class="sub-panel-title">SPECIALIST STUDIO RUNNERS DISPATCHED</div>
+          <div class="studio-status-rows">
+            <div class="studio-row">
+              <span class="st-dot dot-active"></span>
+              <span class="st-name">Automation Studio</span>
+              <span class="st-tech">Chromium &bull; WebKit &bull; Firefox</span>
+              <span class="st-runs">3,480 runs</span>
+              <span class="st-badge badge-pass">PASSED</span>
             </div>
-            <div class="item-title">Deterministic Defect Trace Ledger</div>
-            <div class="item-desc">Cryptographic test run lineage persisted to audit store.</div>
+            <div class="studio-row">
+              <span class="st-dot dot-active"></span>
+              <span class="st-name">API Testing Studio</span>
+              <span class="st-tech">REST &bull; GraphQL &bull; gRPC</span>
+              <span class="st-runs">5,120 contracts</span>
+              <span class="st-badge badge-pass">PASSED</span>
+            </div>
+            <div class="studio-row">
+              <span class="st-dot dot-active"></span>
+              <span class="st-name">ETL / Data Testing</span>
+              <span class="st-tech">PostgreSQL &bull; Snowflake &bull; DuckDB</span>
+              <span class="st-runs">1,890 diffs</span>
+              <span class="st-badge badge-pass">PASSED</span>
+            </div>
+            <div class="studio-row">
+              <span class="st-dot dot-active"></span>
+              <span class="st-name">Security Testing Studio</span>
+              <span class="st-tech">DAST &bull; OWASP Top 10 &bull; RLS Guard</span>
+              <span class="st-runs">940 policies</span>
+              <span class="st-badge badge-pass">PASSED</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- 3. TRACEABILITY & COVERAGE -->
+    <div class="tab-panel" id="panel-traceability" role="tabpanel">
+      <div class="trace-metrics-row">
+        <div class="trace-card">
+          <div class="trace-label">REQUIREMENT COVERAGE</div>
+          <div class="trace-score" style="color: var(--cyan);">98.6%</div>
+          <div class="trace-sub">Target: 95.0% &bull; +3.6% ahead</div>
+        </div>
+        <div class="trace-card">
+          <div class="trace-label">USER STORY COVERAGE</div>
+          <div class="trace-score" style="color: #61adff;">99.2%</div>
+          <div class="trace-sub">124 of 125 INVEST stories</div>
+        </div>
+        <div class="trace-card">
+          <div class="trace-label">TRACEABILITY INTEGRITY</div>
+          <div class="trace-score" style="color: #10b981;">100%</div>
+          <div class="trace-sub">Orphan-free &bull; Zero stale specs</div>
+        </div>
+        <div class="trace-card">
+          <div class="trace-label">UNCOVERED CRITERIA GAPS</div>
+          <div class="trace-score" style="color: var(--silver);">0</div>
+          <div class="trace-sub">Resolved automatically by AI</div>
+        </div>
+      </div>
+
+      <div class="matrix-preview-card">
+        <div class="matrix-header">
+          <span>REQUIREMENT-TO-VERIFICATION TRACEABILITY MATRIX</span>
+          <span class="badge-tag">ISO 26262 &bull; SOC 2 READINESS</span>
+        </div>
+        <div class="matrix-table-wrap">
+          <table class="matrix-table">
+            <thead>
+              <tr>
+                <th>Req ID</th>
+                <th>Requirement Description</th>
+                <th>Linked User Story</th>
+                <th>Automated Test Cases</th>
+                <th>Verification Studio</th>
+                <th>Compliance Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>REQ-AUTH-001</code></td>
+                <td>Zero-Trust Multi-Tenant Session Isolation</td>
+                <td>US-849: SAML / Okta SSO</td>
+                <td>TC-E2E-104, TC-SEC-012</td>
+                <td>Security Studio</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+              </tr>
+              <tr>
+                <td><code>REQ-DATA-042</code></td>
+                <td>Financial Settlement Double-Entry Ledger</td>
+                <td>US-855: Ledger Sync</td>
+                <td>TC-ETL-401, TC-ETL-402</td>
+                <td>ETL &amp; Data Studio</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+              </tr>
+              <tr>
+                <td><code>REQ-PERF-019</code></td>
+                <td>Sub-50ms API Latency at 50,000 req/sec</td>
+                <td>US-862: Gateway Throughput</td>
+                <td>TC-PERF-881, TC-API-204</td>
+                <td>Performance Studio</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. DEFECT MANAGEMENT & AI TRIAGE -->
+    <div class="tab-panel" id="panel-defects" role="tabpanel">
+      <div class="defect-triage-layout">
+        <div class="defect-filters">
+          <span class="defect-pill active">All Categories (14)</span>
+          <span class="defect-pill">Functional (0)</span>
+          <span class="defect-pill">ETL Pipeline (0)</span>
+          <span class="defect-pill">Security (0)</span>
+          <span class="defect-pill">Performance (0)</span>
+          <span class="defect-pill">Automation Self-Healed (14)</span>
+        </div>
+
+        <div class="triage-card">
+          <div class="triage-head">
+            <span class="triage-status">AI ROOT CAUSE TRIAGE &bull; AUTO-REPAIRED</span>
+            <span class="triage-time">Resolved in 18ms</span>
+          </div>
+          <h4 class="triage-title">Dynamic UI Shadow-DOM Locator Shift Detected</h4>
+          <p class="triage-body">
+            Target selector <code>#btn-checkout-v2</code> changed attributes during continuous deployment. VERIQON ONE Autonomous Synthesis engine inferred semantic equivalence from surrounding accessibility labels and automatically updated the test script without engineer intervention.
+          </p>
+          <div class="triage-meta">
+            <span><strong>Impact:</strong> Zero build downtime</span>
+            <span><strong>Confidence:</strong> 99.8% match</span>
+            <span><strong>Origin:</strong> Automation Studio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. KNOWLEDGE HUB & RAG CONNECTORS -->
+    <div class="tab-panel" id="panel-knowledge" role="tabpanel">
+      <div class="rag-status-grid">
+        <div class="rag-card">
+          <div class="rag-label">VECTOR INDEX STATUS</div>
+          <div class="rag-val" style="color: #10b981;">INDEXED &bull; 100%</div>
+          <div class="rag-desc">Continuous semantic synchronization</div>
+        </div>
+        <div class="rag-card">
+          <div class="rag-label">EMBEDDING MODEL</div>
+          <div class="rag-val" style="color: var(--cyan);">text-embedding-004</div>
+          <div class="rag-desc">Dedicated private enterprise endpoint</div>
+        </div>
+        <div class="rag-card">
+          <div class="rag-label">HYBRID SEARCH</div>
+          <div class="rag-val" style="color: #61adff;">ENABLED</div>
+          <div class="rag-desc">BM25 keyword + Cosine vector distance</div>
+        </div>
+        <div class="rag-card">
+          <div class="rag-label">ENTERPRISE CONNECTORS</div>
+          <div class="rag-val">Jira &bull; Azure DevOps &bull; GitHub</div>
+          <div class="rag-desc">Zero manual file exports required</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
+
+<script>
+  // Client-side lightweight tab switcher
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.mockup-nav-tabs .tab-btn');
+    const tabPanels = document.querySelectorAll('.mockup-content .tab-panel');
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetTab = btn.getAttribute('data-tab');
+        if (!targetTab) return;
+
+        tabButtons.forEach((b) => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        tabPanels.forEach((p) => p.classList.remove('active'));
+
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        const activePanel = document.getElementById(`panel-${targetTab}`);
+        if (activePanel) {
+          activePanel.classList.add('active');
+        }
+      });
+    });
+
+    // Auto-activate defaultTab if set
+    const defaultTabName = document.querySelector('.mockup-window')?.getAttribute('data-default-tab');
+    if (defaultTabName && defaultTabName !== 'lifecycle') {
+      const targetBtn = document.querySelector(`.mockup-nav-tabs .tab-btn[data-tab="${defaultTabName}"]`) as HTMLButtonElement | null;
+      if (targetBtn) {
+        targetBtn.click();
+      }
+    }
+  });
+</script>
 
 <style>
   .mockup-window {
     background: #061B36;
-    border: 1px solid rgba(8, 197, 232, 0.28);
+    border: 1px solid rgba(8, 197, 232, 0.35);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(6, 27, 54, 0.45);
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
+    box-shadow: 0 25px 60px rgba(6, 27, 54, 0.55);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     text-align: left;
   }
 
-  .mockup-header {
+  .mockup-topbar {
     background: #0A2547;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 14px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
   }
 
   .window-controls {
     display: flex;
-    gap: 7px;
+    gap: 6px;
   }
 
   .window-dot {
-    width: 11px;
-    height: 11px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
   }
 
@@ -146,301 +510,612 @@ const testGraph = await veriqon.synthesizeQualityPipeline({
   .dot-yellow { background: #ffbd2e; }
   .dot-green { background: #27c93f; }
 
-  .mockup-title {
-    font-size: 13px;
-    font-family: var(--font-mono);
-    color: #E2E8F0;
-    letter-spacing: -0.01em;
+  .brand-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .app-identity {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
-  .product-name {
+  .topbar-emblem {
+    flex-shrink: 0;
+  }
+
+  .app-name {
+    font-size: 13.5px;
     font-weight: 750;
-    color: var(--cyan);
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
   }
 
-  .powered-badge {
-    font-size: 10px;
-    color: #94A3B8;
-    background: rgba(255, 255, 255, 0.06);
-    padding: 2px 8px;
-    border-radius: 4px;
-  }
-
-  .mockup-badge {
-    font-size: 11px;
-    font-family: var(--font-mono);
+  .app-studio-tag {
+    font-size: 13px;
     font-weight: 700;
     color: var(--cyan);
-    background: rgba(8, 197, 232, 0.12);
-    padding: 4px 10px;
-    border-radius: 6px;
-    border: 1px solid rgba(8, 197, 232, 0.25);
   }
 
-  .console-body {
-    background: #061B36;
+  .app-workspace {
+    font-size: 11.5px;
+    color: #94A3B8;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .console-subbar {
-    background: rgba(10, 37, 71, 0.6);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 10px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+  .topbar-center {
+    flex: 1;
+    max-width: 440px;
   }
 
-  .tab-list {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    max-width: 100%;
-    padding-bottom: 2px;
-  }
-
-  .tab-list::-webkit-scrollbar {
-    display: none;
-  }
-
-  .console-tab {
-    background: transparent;
-    border: none;
-    color: #C7D0DA;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 6px 14px;
-    border-radius: var(--radius-full);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .console-tab.active {
-    background: rgba(8, 119, 232, 0.25);
-    color: #FFFFFF;
-    border: 1px solid rgba(8, 197, 232, 0.4);
-  }
-
-  .live-stream-status {
+  .topbar-search {
+    background: rgba(6, 27, 54, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-sm);
+    padding: 6px 12px;
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--cyan);
-    font-family: var(--font-mono);
+    color: #94A3B8;
     font-size: 12px;
-    white-space: nowrap;
-    flex-shrink: 0;
   }
 
-  .status-pulse {
+  .topbar-search kbd {
+    margin-left: auto;
+    font-size: 10px;
+    font-family: var(--font-mono);
+    background: rgba(255, 255, 255, 0.1);
+    color: #C7D0DA;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--cyan);
+  }
+
+  .pulse-dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background: var(--cyan);
-    box-shadow: 0 0 10px var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
   }
 
-  .console-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 1px;
-    background: rgba(255, 255, 255, 0.08);
+  .badge-stage {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    font-weight: 750;
+    color: #C7D0DA;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 3px 8px;
+    border-radius: 4px;
   }
 
-  @media (max-width: 900px) {
-    .console-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .console-subbar {
-      padding: 10px 16px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-    }
-
-    .tab-list {
-      width: 100%;
-    }
-
-    .console-pane {
-      padding: 18px 16px;
-    }
+  /* NAV TABS */
+  .mockup-nav-tabs {
+    background: #071E3C;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    gap: 4px;
+    padding: 6px 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
 
-  @media (max-width: 640px) {
-    .mockup-header {
-      padding: 10px 14px;
-      gap: 8px;
-    }
-
-    .mockup-title {
-      font-size: 11px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .powered-badge {
-      display: none;
-    }
-
-    .mockup-badge {
-      display: none;
-    }
-
-    .metrics-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      width: 100%;
-    }
-
-    .metric-card {
-      width: 100%;
-    }
+  .mockup-nav-tabs::-webkit-scrollbar {
+    display: none;
   }
 
-  .console-pane {
+  .tab-btn {
+    background: transparent;
+    border: none;
+    color: #C7D0DA;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .tab-btn:hover {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .tab-btn.active {
+    background: rgba(8, 119, 232, 0.28);
+    color: #FFFFFF;
+    border: 1px solid rgba(8, 197, 232, 0.45);
+  }
+
+  .tab-counter {
+    font-size: 10px;
+    background: rgba(8, 197, 232, 0.18);
+    color: var(--cyan);
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-family: var(--font-mono);
+  }
+
+  /* PANELS */
+  .mockup-content {
     background: #061B36;
     padding: 24px;
   }
 
-  .pane-tag {
-    font-size: 11px;
+  .tab-panel {
+    display: none;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .tab-panel.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* LIFECYCLE GRID */
+  .panel-header-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 14px;
+  }
+
+  .banner-eyebrow {
+    font-size: 10.5px;
     font-family: var(--font-mono);
     color: var(--cyan);
-    letter-spacing: 0.12em;
-    margin-bottom: 14px;
     font-weight: 700;
+    letter-spacing: 0.1em;
   }
 
-  .code-box {
-    background: #0A2547;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-sm);
-    padding: 16px;
-    font-family: var(--font-mono);
-    font-size: 12.5px;
-    line-height: 1.6;
-    color: #E2E8F0;
-    margin-bottom: 20px;
-    overflow-x: auto;
+  .banner-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 4px;
   }
 
-  .code-comment {
-    color: #94A3B8;
-  }
-
-  .metrics-row {
+  .banner-stats {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
   }
 
-  .metric-card {
-    background: rgba(255, 255, 255, 0.04);
+  .stat-pill {
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 10px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .metric-lbl {
-    font-size: 10px;
+    font-size: 11.5px;
     color: #C7D0DA;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 6px;
   }
 
-  .metric-val {
-    font-size: 15px;
-    font-family: var(--font-mono);
-    font-weight: 700;
+  .lifecycle-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
   }
 
-  .val-pass { color: var(--cyan); }
-  .val-info { color: #0877E8; }
-  .val-warn { color: #f59e0b; }
+  @media (max-width: 900px) {
+    .lifecycle-steps-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 
-  .queue-list {
+  .lifecycle-step-card {
+    background: rgba(10, 37, 71, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 14px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
   }
 
-  .queue-item {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 14px 16px;
-  }
-
-  .queue-item.item-active {
-    border-color: rgba(8, 197, 232, 0.4);
+  .lifecycle-step-card.step-highlight {
+    border-color: rgba(8, 197, 232, 0.45);
     background: rgba(8, 197, 232, 0.06);
   }
 
-  .queue-item.item-review {
-    border-color: rgba(8, 119, 232, 0.4);
-    background: rgba(8, 119, 232, 0.06);
-  }
-
-  .item-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 6px;
-  }
-
-  .item-tag {
-    font-size: 10px;
+  .step-num-badge {
+    font-size: 9.5px;
     font-family: var(--font-mono);
     font-weight: 750;
-    padding: 2px 8px;
-    border-radius: 4px;
-    letter-spacing: 0.05em;
+    color: #94A3B8;
+    margin-bottom: 8px;
   }
 
-  .tag-signal {
+  .step-icon-wrap {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .step-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .step-sub {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-top: 2px;
+    flex: 1;
+  }
+
+  .step-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .step-val {
+    font-size: 12px;
+    font-weight: 700;
+    color: #FFFFFF;
+    font-family: var(--font-mono);
+  }
+
+  .step-badge-ready, .step-badge-ai {
+    font-size: 9.5px;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .step-badge-ready {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+  }
+
+  .step-badge-ai {
     background: rgba(8, 197, 232, 0.15);
     color: var(--cyan);
   }
 
-  .tag-review {
-    background: rgba(8, 119, 232, 0.2);
-    color: #61adff;
+  /* CONSOLE STREAM */
+  .console-stream-box {
+    background: #041224;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
   }
 
-  .tag-trace {
-    background: rgba(255, 255, 255, 0.1);
-    color: #FFFFFF;
-  }
-
-  .item-time {
+  .stream-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
     font-size: 11px;
-    color: #94A3B8;
     font-family: var(--font-mono);
   }
 
-  .item-title {
-    font-size: 13.5px;
-    font-weight: 650;
+  .stream-tag { color: var(--cyan); font-weight: 700; }
+  .stream-ts { color: #64748B; }
+
+  .stream-code {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #C7D0DA;
+  }
+
+  .c-cyan { color: var(--cyan); }
+  .c-blue { color: #61adff; }
+  .c-green { color: #10b981; }
+
+  /* EXECUTION KPIS */
+  .execution-kpis {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .execution-kpis {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .kpi-box {
+    background: rgba(10, 37, 71, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 14px;
+  }
+
+  .kpi-label {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: #94A3B8;
+  }
+
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 750;
+    color: #FFFFFF;
+    font-family: var(--font-mono);
+    margin-top: 4px;
+  }
+
+  .kpi-delta {
+    font-size: 11px;
+    color: #64748B;
+    margin-top: 2px;
+  }
+
+  .studio-status-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .studio-row {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  .st-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .dot-active { background: #10b981; box-shadow: 0 0 8px #10b981; }
+  .st-name { font-weight: 700; color: #FFFFFF; min-width: 170px; }
+  .st-tech { color: #94A3B8; font-size: 12px; flex: 1; }
+  .st-runs { font-family: var(--font-mono); color: #C7D0DA; font-size: 12px; }
+
+  .badge-pass {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  /* TRACEABILITY */
+  .trace-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 800px) {
+    .trace-metrics-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .trace-card {
+    background: rgba(10, 37, 71, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 16px;
+  }
+
+  .trace-label {
+    font-size: 10.5px;
+    font-family: var(--font-mono);
+    color: #94A3B8;
+  }
+
+  .trace-score {
+    font-size: 26px;
+    font-weight: 750;
+    font-family: var(--font-mono);
+    margin-top: 4px;
+  }
+
+  .trace-sub {
+    font-size: 11.5px;
+    color: #64748B;
+    margin-top: 2px;
+  }
+
+  .matrix-preview-card {
+    background: rgba(10, 37, 71, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 18px;
+  }
+
+  .matrix-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: 700;
     color: #FFFFFF;
   }
 
-  .item-desc {
-    font-size: 12px;
+  .matrix-table-wrap {
+    overflow-x: auto;
+  }
+
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+
+  .matrix-table th {
+    text-align: left;
+    padding: 8px 12px;
+    color: #94A3B8;
+    font-size: 11px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .matrix-table td {
+    padding: 10px 12px;
     color: #C7D0DA;
-    margin-top: 4px;
-    line-height: 1.4;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .matrix-table code {
+    color: var(--cyan);
+    font-family: var(--font-mono);
+  }
+
+  /* DEFECTS */
+  .defect-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .defect-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #C7D0DA;
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: var(--radius-full);
+  }
+
+  .defect-pill.active {
+    background: rgba(8, 119, 232, 0.25);
+    border-color: rgba(8, 197, 232, 0.4);
+    color: #FFFFFF;
+  }
+
+  .triage-card {
+    background: rgba(10, 37, 71, 0.6);
+    border: 1px solid rgba(8, 197, 232, 0.35);
+    border-radius: var(--radius-md);
+    padding: 20px;
+  }
+
+  .triage-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .triage-status {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--cyan);
+  }
+
+  .triage-time {
+    font-size: 11px;
+    color: #94A3B8;
+  }
+
+  .triage-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+
+  .triage-body {
+    font-size: 13.5px;
+    color: #C7D0DA;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .triage-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+    color: #94A3B8;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 10px;
+  }
+
+  /* RAG STATUS */
+  .rag-status-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  @media (max-width: 800px) {
+    .rag-status-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .rag-card {
+    background: rgba(10, 37, 71, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 18px;
+  }
+
+  .rag-label {
+    font-size: 10.5px;
+    font-family: var(--font-mono);
+    color: #94A3B8;
+  }
+
+  .rag-val {
+    font-size: 16px;
+    font-weight: 750;
+    color: #FFFFFF;
+    margin-top: 6px;
+    margin-bottom: 4px;
+  }
+
+  .rag-desc {
+    font-size: 12px;
+    color: #64748B;
   }
 </style>

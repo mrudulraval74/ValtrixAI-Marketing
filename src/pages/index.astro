@@ -7,32 +7,38 @@ const qualityLifecycleSteps = [
   {
     step: "01",
     title: "Requirements Ingestion",
-    desc: "Direct integration with Jira, Confluence, and OpenAPI specs to parse business acceptance criteria into verifiable models."
+    tag: "CONNECTORS",
+    desc: "Direct bi-directional sync with Jira, Azure DevOps, Confluence, and OpenAPI specs to parse business acceptance criteria into verifiable models."
   },
   {
     step: "02",
     title: "Autonomous Synthesis",
-    desc: "AI reasoning engines generate complete test topologies, synthetic data fixtures, and negative edge conditions."
+    tag: "PRIVATE AI",
+    desc: "AI reasoning engines generate complete test topologies, synthetic data fixtures, and negative edge conditions with zero data leakage."
   },
   {
     step: "03",
     title: "Self-Healing Automation",
-    desc: "Distributed browser, mobile, and API execution with dynamic DOM recovery that eliminates flaky test failures."
+    tag: "DYNAMIC DOM",
+    desc: "Distributed browser, mobile, and API execution with dynamic selector recovery that automatically eliminates flaky test failures."
   },
   {
     step: "04",
     title: "ETL & Data Integrity",
-    desc: "High-throughput schema validation and row-level hash reconciliation across source systems and data warehouses."
+    tag: "HIGH-THROUGHPUT",
+    desc: "High-throughput schema validation and row-level hash reconciliation across source systems, PostgreSQL, Snowflake, and data lakes."
   },
   {
     step: "05",
     title: "Security & Performance",
-    desc: "Continuous automated DAST penetration probing, tenant isolation checks, and high-concurrency bottleneck forecasting."
+    tag: "CONTINUOUS DAST",
+    desc: "Automated OWASP vulnerability probing, multi-tenant PostgreSQL RLS boundary checks, and predictive concurrency bottleneck forecasting."
   },
   {
     step: "06",
     title: "Traceable Governance",
-    desc: "Immutable cryptographic audit logs and complete requirement-to-defect traceability for compliance assurance."
+    tag: "CRYPTOGRAPHIC AUDIT",
+    desc: "Immutable cryptographic audit logs and complete requirement-to-defect traceability ensuring SOC 2 and ISO compliance readiness."
   }
 ];
 
@@ -40,51 +46,58 @@ const studios = [
   {
     name: 'AI Studio',
     tag: 'Autonomous Synthesis',
-    desc: 'Transforms requirements into executable test suites, models user workflows, and synthesizes comprehensive edge-case scenarios.',
+    badge: 'CORE REASONING',
+    desc: 'Transforms raw requirements into deterministic test suites, models complex user workflows, and synthesizes comprehensive edge-case scenarios.',
     href: '/studios/ai-studio',
-    icon: 'ai'
+    iconType: 'ai'
   },
   {
     name: 'Automation Studio',
     tag: 'Self-Healing Engine',
-    desc: 'Executes parallel multi-browser tests with dynamic selector recovery, eliminating script maintenance overhead.',
+    badge: 'ZERO-FLAKINESS',
+    desc: 'Executes parallel multi-browser tests with dynamic selector recovery, eliminating script maintenance overhead across dynamic DOM changes.',
     href: '/studios/automation',
-    icon: 'automation'
+    iconType: 'automation'
   },
   {
     name: 'API Testing Studio',
     tag: 'Contract Verification',
-    desc: 'Continuous REST and GraphQL contract verification, schema regression detection, and automated payload fuzzing.',
+    badge: 'REST & GRAPHQL',
+    desc: 'Continuous OpenAPI and GraphQL contract verification, schema regression detection, latency SLA tracking, and automated payload fuzzing.',
     href: '/studios/api-testing',
-    icon: 'api'
+    iconType: 'api'
   },
   {
     name: 'ETL / Data Testing Studio',
     tag: 'Warehouse Integrity',
-    desc: 'Validates multi-million row datasets, vector hashes, and pipeline integrity across snowflake, BigQuery, and SQL lakes.',
+    badge: 'DATA LAKE RECON',
+    desc: 'Validates multi-million row datasets, schema drift, and data pipeline integrity across Snowflake, BigQuery, DuckDB, and SQL lakes.',
     href: '/studios/etl-testing',
-    icon: 'data'
+    iconType: 'data'
   },
   {
     name: 'Performance Studio',
     tag: 'Predictive Load Analysis',
-    desc: 'Simulates massive concurrent traffic, identifies latency bottlenecks, and forecasts system degradation curves.',
+    badge: 'DISTRIBUTED LOAD',
+    desc: 'Simulates massive concurrent traffic, identifies latency bottlenecks, and forecasts system degradation curves before production deployments.',
     href: '/studios/performance-testing',
-    icon: 'perf'
+    iconType: 'perf'
   },
   {
     name: 'Security Studio',
     tag: 'Continuous DAST & RLS',
-    desc: 'Automates OWASP vulnerability auditing, multi-tenant data isolation checks, and role-based access verification.',
+    badge: 'ZERO-TRUST AUDIT',
+    desc: 'Automates OWASP vulnerability auditing, multi-tenant data isolation checks, and Row-Level Security (RLS) boundary verification.',
     href: '/studios/security-testing',
-    icon: 'sec'
+    iconType: 'sec'
   },
   {
     name: 'Manual Testing Studio',
     tag: 'AI-Assisted Exploratory',
-    desc: 'Empowers QA teams with session recording, automatic reproduction capture, and instant defect synthesis.',
+    badge: 'SMART RECORDING',
+    desc: 'Empowers QA teams with smart session recording, automated reproduction step capture, and instant one-click automation promotion.',
     href: '/studios/manual-testing',
-    icon: 'manual'
+    iconType: 'manual'
   }
 ];
 
@@ -94,24 +107,24 @@ const enterprisePillars = [
     desc: "Engineered from mathematical foundations to deliver predictable, reproducible quality outcomes without flaky execution false alarms."
   },
   {
-    title: "Zero-Trust Enterprise Architecture",
-    desc: "Strict tenant isolation, Row-Level Security (RLS), and RBAC guarantees that your proprietary data and test payloads never leave your perimeter."
+    title: "Zero-Trust Architecture",
+    desc: "Strict tenant isolation, Row-Level Security (RLS), and RBAC guarantee that proprietary data and test payloads never leave your perimeter."
   },
   {
     title: "Full-Stack Quality Fabric",
     desc: "Unifies functional UI, backend microservices, high-volume ETL pipelines, and performance under one single governed operating system."
   },
   {
-    title: "Complete Lineage & Auditability",
+    title: "Complete Lineage & Audit",
     desc: "Every test run, approval checkpoint, and defect triage is stamped with immutable cryptographic traceability for audit readiness."
   }
 ];
 
 const industries = [
-  { title: "Financial Services & Banking", desc: "High-frequency transaction validation, ledger reconciliation, and strict regulatory compliance." },
-  { title: "Healthcare & Life Sciences", desc: "HIPAA-compliant workflows, medical device software verification, and zero-defect data pipelines." },
-  { title: "E-Commerce & Retail", desc: "Peak load resilience testing, multi-step checkout integrity, and payment gateway automation." },
-  { title: "Enterprise SaaS & Telecom", desc: "Multi-tenant tenant isolation auditing, API contract stability, and 99.999% SLA assurance." }
+  { title: "Financial Services & Banking", desc: "High-frequency transaction validation, double-entry ledger reconciliation, and strict regulatory compliance." },
+  { title: "Healthcare & Life Sciences", desc: "HIPAA-compliant workflows, medical device software verification, and zero-defect patient data pipelines." },
+  { title: "E-Commerce & Retail", desc: "Peak load resilience testing, multi-step checkout integrity, and high-volume payment gateway automation." },
+  { title: "Enterprise SaaS & Telecom", desc: "Multi-tenant tenant isolation auditing, API contract stability, and 99.999% SLA availability assurance." }
 ];
 ---
 
@@ -119,12 +132,19 @@ const industries = [
   title="VERIQON TECHNOLOGIES — Engineering Trust Through Intelligence" 
   description="VERIQON TECHNOLOGIES develops VERIQON ONE, the comprehensive Enterprise Quality Engineering Platform unifying requirements, test automation, data validation, performance, and security."
 >
-  <!-- Hero Section (Corporate Navy & Royal Blue) -->
+  <!-- Modern Hero Section (Corporate Navy, Cybernetic Grid & Ambient Lighting) -->
   <section class="hero-section">
+    <div class="hero-grid-mesh" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+
     <div class="container hero-container">
       <div class="hero-content">
-        <div class="badge badge-dark">
-          <span class="badge-dot"></span> VERIQON TECHNOLOGIES &bull; FLAGSHIP PLATFORM
+        <div class="badge badge-dark hero-pill">
+          <span class="badge-dot"></span>
+          <span class="pill-company">VERIQON TECHNOLOGIES</span>
+          <span class="pill-dot">&bull;</span>
+          <span class="pill-product">VERIQON ONE</span>
         </div>
         
         <h1 class="hero-headline">
@@ -137,8 +157,15 @@ const industries = [
         </p>
 
         <div class="btn-row hero-btn-row">
-          <a href="/platform" class="btn btn-cyan">Explore VERIQON ONE</a>
-          <a href="/request-demo" class="btn btn-dark">Request a Demo</a>
+          <a href="/platform" class="btn btn-cyan">
+            <span>Explore VERIQON ONE</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+          <a href="/request-demo" class="btn btn-dark">
+            <span>Request Enterprise Demo</span>
+          </a>
         </div>
 
         <div class="hero-trust-bar">
@@ -154,21 +181,25 @@ const industries = [
           <div class="trust-divider"></div>
           <div class="trust-item">
             <span class="trust-val">Zero-Trust</span>
-            <span class="trust-lbl">Enterprise Security</span>
+            <span class="trust-lbl">Tenant Isolation</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="trust-val">&lt; 35ms</span>
+            <span class="trust-lbl">Execution Latency</span>
           </div>
         </div>
       </div>
 
-      <!-- High-Quality VERIQON ONE Platform Visual Console Preview -->
+      <!-- High-Fidelity Interactive Platform Console Showcase -->
       <StudioMockup
         studioName="Unified Platform Console"
         stageBadge="LIVE RUNTIME ENGINE"
-        activeTab="Requirement Graph"
       />
     </div>
   </section>
 
-  <!-- Corporate Statement & Brand Relationship -->
+  <!-- Corporate Philosophy & Engineering Pillars -->
   <section class="section section-alt">
     <div class="container text-center">
       <div class="eyebrow">
@@ -181,13 +212,9 @@ const industries = [
 
       <div class="grid-4" style="margin-top: 3.5rem; text-align: left;">
         {enterprisePillars.map((p) => (
-          <div class="card">
-            <div class="feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <h3 class="heading-sm">{p.title}</h3>
+          <div class="card pillar-card">
+            <div class="pillar-top-bar"></div>
+            <h3 class="heading-sm" style="color: var(--brand-navy); margin-top: 4px;">{p.title}</h3>
             <p style="color: var(--text-secondary); font-size: 13.5px; line-height: 1.65; margin-top: 8px;">
               {p.desc}
             </p>
@@ -206,15 +233,18 @@ const industries = [
         </div>
         <h2 class="heading-lg">The VERIQON ONE Quality Lifecycle</h2>
         <p class="subheading">
-          From business requirements intake to immutable production release audit, discover how every phase is seamlessly connected.
+          From business requirements intake to immutable production release audit, discover how every phase is seamlessly connected into one cohesive quality loop.
         </p>
       </div>
 
       <div class="grid-3">
         {qualityLifecycleSteps.map((s) => (
           <div class="card lifecycle-card">
-            <div class="lifecycle-step-num">{s.step}</div>
-            <h3 class="heading-md" style="margin-top: 10px;">{s.title}</h3>
+            <div class="lifecycle-card-head">
+              <span class="lifecycle-step-num">{s.step}</span>
+              <span class="lifecycle-tag">{s.tag}</span>
+            </div>
+            <h3 class="heading-md" style="margin-top: 12px;">{s.title}</h3>
             <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.65; margin-top: 8px;">
               {s.desc}
             </p>
@@ -224,7 +254,7 @@ const industries = [
     </div>
   </section>
 
-  <!-- The 7 Specialist Testing Studios -->
+  <!-- The 7 Specialist Testing Studios Showcase -->
   <section class="section section-alt" id="studios">
     <div class="container">
       <div class="text-center section-header">
@@ -241,15 +271,18 @@ const industries = [
         {studios.map((st) => (
           <a href={st.href} class="card studio-card">
             <div>
-              <div class="studio-tag">{st.tag}</div>
-              <h3 class="heading-md" style="margin-top: 10px; color: var(--text-primary);">{st.name}</h3>
+              <div class="studio-card-meta">
+                <span class="studio-tag">{st.tag}</span>
+                <span class="studio-badge-pill">{st.badge}</span>
+              </div>
+              <h3 class="heading-md" style="margin-top: 12px; color: var(--brand-navy);">{st.name}</h3>
               <p style="color: var(--text-secondary); font-size: 13.5px; line-height: 1.65; margin-top: 8px;">
                 {st.desc}
               </p>
             </div>
             <div class="studio-link-cta">
               <span>Explore {st.name}</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
@@ -258,8 +291,10 @@ const industries = [
         ))}
       </div>
 
-      <div class="text-center" style="margin-top: 3rem;">
-        <a href="/ai-studios" class="btn btn-secondary">View Complete Studios Overview &rarr;</a>
+      <div class="text-center" style="margin-top: 3.5rem;">
+        <a href="/ai-studios" class="btn btn-secondary">
+          <span>View Complete Studios Hub &rarr;</span>
+        </a>
       </div>
     </div>
   </section>
@@ -279,8 +314,9 @@ const industries = [
 
       <div class="grid-2">
         {industries.map((ind) => (
-          <div class="card">
-            <h3 class="heading-md" style="color: var(--royal-blue);">{ind.title}</h3>
+          <div class="card industry-card">
+            <div class="industry-accent"></div>
+            <h3 class="heading-md" style="color: var(--brand-navy);">{ind.title}</h3>
             <p style="color: var(--text-secondary); font-size: 14.5px; line-height: 1.7; margin-top: 10px;">
               {ind.desc}
             </p>
@@ -293,7 +329,7 @@ const industries = [
   <!-- Final Call to Action -->
   <CtaSection
     title="Transform Your Enterprise Quality Engineering Today"
-    subtitle="Schedule an architectural consultation with VERIQON TECHNOLOGIES specialists and see VERIQON ONE in action."
+    subtitle="Schedule an architectural consultation with VERIQON TECHNOLOGIES specialists and experience VERIQON ONE in action."
     primaryCtaText="Request a Demo"
     primaryCtaHref="/request-demo"
     secondaryCtaText="Review Pricing & Tiers"
@@ -304,12 +340,48 @@ const industries = [
 <style>
   /* Hero Styles */
   .hero-section {
-    background: linear-gradient(180deg, #061B36 0%, #0A2547 60%, #081C38 100%);
+    background: linear-gradient(180deg, #061B36 0%, #0A2547 50%, #061B36 100%);
     color: #FFFFFF;
-    padding-top: clamp(48px, 6vw, 84px);
-    padding-bottom: clamp(60px, 7vw, 96px);
+    padding-top: clamp(56px, 7vw, 96px);
+    padding-bottom: clamp(64px, 8vw, 108px);
     position: relative;
     overflow: hidden;
+  }
+
+  .hero-grid-mesh {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(to right, rgba(8, 197, 232, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(8, 197, 232, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 20%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 20%, transparent 80%);
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(100px);
+  }
+
+  .hero-glow-1 {
+    width: 600px;
+    height: 600px;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(8, 119, 232, 0.3) 0%, rgba(8, 197, 232, 0.15) 50%, transparent 75%);
+  }
+
+  .hero-glow-2 {
+    width: 450px;
+    height: 450px;
+    bottom: 50px;
+    right: 5%;
+    background: radial-gradient(circle, rgba(8, 197, 232, 0.18) 0%, transparent 70%);
   }
 
   .hero-section::after {
@@ -324,24 +396,45 @@ const industries = [
 
   .hero-container {
     text-align: center;
+    position: relative;
+    z-index: 2;
   }
 
   .hero-content {
-    max-width: 860px;
+    max-width: 880px;
     margin-inline: auto;
   }
 
+  .hero-pill {
+    margin-bottom: 1.5rem;
+    padding: 6px 16px;
+    backdrop-filter: blur(8px);
+  }
+
+  .pill-company {
+    font-weight: 750;
+    letter-spacing: 0.02em;
+  }
+
+  .pill-dot {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .pill-product {
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
   .hero-headline {
-    font-size: clamp(36px, 5.5vw, 64px);
+    font-size: clamp(38px, 5.8vw, 68px);
     font-weight: 850;
-    line-height: 1.1;
+    line-height: 1.08;
     letter-spacing: -0.04em;
     color: #FFFFFF;
-    margin-top: 1.25rem;
   }
 
   .hero-subtext {
-    font-size: clamp(16px, 1.3vw, 19px);
+    font-size: clamp(16px, 1.35vw, 19.5px);
     line-height: 1.75;
     color: #C7D0DA;
     margin-top: 1.5rem;
@@ -358,8 +451,8 @@ const industries = [
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(18px, 3vw, 36px);
-    margin-top: 3rem;
+    gap: clamp(18px, 3vw, 40px);
+    margin-top: 3.5rem;
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
@@ -371,18 +464,19 @@ const industries = [
   }
 
   .trust-val {
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 800;
     font-family: var(--font-mono);
     color: var(--cyan);
+    letter-spacing: -0.02em;
   }
 
   .trust-lbl {
-    font-size: 12px;
+    font-size: 11.5px;
     color: #94A3B8;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-top: 2px;
+    margin-top: 3px;
   }
 
   .trust-divider {
@@ -391,26 +485,61 @@ const industries = [
     background: rgba(255, 255, 255, 0.12);
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .hero-trust-bar {
-      flex-direction: column;
-      gap: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
     .trust-divider {
       display: none;
     }
   }
 
-  /* Lifecycle Step Card */
+  /* Pillar Cards */
+  .pillar-card {
+    position: relative;
+    border-top: none;
+  }
+
+  .pillar-top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--royal-blue), var(--cyan));
+  }
+
+  /* Lifecycle Cards */
   .lifecycle-card {
-    border-top: 3px solid var(--royal-blue);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lifecycle-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .lifecycle-step-num {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 850;
     font-family: var(--font-mono);
     color: var(--royal-blue);
+  }
+
+  .lifecycle-tag {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--cyan);
+    background: rgba(8, 197, 232, 0.12);
+    border: 1px solid rgba(8, 197, 232, 0.25);
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.06em;
   }
 
   /* Studio Cards */
@@ -418,12 +547,13 @@ const industries = [
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
   }
 
-  .studio-card:hover {
-    border-color: var(--royal-blue);
-    transform: translateY(-4px);
+  .studio-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
   }
 
   .studio-tag {
@@ -433,6 +563,17 @@ const industries = [
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--royal-blue);
+  }
+
+  .studio-badge-pill {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    font-weight: 650;
+    color: #4A5B73;
+    background: var(--ice-blue);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(8, 119, 232, 0.12);
   }
 
   .studio-link-cta {
@@ -445,11 +586,24 @@ const industries = [
     margin-top: 24px;
     padding-top: 14px;
     border-top: 1px solid var(--border-light);
-    transition: gap 0.2s ease;
+    transition: gap 0.2s ease, color 0.2s ease;
+  }
+
+  .cta-arrow {
+    transition: transform 0.2s ease;
   }
 
   .studio-card:hover .studio-link-cta {
-    gap: 10px;
     color: var(--electric-blue);
+  }
+
+  .studio-card:hover .cta-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Industry Card */
+  .industry-card {
+    position: relative;
+    border-left: 3px solid var(--royal-blue);
   }
 </style>
